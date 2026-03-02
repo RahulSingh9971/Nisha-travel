@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Manrope','Inter', 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent-red text-light-white font-bold py-3 px-6 rounded-lg hover:bg-accent-orange transition-colors duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-primary-dark text-light-white font-bold py-3 px-6 rounded-lg hover:bg-primary-navy transition-colors duration-300;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+  
+}
+@font-face {
+  font-family: "IBMPlexSans";
+  src: url("/public/fonts/IBMPlexSans-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Renfrew";
+  src: url("/public/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Renfrew";
+  src: url("/public/fonts/RENFREWN.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/public/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/public/fonts/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+} 
+@font-face {
+  font-family: 'Manrope';
+  src: url('/public/fonts/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/public/fonts/Manrope-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/public/fonts/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Maintenance Popup Styles */
+.maintenance-popup {
+  border-radius: 15px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.maintenance-title {
+  color: #dc3545 !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+}
+
+.maintenance-content {
+  font-family: 'Inter', 'Poppins', sans-serif !important;
+}
+
+/* SweetAlert2 Custom Styles */
+.swal2-popup {
+  font-family: 'Inter', 'Poppins', sans-serif !important;
+}
+
+.swal2-title {
+  font-family: 'Inter', 'Poppins', sans-serif !important;
+}
+
+.swal2-html-container {
+  font-family: 'Inter', 'Poppins', sans-serif !important;
+}
+
+/* Scrolling Text Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scrolling-text {
+  animation: scroll-left 20s linear infinite;
+  display: inline-block;
+}
+
+
+
+
+
+/* home page card animation *//* Ensure the overflow hidden works properly on all browsers */
+.group {
+  isolation: isolate;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Optional: Add a slight "Gooey" feel to the expansion */
+.group span.absolute {
+  /* Using a custom cubic-bezier makes the expansion feel more like liquid and less like a standard zoom */
+  transition: transform 0.8s cubic-bezier(0.66, 0, 0.34, 1), background-color 0.5s;
+}
+
+/* This fixes potential flickering on high-res screens */
+.group-hover img {
+    transform: translateZ(0);
+}
+
+
+
+.diagonal-btn {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid #002661;
+  color: #002661;
+  background: transparent;
+  transition: color 0.4s ease-in-out;
+}
+
+.diagonal-btn::before,
+.diagonal-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #002661;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+/* Left Triangle */
+.diagonal-btn::before {
+  left: -50px;
+  border-left: 50px solid transparent;
+  border-top: 60px solid #002661;
+  transform: translateX(100%);
+}
+
+/* Right Triangle */
+.diagonal-btn::after {
+  right: -50px;
+  border-right: 50px solid transparent;
+  border-bottom: 60px solid #002661;
+  transform: translateX(-100%);
+}
+
+.diagonal-btn:hover {
+  color: white;
+}
+
+.diagonal-btn:hover::before {
+  transform: translateX(40%);
+}
+
+.diagonal-btn:hover::after {
+  transform: translateX(-40%);
+}
+
+
+
+/* recuritment animation */
+
+
+/* 1. The Line: Draws down then vanishes at the end of the cycle */
+@keyframes line-draw-loop {
+  0% { transform: scaleY(0); opacity: 1; }
+  70% { transform: scaleY(1); opacity: 1; }
+  90% { transform: scaleY(1); opacity: 0; }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+
+/* 2. The Dot: Pops in, stays, then fades out */
+@keyframes pop-in-loop {
+  0% { opacity: 0; transform: scale(0.5); }
+  5% { opacity: 1; transform: scale(1.1); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* 3. The Card: Slides in, stays, then fades out */
+@keyframes slide-in-loop {
+  0% { opacity: 0; transform: translateX(20px); }
+  10% { opacity: 1; transform: translateX(0); }
+  90% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(10px); }
+}
+
+/* Application Classes */
+.animate-line-draw-infinite {
+  /* Duration should be slightly longer than the total steps delay */
+  animation: line-draw-loop 6s linear infinite;
+}
+
+.animate-pop-in-infinite {
+  animation: pop-in-loop 6s ease-in-out infinite;
+}
+
+.animate-slide-in-infinite {
+  animation: slide-in-loop 6s ease-in-out infinite;
+}
