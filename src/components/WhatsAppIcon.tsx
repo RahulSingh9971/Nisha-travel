@@ -8,7 +8,7 @@ interface WhatsAppProps {
   const FaWhatsappIcon = FaWhatsapp as React.ElementType;
 const WhatsAppIcon: React.FC<WhatsAppProps> = ({ 
   
-  phoneNumber = "91XXXXXXXXXX", // Default number (Change this)
+  phoneNumber = "91XXXXXXXXXX",
   message = "Hello! I have a query." 
 }) => {
   
