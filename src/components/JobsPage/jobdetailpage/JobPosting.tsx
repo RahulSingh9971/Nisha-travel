@@ -1,157 +1,84 @@
-import React from 'react';
-import img from '../../../assets/images/jobdetails.png'
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
-  FaUsers,      // People/Customers
-  FaFileAlt,    // Documents  
-  FaPlane,      // Travel
+  FaUsers,
+  FaFileAlt,
+  FaPlane,
+  FaBriefcase,
+  FaMapMarkerAlt,
+  FaIndustry,
+  FaCalendarAlt,
+  FaClock,
+  FaMoneyBillWave,
+  FaGraduationCap,
+  FaBuilding,
 } from 'react-icons/fa';
-// Define the interface for the InfoItem props
-interface InfoItemProps {
-  label: string;
-  value: string;
-  icon?: React.ReactNode; // The '?' makes it optional
-}
+import { MdWork, MdApartment } from 'react-icons/md';
 
+// ── Icon casts ──────────────────────────────────────────────
 const FaPlaneIcon = FaPlane as React.ElementType;
 const FaFileAltIcon = FaFileAlt as React.ElementType;
 const FaUsersIcon = FaUsers as React.ElementType;
+const FaBriefcaseIcon = FaBriefcase as React.ElementType;
+const FaMapMarkerIcon = FaMapMarkerAlt as React.ElementType;
+const FaIndustryIcon = FaIndustry as React.ElementType;
+const FaCalendarIcon = FaCalendarAlt as React.ElementType;
+const FaClockIcon = FaClock as React.ElementType;
+const FaMoneyIcon = FaMoneyBillWave as React.ElementType;
+const FaGradIcon = FaGraduationCap as React.ElementType;
+const FaBuildingIcon = FaBuilding as React.ElementType;
+const MdWorkIcon = MdWork as React.ElementType;
+const MdApartmentIcon = MdApartment as React.ElementType;
 
-const JobPosting: React.FC = () => {
-  return (
-    <div className="min-h-screen font-manrope">
-      <main className="max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:pt-10 md:pt-16 md:pb-20 py-10 ">
-        {/* Hero Section */}
-        <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 shadow-lg">
-          <img
-            src={img}
-            alt="Airport Terminal"
-            className="w-full h-full object-cover"
-          />
-        </div>
+// ── Types ───────────────────────────────────────────────────
+interface JobDetail {
+  id: number;
+  title: string;
+  slug: string;
+  company_name: string;
+  company_logo_url: string;
+  banner_url: string;
+  description: string;
+  requirements: string;
+  responsibilities: string;
+  benefits: string;
+  category: { id: number; name: string };
+  city: string;
+  state: string;
+  country: string;
+  zip_code: string;
+  job_type_label: string;
+  industry: string;
+  experience_level: string;
+  education: string;
+  gender: string;
+  salary_range: string;
+  salary_disclosed: boolean;
+  accommodation: boolean;
+  food: boolean;
+  transport: boolean;
+  flight_ticket: boolean;
+  working_hours: string;
+  vacancies: number;
+  posted_date: string;
+  expiry_date: string;
+  is_urgent: boolean;
+  status: string;
+}
 
-        {/* Header Info */}
-        <div className="flex flex-wrap gap-3 mb-6">
-          <span className="px-3 py-1 text-xs font-bold uppercase text-[#05264E]">ID: #11382</span>
-          <span className="bg-[#E6E7E9] px-3 py-1 rounded text-xs font-medium text-[#05264E]"><span className='font-bold text-md'>Job Post:</span>18 November 2025</span>
-          <span className="bg-[#E6E7E9] px-3 py-1 rounded text-xs font-medium text-[#05264E]"><span className='font-bold text-md'>Expiry Date:</span> 31 November 2025</span>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Main Content Area */}
-          <div className="lg:col-span-2">
-            <h1 className="text-3xl font-bold text-slate-900 mb-4">Hiring for Saudi Airport</h1>
-            <p className="text-[#05264E] leading-relaxed mb-6">
-              We are seeking a creative and detail-oriented UI/UX Designer to join our growing digital team in Riyadh.
-              The ideal candidate will be responsible for designing intuitive, user-centric interfaces for mobile apps,
-              websites, dashboards, and enterprise software.
-            </p>
-
-            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
-              APPLY HERE
-            </button>
-
-            {/* Job Description */}
-            <section className="mb-10">
-              <h2 className="text-xl font-bold inline-block pb-1 mb-6">Job Description</h2>
-              <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
-                <p>Responsible for managing, supporting & optimizing the KST/DOP/Dealer Management System (DMS) to ensure smooth operations across Sales, Service, Parts & Finance functions. The role involves system configuration, user support, training, troubleshooting.</p>
-                <ul className="list-none space-y-2">
-                  <li><strong>Role:</strong> Software Development - Other</li>
-                  <li><strong>Industry Type:</strong> IT Services & Consulting</li>
-                  <li><strong>Department:</strong> Engineering - Software & QA</li>
-                  <li><strong>Employment Type:</strong> Full Time, Permanent</li>
-                  <li><strong>Role Category:</strong> Software Development</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* Education Section */}
-            <section className="mb-10">
-              <h3 className="font-bold text-gray-900 mb-2">Education</h3>
-              <p className="text-sm text-gray-600">
-                B.Sc, B.Ed in Computer Science, B.Com in Computer Science, B.Tech/B.E. in Computer Science and Engineering, Computer Science, B.CA in Computer Science, Diploma in Computer Science, B.Sc in Computer Science, M.Sc in Computer Science, B.A in Computer Science, B.S/B.E in Computer Science and Engineering.
-              </p>
-            </section>
-
-            {/* Requirements */}
-            <section className="mb-10">
-              <h2 className="text-xl font-bold inline-block pb-1 mb-6">Requirements</h2>
-              <ul className=" space-y-2 text-sm text-gray-700">
-                <li>Strong understanding of KST/DOP modules (Sales, Service, Parts, Finance).</li>
-                <li>Basic SQL reporting knowledge.</li>
-                <li>Familiarity with system integration & troubleshooting.</li>
-                <li>Good understanding of dealership workflows.</li>
-              </ul>
-            </section>
-
-            {/* Benefits */}
-            <section className="mb-10">
-              <h2 className="text-xl font-bold inline-block pb-1 mb-6">Benefits</h2>
-              <p className="text-sm text-gray-700"><strong>Salary: </strong> 600 - 700 KD</p>
-              <p className="text-sm text-gray-700"><strong>Free:</strong> Accommodation & Transport</p>
-            </section>
-
-            <div className="flex gap-16 mb-8">
-              <div>
-                <p className="text-sm font-bold text-gray-900">No. of Vacancy:</p>
-                <p className="text-sm text-gray-600">01</p>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-gray-900">Job Status:</p>
-                <p className="text-sm text-gray-600">Active</p>
-              </div>
-            </div>
-
-            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors">
-              APPLY HERE
-            </button>
-          </div>
-
-          {/* Sidebar Area */}
-          <div className="lg:col-span-1">
-            <div className="space-y-4 mb-10">
-              <div className="flex items-center gap-3 text-sm text-[#05264E]">
-                <FaUsersIcon className="w-4 h-4 text-[#05264E]" /> Riyadh, Kingdom of Saudi Arabia
-              </div>
-              <div className="flex items-center gap-3 text-sm text-[#05264E]">
-                <FaFileAltIcon className="w-4 h-4 text-[#05264E]" /> Frontend Developer
-              </div>
-              <div className="flex items-center gap-3 text-sm text-[#05264E]">
-                <FaPlaneIcon className="w-4 h-4 text-[#05264E]" /> Male
-              </div>
-            </div>
-
-            <div className="md:pt-[98px]">
-              <h2 className="text-lg font-bold text-slate-900 mb-6">Job Info</h2>
-              <div className="space-y-6">
-                <InfoItem label="Date Opened" value="12/03/2026" />
-                <InfoItem label="Job Type" value="Full Time" />
-                <InfoItem label="Industry" value="Automotive" />
-                <InfoItem label="Work Experience" value="1 - 3 years" />
-                <InfoItem label="Salary" value="150 - 200,000 INR" />
-                <InfoItem label="City" value="Kuwait City" />
-                <InfoItem label="State/Province" value="Al Asimah" />
-                <InfoItem label="Country" value="Kuwait" />
-                <InfoItem label="Zip/Postal Code" value="00080" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  );
-};
+// ── InfoItem Component ──────────────────────────────────────
+interface InfoItemProps {
+  label: string;
+  value: string;
+  icon?: React.ReactNode;
+}
 
 const InfoItem = ({ label, value, icon }: InfoItemProps) => (
   <div className="flex gap-4">
-    {/* 1. Only render this div if an icon exists */}
     {icon && (
-      <div className="mt-1 text-gray-400 w-5">
-        {/* 2. Check if it's a valid element before cloning */}
-        {React.isValidElement(icon) 
-          ? React.cloneElement(icon as React.ReactElement, { 
-              className: 'w-5 h-5' 
-            }) 
+      <div className="mt-1 text-[#C40808] w-5 flex-shrink-0">
+        {React.isValidElement(icon)
+          ? React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })
           : icon}
       </div>
     )}
@@ -161,5 +88,364 @@ const InfoItem = ({ label, value, icon }: InfoItemProps) => (
     </div>
   </div>
 );
+
+// ── Benefit Badge ───────────────────────────────────────────
+const BenefitBadge = ({ label, included }: { label: string; included: boolean }) =>
+  included ? (
+    <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 border border-green-200 text-xs font-semibold px-3 py-1 rounded-full">
+      ✓ {label}
+    </span>
+  ) : null;
+
+// ── Loading Skeleton ────────────────────────────────────────
+const LoadingSkeleton = () => (
+  <div className="max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:pt-10 md:pt-16 py-10 animate-pulse">
+    <div className="w-full h-64 bg-gray-200 rounded-2xl mb-8" />
+    <div className="h-4 bg-gray-200 rounded w-1/3 mb-4" />
+    <div className="h-8 bg-gray-200 rounded w-2/3 mb-6" />
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <div className="lg:col-span-2 space-y-4">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-4 bg-gray-200 rounded w-full" />
+        ))}
+      </div>
+      <div className="space-y-4">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="h-4 bg-gray-200 rounded w-full" />
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// ── Main Component ──────────────────────────────────────────
+const JobPosting: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+
+  const [job, setJob] = useState<JobDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (!slug) { setError(true); setLoading(false); return; }
+
+    const fetchJob = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://cms.nisatravels.com/api/jobs/${slug}`,
+          {
+            headers: {
+              'x-api-key': '7802a1979d7472728fe22f93ccaf3755',
+              'Accept': 'application/json',
+            },
+          }
+        );
+        const result = await res.json();
+        if (result.success && result.data) {
+          setJob(result.data);
+        } else {
+          setError(true);
+        }
+      } catch (err) {
+        console.error('Job detail fetch error:', err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJob();
+  }, [slug]);
+
+  // ── Loading ──
+  if (loading) {
+    return (
+      <div className="min-h-screen font-manrope">
+        <main><LoadingSkeleton /></main>
+      </div>
+    );
+  }
+
+  // ── Error ──
+  if (error || !job) {
+    return (
+      <div className="min-h-screen font-manrope flex flex-col items-center justify-center gap-4 text-center px-4">
+        <div className="text-6xl">😕</div>
+        <h1 className="text-2xl font-bold text-gray-800">Job nahi mili</h1>
+        <p className="text-gray-500">Yeh job exist nahi karti ya expire ho gayi hai.</p>
+        <button
+          onClick={() => navigate('/jobs')}
+          className="bg-[#C40808] text-white font-bold px-8 py-3 rounded-full hover:bg-red-700 transition-colors"
+        >
+          ← Sari Jobs Dekho
+        </button>
+      </div>
+    );
+  }
+
+  // ── Benefits string builder ──
+  const freePerks = [
+    job.accommodation && 'Accommodation',
+    job.food && 'Food',
+    job.transport && 'Transport',
+    job.flight_ticket && 'Flight Ticket',
+  ].filter(Boolean).join(', ');
+
+  return (
+    <div className="min-h-screen font-manrope">
+      <main className="max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:pt-10 md:pt-16 md:pb-20 py-10">
+
+        {/* ── Banner Image ── */}
+        <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden mb-8 shadow-lg bg-gray-100">
+          {job.banner_url ? (
+            <img src={job.banner_url} alt={job.title} className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-r from-[#002661] to-[#0E313A] flex items-center justify-center">
+              <span className="text-white text-4xl font-extrabold opacity-20">{job.company_name}</span>
+            </div>
+          )}
+          {/* Urgent badge */}
+          {job.is_urgent && (
+            <span className="absolute top-4 left-4 bg-[#C40808] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              🔥 Urgent Hiring
+            </span>
+          )}
+        </div>
+
+        {/* ── Meta Row ── */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          <span className="px-3 py-1 text-xs font-bold uppercase text-[#05264E]">
+            ID: #{job.id}
+          </span>
+          <span className="bg-[#E6E7E9] px-3 py-1 rounded text-xs font-medium text-[#05264E]">
+            <span className="font-bold">Job Post:</span> {job.posted_date}
+          </span>
+          <span className="bg-[#E6E7E9] px-3 py-1 rounded text-xs font-medium text-[#05264E]">
+            <span className="font-bold">Expiry Date:</span> {job.expiry_date}
+          </span>
+          <span
+            className={`px-3 py-1 rounded text-xs font-bold uppercase ${job.status === 'active'
+                ? 'bg-green-100 text-green-700'
+                : 'bg-gray-200 text-gray-500'
+              }`}
+          >
+            {job.status}
+          </span>
+        </div>
+
+        {/* ── Main Grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+          {/* ══ Left: Main Content ══ */}
+          <div className="lg:col-span-2">
+
+            {/* Company + Title */}
+            <div className="flex items-center gap-4 mb-4">
+              {job.company_logo_url && (
+                <img
+                  src={job.company_logo_url}
+                  alt={job.company_name}
+                  className="w-14 h-14 object-contain rounded-lg border border-gray-200 p-1"
+                />
+              )}
+              <div>
+                <p className="text-sm text-gray-500 font-medium">{job.company_name}</p>
+                <h1 className="text-3xl font-bold text-slate-900">{job.title}</h1>
+              </div>
+            </div>
+
+            {/* Quick info chips */}
+            <div className="flex flex-wrap gap-3 mb-6 text-sm text-[#05264E]">
+              <span className="flex items-center gap-1">
+                <FaMapMarkerIcon className="text-[#C40808]" />
+                {[job.city, job.country].filter(Boolean).join(', ')}
+              </span>
+              <span className="flex items-center gap-1">
+                <MdWorkIcon className="text-[#C40808]" />
+                {job.job_type_label}
+              </span>
+              {job.gender && job.gender !== 'any' && (
+                <span className="flex items-center gap-1">
+                  <FaUsersIcon className="text-[#C40808]" />
+                  {job.gender.charAt(0).toUpperCase() + job.gender.slice(1)}
+                </span>
+              )}
+            </div>
+
+            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
+              APPLY HERE
+            </button>
+
+            {/* Job Description */}
+            {job.description && (
+              <section className="mb-10">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                  Job Description
+                </h2>
+                <div
+                  className="text-sm text-gray-700 leading-relaxed prose max-w-none"
+                  dangerouslySetInnerHTML={{ __html: job.description }}
+                />
+              </section>
+            )}
+
+            {/* Responsibilities */}
+            {job.responsibilities && (
+              <section className="mb-10">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                  Responsibilities
+                </h2>
+                <div
+                  className="text-sm text-gray-700 leading-relaxed prose max-w-none"
+                  dangerouslySetInnerHTML={{ __html: job.responsibilities }}
+                />
+              </section>
+            )}
+
+            {/* Requirements */}
+            {job.requirements && (
+              <section className="mb-10">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                  Requirements
+                </h2>
+                <div
+                  className="text-sm text-gray-700 leading-relaxed prose max-w-none"
+                  dangerouslySetInnerHTML={{ __html: job.requirements }}
+                />
+              </section>
+            )}
+
+            {/* Education */}
+            {job.education && (
+              <section className="mb-10">
+                <h3 className="font-bold text-gray-900 mb-2">Education</h3>
+                <p className="text-sm text-gray-600">{job.education}</p>
+              </section>
+            )}
+
+            {/* Benefits */}
+            <section className="mb-10">
+              <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                Benefits & Perks
+              </h2>
+              <div className="space-y-3">
+                {job.salary_disclosed && job.salary_range && (
+                  <p className="text-sm text-gray-700">
+                    <strong>Salary:</strong> {job.salary_range}
+                  </p>
+                )}
+                {freePerks && (
+                  <p className="text-sm text-gray-700">
+                    <strong>Free:</strong> {freePerks}
+                  </p>
+                )}
+                {job.working_hours && (
+                  <p className="text-sm text-gray-700">
+                    <strong>Working Hours:</strong> {job.working_hours}
+                  </p>
+                )}
+                {job.benefits && (
+                  <div
+                    className="text-sm text-gray-700 prose max-w-none mt-2"
+                    dangerouslySetInnerHTML={{ __html: job.benefits }}
+                  />
+                )}
+                {/* Benefit badges */}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  <BenefitBadge label="Accommodation" included={job.accommodation} />
+                  <BenefitBadge label="Food" included={job.food} />
+                  <BenefitBadge label="Transport" included={job.transport} />
+                  <BenefitBadge label="Flight Ticket" included={job.flight_ticket} />
+                </div>
+              </div>
+            </section>
+
+            {/* Vacancy & Status */}
+            <div className="flex gap-16 mb-8">
+              <div>
+                <p className="text-sm font-bold text-gray-900">No. of Vacancies:</p>
+                <p className="text-sm text-gray-600">{String(job.vacancies).padStart(2, '0')}</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-gray-900">Job Status:</p>
+                <p className="text-sm text-gray-600 capitalize">{job.status}</p>
+              </div>
+            </div>
+
+            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors">
+              APPLY HERE
+            </button>
+          </div>
+
+          {/* ══ Right: Sidebar ══ */}
+          <div className="lg:col-span-1">
+            <div className="space-y-4 mb-10">
+              {job.city && (
+                <div className="flex items-center gap-3 text-sm text-[#05264E]">
+                  <FaMapMarkerIcon className="w-4 h-4 text-[#05264E]" />
+                  {[job.city, job.state, job.country].filter(Boolean).join(', ')}
+                </div>
+              )}
+              {job.category?.name && (
+                <div className="flex items-center gap-3 text-sm text-[#05264E]">
+                  <FaFileAltIcon className="w-4 h-4 text-[#05264E]" />
+                  {job.category.name}
+                </div>
+              )}
+              {job.gender && (
+                <div className="flex items-center gap-3 text-sm text-[#05264E]">
+                  <FaPlaneIcon className="w-4 h-4 text-[#05264E]" />
+                  {job.gender.charAt(0).toUpperCase() + job.gender.slice(1)}
+                </div>
+              )}
+            </div>
+
+            {/* Job Info Sidebar */}
+            <div className="md:pt-[98px]">
+              <h2 className="text-lg font-bold text-slate-900 mb-6">Job Info</h2>
+              <div className="space-y-6">
+                {job.posted_date && (
+                  <InfoItem label="Date Opened" value={job.posted_date} icon={<FaCalendarIcon />} />
+                )}
+                {job.job_type_label && (
+                  <InfoItem label="Job Type" value={job.job_type_label} icon={<MdWorkIcon />} />
+                )}
+                {job.industry && (
+                  <InfoItem label="Industry" value={job.industry} icon={<FaIndustryIcon />} />
+                )}
+                {job.experience_level && (
+                  <InfoItem label="Experience Level" value={job.experience_level} icon={<FaBriefcaseIcon />} />
+                )}
+                {job.salary_disclosed && job.salary_range && (
+                  <InfoItem label="Salary" value={job.salary_range} icon={<FaMoneyIcon />} />
+                )}
+                {job.working_hours && (
+                  <InfoItem label="Working Hours" value={job.working_hours} icon={<FaClockIcon />} />
+                )}
+                {job.education && (
+                  <InfoItem label="Education" value={job.education} icon={<FaGradIcon />} />
+                )}
+                {job.city && (
+                  <InfoItem label="City" value={job.city} icon={<FaMapMarkerIcon />} />
+                )}
+                {job.state && (
+                  <InfoItem label="State/Province" value={job.state} icon={<MdApartmentIcon />} />
+                )}
+                {job.country && (
+                  <InfoItem label="Country" value={job.country} icon={<FaBuildingIcon />} />
+                )}
+                {job.zip_code && (
+                  <InfoItem label="Zip/Postal Code" value={job.zip_code} />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
 
 export default JobPosting;
