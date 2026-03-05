@@ -41,10 +41,10 @@ const visaTypes: VisaType[] = [
 ];
 
 const VisaTypesGrid: React.FC = () => (
-  <section className=" bg-[#EAF0F6] font-manrope">
+  <section className=" bg-primary-lightblue font-manrope">
     <div className=" max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:pt-24 md:pt-16 py-10">
       {" "}
-      <h2 className="text-center text-[#C40808] font-extrabold text-3xl mb-10">
+      <h2 className="text-center text-primary-red font-extrabold text-3xl mb-10">
         Types of Visa
       </h2>
       <div className=" grid md:grid-cols-2 gap-x-14 gap-y-10">
@@ -57,11 +57,11 @@ const VisaTypesGrid: React.FC = () => (
               style={{ minWidth: 120, minHeight: 80 }}
             />
             <div className="bg-white rounded-rt rounded-tb px-4 py-6">
-              <div className="font-extrabold text-[#0E313A] text-xl mb-3">{type.title}</div>
-              <div className="text-md font-medium text-[#0E313A] mb-8">{type.desc}</div>
+              <div className="font-extrabold text-primary-navyblue text-xl mb-3">{type.title}</div>
+              <div className="text-md font-medium text-primary-navyblue mb-8">{type.desc}</div>
               <a
                 href={type.applyLink || "#"}
-                className="text-md text-[14px] font-extrabold text-[#C40808] uppercase hover:underline"
+                className="text-md text-[14px] font-extrabold text-primary-red uppercase hover:underline"
               >
                 {type.applyText}
               </a>

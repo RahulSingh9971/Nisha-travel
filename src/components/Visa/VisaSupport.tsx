@@ -72,7 +72,7 @@ export default function VisaSupport() {
         <div className="mb-4 md:mb-0">
           <h2 className="text-4xl font-bold text-slate-900 leading-tight">
             We Support All <br />
-            <span className="text-red-600">Visa Types</span>
+            <span className="text-primary-red">Visa Types</span>
           </h2>
         </div>
         <div className="max-w-md">
@@ -105,8 +105,8 @@ export default function VisaSupport() {
 
             {/* Content */}
             <div className="absolute inset-0 p-6 flex flex-col justify-end">
-              <h3 className="text-2xl font-bold text-white mb-2">{visa.title}</h3>
-              <p className="text-white/90 text-xs leading-relaxed line-clamp-3">
+              <h3 className="text-2xl font-bold text-primary-white mb-2">{visa.title}</h3>
+              <p className="text-primary-white/90 text-xs leading-relaxed line-clamp-3">
                 {visa.description}
               </p>
             </div>

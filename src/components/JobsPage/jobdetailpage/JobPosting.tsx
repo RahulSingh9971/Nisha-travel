@@ -14,6 +14,7 @@ import {
   FaBuilding,
 } from 'react-icons/fa';
 import { MdWork, MdApartment } from 'react-icons/md';
+import { API_CONFIG } from "../../../config/apiConfig"
 
 // ── Icon casts ──────────────────────────────────────────────
 const FaPlaneIcon = FaPlane as React.ElementType;
@@ -76,14 +77,14 @@ interface InfoItemProps {
 const InfoItem = ({ label, value, icon }: InfoItemProps) => (
   <div className="flex gap-4">
     {icon && (
-      <div className="mt-1 text-[#C40808] w-5 flex-shrink-0">
+      <div className="mt-1 text-primary-red w-5 flex-shrink-0">
         {React.isValidElement(icon)
           ? React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })
           : icon}
       </div>
     )}
     <div>
-      <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">{label}</p>
+      <p className="text-xs text-primary-red font-medium uppercase tracking-wider">{label}</p>
       <p className="text-sm font-bold text-gray-800">{value}</p>
     </div>
   </div>
@@ -134,13 +135,17 @@ const JobPosting: React.FC = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://cms.nisatravels.com/api/jobs/${slug}`,
+          // `https://cms.nisatravels.com/api/jobs/${slug}`,
+           `${API_CONFIG.BASE_URL}/jobs/${slug}`,
+          // {
+          //   headers: {
+          //     'x-api-key': '7802a1979d7472728fe22f93ccaf3755',
+          //     'Accept': 'application/json',
+          //   },
+          // }
           {
-            headers: {
-              'x-api-key': '7802a1979d7472728fe22f93ccaf3755',
-              'Accept': 'application/json',
-            },
-          }
+        headers: API_CONFIG.HEADERS,
+      }
         );
         const result = await res.json();
         if (result.success && result.data) {
@@ -177,7 +182,7 @@ const JobPosting: React.FC = () => {
         <p className="text-gray-500">Yeh job exist nahi karti ya expire ho gayi hai.</p>
         <button
           onClick={() => navigate('/jobs')}
-          className="bg-[#C40808] text-white font-bold px-8 py-3 rounded-full hover:bg-red-700 transition-colors"
+          className="bg-primary-red text-primary-white font-bold px-8 py-3 rounded-full hover:bg-red-700 transition-colors"
         >
           ← Sari Jobs Dekho
         </button>
@@ -202,13 +207,13 @@ const JobPosting: React.FC = () => {
           {job.banner_url ? (
             <img src={job.banner_url} alt={job.title} className="w-full h-full object-cover" />
           ) : (
-            <div className="w-full h-full bg-gradient-to-r from-[#002661] to-[#0E313A] flex items-center justify-center">
-              <span className="text-white text-4xl font-extrabold opacity-20">{job.company_name}</span>
+            <div className="w-full h-full bg-gradient-to-r from-[#002661] to-primary-navyblue flex items-center justify-center">
+              <span className="text-primary-white text-4xl font-extrabold opacity-20">{job.company_name}</span>
             </div>
           )}
           {/* Urgent badge */}
           {job.is_urgent && (
-            <span className="absolute top-4 left-4 bg-[#C40808] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="absolute top-4 left-4 bg-primary-red text-primary-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               🔥 Urgent Hiring
             </span>
           )}
@@ -259,29 +264,29 @@ const JobPosting: React.FC = () => {
             {/* Quick info chips */}
             <div className="flex flex-wrap gap-3 mb-6 text-sm text-[#05264E]">
               <span className="flex items-center gap-1">
-                <FaMapMarkerIcon className="text-[#C40808]" />
+                <FaMapMarkerIcon className="text-primary-red" />
                 {[job.city, job.country].filter(Boolean).join(', ')}
               </span>
               <span className="flex items-center gap-1">
-                <MdWorkIcon className="text-[#C40808]" />
+                <MdWorkIcon className="text-primary-red" />
                 {job.job_type_label}
               </span>
               {job.gender && job.gender !== 'any' && (
                 <span className="flex items-center gap-1">
-                  <FaUsersIcon className="text-[#C40808]" />
+                  <FaUsersIcon className="text-primary-red" />
                   {job.gender.charAt(0).toUpperCase() + job.gender.slice(1)}
                 </span>
               )}
             </div>
 
-            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
+            <button className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
               APPLY HERE
             </button>
 
             {/* Job Description */}
             {job.description && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-primary-red inline-block">
                   Job Description
                 </h2>
                 <div
@@ -294,7 +299,7 @@ const JobPosting: React.FC = () => {
             {/* Responsibilities */}
             {job.responsibilities && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-primary-red inline-block">
                   Responsibilities
                 </h2>
                 <div
@@ -307,7 +312,7 @@ const JobPosting: React.FC = () => {
             {/* Requirements */}
             {job.requirements && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+                <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-primary-red inline-block">
                   Requirements
                 </h2>
                 <div
@@ -327,7 +332,7 @@ const JobPosting: React.FC = () => {
 
             {/* Benefits */}
             <section className="mb-10">
-              <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-[#C40808] inline-block">
+              <h2 className="text-xl font-bold pb-1 mb-6 border-b-2 border-primary-red inline-block">
                 Benefits & Perks
               </h2>
               <div className="space-y-3">
@@ -374,7 +379,7 @@ const JobPosting: React.FC = () => {
               </div>
             </div>
 
-            <button className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-2 px-8 rounded-full transition-colors">
+            <button className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors">
               APPLY HERE
             </button>
           </div>

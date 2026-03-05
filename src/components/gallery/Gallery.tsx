@@ -75,15 +75,15 @@ const GalleryComponent: React.FC = () => {
     <div className="bg-white max-w-7xl mx-auto px-4 md:px-8 xl:pt-20 lg:pt-16 py-10">
    
       <div className="flex justify-center">
-        <div className="md:bg-[#EAF0F6] w-fit p-1 md:rounded-full flex md:flex-row flex-col justify-center gap-2 mb-6">
+        <div className="md:bg-primary-lightblue w-fit p-1 md:rounded-full flex md:flex-row flex-col justify-center gap-2 mb-6">
           {categories.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => handleTab(cat)}
               className={`lg:px-6 px-4 py-2 rounded-full text-[16px]  font-extrabold ${
                 activeCategory === cat
-                  ? "bg-[#c40808] text-white"
-                  : " text-[#0E313A]"
+                  ? "bg-primary-red text-primary-white"
+                  : " text-primary-navyblue"
               }`}
             >
               {cat}
@@ -245,15 +245,15 @@ export default GalleryComponent;
 //     <div className="bg-white max-w-7xl mx-auto px-4 md:px-8 xl:pt-20 lg:pt-16 py-10">
   
 //       <div className="flex justify-center overflow-x-auto pb-4">
-//         <div className="md:bg-[#EAF0F6] w-fit p-1 md:rounded-full flex md:flex-row flex-col justify-center gap-2 mb-6">
+//         <div className="md:bg-primary-lightblue w-fit p-1 md:rounded-full flex md:flex-row flex-col justify-center gap-2 mb-6">
 //           {categories.map((cat, idx) => (
 //             <button
 //               key={idx}
 //               onClick={() => handleTab(cat)}
 //               className={`lg:px-6 px-4 py-2 rounded-full text-[16px] font-extrabold transition-colors ${
 //                 activeCategory === cat
-//                   ? "bg-[#c40808] text-white"
-//                   : "text-[#0E313A] hover:bg-gray-200"
+//                   ? "bg-primary-red text-primary-white"
+//                   : "text-primary-navybluehover:bg-gray-200"
 //               }`}
 //             >
 //               {cat}
@@ -273,7 +273,7 @@ export default GalleryComponent;
 //                 alt={img.title}
 //                 className="w-full h-[250px] object-cover border border-[#eee] transition-transform duration-300 group-hover:scale-105"
 //               />
-//               <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+//               <div className="absolute bottom-0 left-0 right-0 bg-primary-navyblue/50 text-primary-white p-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
 //                 {img.title}
 //               </div>
 //             </div>

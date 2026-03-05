@@ -13,25 +13,25 @@ const AttestationDocument = () => {
         <img src={familyImg} alt="Happy Family" className="md:order-2 order-1 w-full mx-auto" />
         <div className="md:order-1 order-2">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-2 leading-wider">
-            <span className="text-[#C40808]">Document</span>
-            <span className="text-[#0E313A] block">Attestation</span>
+            <span className="text-primary-red">Document</span>
+            <span className="text-primary-navyblueblock">Attestation</span>
           </h2>
-          <p className="max-w-md md:pt-4 pt-2 pb-3 md:pb-6 text-[#666666] text-[16px] leading-7 font-medium ">
+          <p className="max-w-md md:pt-4 pt-2 pb-3 md:pb-6 text-primary-gray text-[16px] leading-7 font-medium ">
             Our visa experts guide you through every step — from document preparation to application submission — ensuring a smooth and successful process for any destination.
           </p>
-          <Link to="/visaservices" className="font-Poppins text-[16px] font-bold bg-[#C40808] text-white px-8 py-2">
+          <Link to="/visaservices" className="font-Poppins text-[16px] font-bold bg-primary-red text-primary-white px-8 py-2">
             Apply Visa
           </Link>
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div className="w-fit flex flex-col items-center md:bg-[#EAF0F6] rounded-[8px] md:px-20 py-8">
+        <div className="w-fit flex flex-col items-center md:bg-primary-lightblue rounded-[8px] md:px-20 py-8">
           {/* <div className="flex items-center gap-4 pb-8">
-            <p className="text-[#06213F] text-[16px] font-bold">I’m applying for</p>
+            <p className="text-primary-navyblue text-[16px] font-bold">I’m applying for</p>
             <button className="bg-white px-4 py-2 text-[12px] rounded-[4px] shadow-[0px_18px_40px_0px_#190F091A]">
               Select Country
             </button>
-            <p className=" text-[#06213F] text-[16px] font-bold">Document Type</p>
+            <p className=" text-primary-navyblue text-[16px] font-bold">Document Type</p>
             <button className="bg-white px-4 py-2 text-[12px] rounded-[4px] shadow-[0px_18px_40px_0px_#190F091A]">
               type of document
             </button>
@@ -40,7 +40,7 @@ const AttestationDocument = () => {
 
             {/* 1. Country Selection */}
             <div className="flex items-center gap-4">
-              <span className="text-[#06213F] text-[18px] font-bold">I’m applying for</span>
+              <span className="text-primary-navyblue text-[18px] font-bold">I’m applying for</span>
               <div className="relative group">
                 <select
                   onChange={(e) => setCountry(e.target.value)}
@@ -64,7 +64,7 @@ const AttestationDocument = () => {
 
             {/* 2. Document Selection */}
             <div className="flex items-center gap-4">
-              <span className="text-[#06213F] text-[18px] font-bold">Document Type</span>
+              <span className="text-primary-navyblue text-[18px] font-bold">Document Type</span>
               <div className="relative group">
                 <select
                   onChange={(e) => setDocType(e.target.value)}
@@ -83,7 +83,7 @@ const AttestationDocument = () => {
             </div>
 
           </div>
-          <button className="px-6 py-1 border-2 border-[#06213F] text-[#06213F] hover:bg-[#06213F] hover:text-white font-bold text-[16px] ">Continue</button>
+          <button className="px-6 py-1 border-2 border-primary-navyblue text-primary-navyblue hover:bg-primary-navyblue hover:text-primary-white font-bold text-[16px] ">Continue</button>
         </div>
       </div>
     </section>

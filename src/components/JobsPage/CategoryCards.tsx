@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_CONFIG } from "../../config/apiConfig"
 
 import { 
   FaStore, FaPenNib, FaUsersCog, FaChartLine, 
@@ -33,9 +34,6 @@ const iconMap: { [key: string]: React.ReactNode } = {
   "fa-concierge-bell": <FaBellIcon />,
 };
 
-const API_BASE_URL = "https://cms.nisatravels.com/api";
-const API_KEY = "7802a1979d7472728fe22f93ccaf3755";
-
 const CategoryCards: React.FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,12 +41,9 @@ const CategoryCards: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/jobs/categories`, {
-          headers: { 
-            "x-api-key": API_KEY, 
-            "Accept": "application/json" 
-          }
-        });
+        const response = await fetch(`${API_CONFIG.BASE_URL}/jobs/categories`, {
+                headers: API_CONFIG.HEADERS,
+              });
         const result = await response.json();
         
         // Console log for debugging
@@ -68,9 +63,9 @@ const CategoryCards: React.FC = () => {
 
   if (loading) return <div className="text-center py-20 font-bold">Loading Categories...</div>;
   return (
-    <section className="bg-[#EAF0F6] font-manrope ">
+    <section className="bg-primary-lightblue font-manrope ">
       <div className="max-w-7xl mx-auto lg:px-6 md:px-12 px-4 xl:py-20 lg:py-16 py-10 ">
-        <h2 className="xl:text-5xl md:text-4xl text-3xl text-center font-extrabold text-[#0E313A] mb-3">
+        <h2 className="xl:text-5xl md:text-4xl text-3xl text-center font-extrabold text-primary-navyblue mb-3">
           Browse by category
         </h2>
         <p className="text-center text-[#6C757D] text-[16px] mb-10">

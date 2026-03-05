@@ -19,16 +19,16 @@ const VisaAssistance = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:gap-20 lg:gap-10 gap-14 items-center">
         <div className="">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
-            <span className="text-[#C40808]">Visa Assistance</span>
-            <span className="text-[#0E313A] pl-2">Made Simple</span>
+            <span className="text-primary-red">Visa Assistance</span>
+            <span className="text-primary-navyblue pl-2">Made Simple</span>
           </h2>
-          <p className="lg:pt-0 md:pt-2 text-[#666666] text-[16px] leading-7 font-medium">
+          <p className="lg:pt-0 md:pt-2 text-primary-gray text-[16px] leading-7 font-medium">
             Our visa experts guide you through every step — from document
             preparation to application submission — ensuring a smooth and
             successful process for any destination.
           </p>
           <div className=" pt-8 font-bold text-[18px]">
-            <button className="text-[16px] uppercase text-white bg-[#C40808] px-8 py-2 ">
+            <button className="text-[16px] uppercase text-primary-white bg-primary-red px-8 py-2 ">
               Apply VISA
             </button>
           </div>
@@ -42,7 +42,7 @@ const VisaAssistance = () => {
 
       {/* User Journey Card (Floating/Highlighted Box) */}
       <div className="w-full flex justify-center pt-20">
-        <div className="md:bg-[#EAF0F6] rounded-xl flex flex-col items-center w-fit lg:px-20 md:px-10 md:py-8 ">
+        <div className="md:bg-primary-lightblue rounded-xl flex flex-col items-center w-fit lg:px-20 md:px-10 md:py-8 ">
           <div className="flex md:flex-row flex-col gap-4 text-lg font-bold text-[#002661] ">
             <div className="flex gap-4">
               <p>I'm applying for</p>
@@ -84,7 +84,7 @@ const VisaAssistance = () => {
               </div>
             </div>
           </div>
-          <button className="mt-5 md:px-10 px-5 md:py-2 py-1 border-2 border-[#002661] text-[#002661] font-bold hover:bg-[#19303D] hover:text-white transition">
+          <button className="mt-5 md:px-10 px-5 md:py-2 py-1 border-2 border-[#002661] text-[#002661] font-bold hover:bg-[#19303D] hover:text-primary-white transition">
             TAKE TO THE WEBSITE
           </button>
         </div>

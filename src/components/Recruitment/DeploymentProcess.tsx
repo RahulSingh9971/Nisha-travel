@@ -24,7 +24,7 @@ import processimg from "../../assets/images/processimg.png";
 //       <div className=" max-w-7xl mx-auto px-4 md:px-8 lg:pt-16 py-10">
 //         <div className="text-center md:mb-14 mb-10">
 //           <h2 className="md:text-4xl text-3xl font-extrabold leading-[44px] mb-2">
-//             <span className="text-[#C40808]">After selection</span>
+//             <span className="text-primary-red">After selection</span>
 //             <span className="text-[#06213F] block">Deployment Process</span>
 //           </h2>
 //         </div>
@@ -81,7 +81,7 @@ const DeploymentProcess: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:pt-16 py-10">
         <div className="text-center md:mb-14 mb-10">
           <h2 className="md:text-4xl text-3xl font-extrabold leading-[44px] mb-2">
-            <span className="text-[#C40808]">After selection</span>
+            <span className="text-primary-red">After selection</span>
             <span className="text-[#06213F] block">Deployment Process</span>
           </h2>
         </div>

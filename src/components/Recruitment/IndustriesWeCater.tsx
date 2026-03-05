@@ -71,7 +71,7 @@ const MarqueeRow: React.FC<MarqueeProps> = ({ items, direction = "left", duratio
       >
         {doubledItems.map((item, idx) => (
           <div key={`${item.label}-${idx}`} className="flex gap-4 items-center min-w-max px-2">
-            <div className="bg-[#EAF0F6] rounded-full flex items-center justify-center w-14 h-14 shadow-sm border border-gray-100">
+            <div className="bg-primary-lightblue rounded-full flex items-center justify-center w-14 h-14 shadow-sm border border-gray-100">
               <img 
                 src={item.icon} 
                 alt={item.label} 
@@ -93,7 +93,7 @@ export default function IndustriesWeCater() {
     <section className="bg-white md:py-20 py-12 px-4 overflow-hidden">
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
-          <span className="text-[#C40808]">Industries</span>{" "}
+          <span className="text-primary-red">Industries</span>{" "}
           <span className="text-[#223544]">We Cater</span>
         </h2>
 

@@ -30,7 +30,7 @@ const SecurityAndPartners: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#EAF0F6] font-manrope">
+    <section className="w-full bg-primary-lightblue font-manrope">
       {/* Security & Compliance Section */}
       <div className="bg-[#e8f1f8] py-12 px-4 text-center">
         <h2 className="md:text-4xl text-3xl font-extrabold text-[#1a365d] mb-10">Security & Compliance</h2>
@@ -74,7 +74,7 @@ const SecurityAndPartners: React.FC = () => {
           </div>
 
           {/* Authorization Text */}
-          <div className="text-[#666666] font-semibold text-[14px] leading-relaxed max-w-2xl mx-auto">
+          <div className="text-primary-gray font-semibold text-[14px] leading-relaxed max-w-2xl mx-auto">
             <p>We're authorised by the Embassy (The Royal Embassy of Saudi Arabia)</p>
             <p>The Embassy of State of Kuwait</p>
             <p>The Consulate of State of Kuwait</p>

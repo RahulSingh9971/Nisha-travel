@@ -152,15 +152,15 @@ export default function OurImpact() {
           {/* Right Column: Bubble Stats */}
           <div className="relative h-96 md:order-1 order-2">
             {/* Decorative dots */}
-            <div className="absolute top-0 right-20 w-5 h-5 bg-[#DD565C] rounded-full opacity-80"></div>
-            <div className="absolute bottom-16 right-12 w-8 h-8 bg-[#DD565C] rounded-full opacity-80"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-12 w-8 h-8 bg-[#DD565C] rounded-full opacity-80"></div>
+            <div className="absolute top-0 right-20 w-5 h-5 bg-primary-lightred rounded-full opacity-80"></div>
+            <div className="absolute bottom-16 right-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
 
             {/* Main stats bubbles */}
             <StatCircle
               size={120}
-              bgColor="bg-[#C40808]"
-              textColor="text-white"
+              bgColor="bg-primary-red"
+              textColor="text-primary-white"
               value="50k+"
               label="Customer Globally"
               valueSize="text-3xl"
@@ -170,7 +170,7 @@ export default function OurImpact() {
             <StatCircle
               size={240}
               bgColor="bg-[#93BBD533]"
-              textColor="text-[#06213F]"
+              textColor="text-primary-navyblue"
               value="1.5M+"
               label="Documents Processed"
               valueSize="text-5xl"
@@ -181,7 +181,7 @@ export default function OurImpact() {
             <StatCircle
               size={110}
               bgColor="bg-white"
-              textColor="text-[#06213F]"
+              textColor="text-primary-navyblue"
               value="7k+"
               label="Successful Recruitment"
               valueSize="text-2xl"
@@ -191,8 +191,8 @@ export default function OurImpact() {
             />
             <StatCircle
               size={120}
-              bgColor="bg-[#002661]"
-              textColor="text-white"
+              bgColor="bg-primary-navyblue"
+              textColor="text-primary-white"
               value="33"
               label="Years of Overseas Recruitment"
               valueSize="text-4xl"
@@ -203,18 +203,18 @@ export default function OurImpact() {
           {/* Left Column: Text Content */}
           <div className="md:order-2 order-1">
             <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight">
-              <span className="text-red-600">Our impact</span>
+              <span className="text-primary-red">Our impact</span>
               <br />
-              <span className="text-[#002661]">speaks for itself:</span>
+              <span className="text-primary-navyblue">speaks for itself:</span>
             </h2>
-            <p className="mt-6 text-[#666666] text-[16px] leading-7 font-medium">
+            <p className="mt-6 text-primary-gray text-[16px] leading-7 font-medium">
               We have built a robust network with branch offices in Mumbai &
               Cochin and Beyond India, our global presence extends to Kuwait,
               Qatar, Saudi Arabia, Oman, UAE, United Kingdom, Portugal, Germany,
               GermanyMauritius, Malaysia, Vietnam, Lesotho, and
               Zimbabwe—strengthening our international reach and reputation.
             </p>
-                      <p className="mt-6 text-[#666666] text-[16px] leading-7 font-medium"> At
+                      <p className="mt-6 text-primary-gray text-[16px] leading-7 font-medium"> At
               Nisa Travel Agency, we don’t just provide recruitment solutions—we
               build lasting relationships, empower businesses, and open doors to
               new opportunities for thousands of professionals worldwide.</p>

@@ -55,7 +55,7 @@ const WhyStudyAbroad: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <h2 className="text-4xl font-bold text-center text-[#001f3f] mb-12">
-          Why Study Abroad <span className="text-red-600">With NTA</span>
+          Why Study Abroad <span className="text-primary-red">With NTA</span>
         </h2>
 
         {/* Stats Row */}
@@ -76,7 +76,7 @@ const WhyStudyAbroad: React.FC = () => {
         </div>
            </div>
     </section>
-   <section className="bg-[#EAF0F6] py-16 px-4">
+   <section className="bg-primary-lightblue py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Benefits Image Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -89,7 +89,7 @@ const WhyStudyAbroad: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <h5 className="text-lg font-bold text-[#001f3f] leading-tight group-hover:text-red-600 transition-colors">
+              <h5 className="text-lg font-bold text-[#001f3f] leading-tight group-hover:text-primary-red transition-colors">
                 {benefit.title}
               </h5>
             </div>

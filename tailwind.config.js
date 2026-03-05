@@ -5,31 +5,14 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          dark: "#002661",
-          navy: "#0C1934",
-          teal: "#0E313A",
-          purple: "#242249",
-          blue: "#2A6ABA",
-          indigo: "#2E52B2",
-          violet: "#41479B",
-        },
-        secondary: {
-          gray: "#666666",
-          lightGray: "#A08F8F",
-          lighterGray: "#B3B1B1",
-          bgGray: "#F0F0F0",
-          bgLightGray: "#F5F5F5",
-          bgLighterGray: "#F8F9FA",
-        },
-        accent: {
+          navyblue: "#06213f",
           red: "#C40808",
-          orange: "#C40808",
-          pink: "#FF4B55",
-          yellow: "#FFE15A",
-        },
-        light: {
-          blue: "#EAF0F6",
-          white: "#FFFFFF",
+          lightblue: "#EAF0F6",
+          gray: "#666666",
+          darkred:"#AA0507",
+          white:"#ffffff",
+          black:"#0E313A",
+          lightred:"#DD565C"
         },
       },
       fontFamily: {

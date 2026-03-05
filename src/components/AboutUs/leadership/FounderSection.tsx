@@ -26,7 +26,7 @@ const FounderSection: React.FC = () => {
               alt="comma"
               className="md:h-[80px] h-20 w-auto absolute top-0 md:-left-5 -left-2 z-0"
             />
-            <p className="lg:pb-0 md:pb-14 pb-10 pt-14 relative z-5 text-[#002661] text-[16px] leading-7 font-medium">
+            <p className="lg:pb-0 md:pb-14 pb-10 pt-14 relative z-5 text-primary-navyblue text-[16px] leading-7 font-medium">
               With over three decades of experience in overseas workforce
               solutions, Muhammed Ali K.K has been the guiding force behind Nisa
               Travel Agency since its inception in 1992. What began as a mission
@@ -37,10 +37,10 @@ const FounderSection: React.FC = () => {
             </p>
           </div>
           <div>
-            <h3 className="text-md uppercase font-normal text-[#AA0507] md:mb-5 mb-2">
+            <h3 className="text-md uppercase font-normal text-primary-darkred md:mb-5 mb-2">
               Founder & Proprietor
             </h3>
-            <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-[#0E313A]">
+            <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-primary-navyblue">
               Mr. Muhammed Ali K.K
             </h2>
           </div>
@@ -49,15 +49,15 @@ const FounderSection: React.FC = () => {
       {/* Title & Tagline */}
       <div className="grid lg:grid-cols-2 xl:gap-20 gap-6 xl:py-24 md:py-16 py-10">
         <div className="max-w-lg">
-          <h1 className="xl:text-5xl md:text-4xl text-3xl leading-wide font-extrabold text-[#002661] mb-2">
+          <h1 className="xl:text-5xl md:text-4xl text-3xl leading-wide font-extrabold text-primary-navyblue mb-2">
             A Vision for People, Not Just Placements
           </h1>
-          <h4 className="text-base text-[#002661] uppercase tracking-wide mt-5">
+          <h4 className="text-base text-primary-navyblue uppercase tracking-wide mt-5">
             Our Promise Under Muhammed Ali’s Leadership
           </h4>
         </div>
         <div className="flex xl:justify-end">
-          <p className="max-w-xl text-[#666666] text-[16px] leading-7 font-medium">
+          <p className="max-w-xl text-primary-gray text-[16px] leading-7 font-medium">
             Muhammed Ali believes that every placement is more than a job — it’s
             a life-changing opportunity. Through personal oversight, attention
             to detail, and commitment to ethical practices, he ensures that
@@ -93,7 +93,7 @@ const Feature: React.FC<{ icon: string; title: string }> = ({
     {/* Replace below with your preferred icon solution e.g., Heroicons or FontAwesome */}
     <img src={icon} alt="icon" className="h-auto w-14" />
 
-    <p className="text-[#002661] md:text-2xl text-xl font-extrabold">{title}</p>
+    <p className="text-primary-navyblue md:text-2xl text-xl font-extrabold">{title}</p>
   </div>
 );
 

@@ -408,7 +408,7 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm">
-      <div className="bg-black text-white py-2 flex gap-x-2 overflow-x-hidden w-full">
+      <div className="bg-primary-navyblue text-primary-white py-2 flex gap-x-2 overflow-x-hidden w-full">
         <motion.div
           className=""
           animate={{ x: ["0%", "-50%"] }}
@@ -474,7 +474,7 @@ export default function Header() {
           </div>
 
           {/* Track Here Button */}
-          <button className="lg:block hidden bg-accent-orange hover:bg-red-700 text-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
+          <button className="lg:block hidden bg-accent-orange hover:bg-red-700 text-primary-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
             TRACK HERE
           </button>
           <MdOutlineMenu
@@ -484,7 +484,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`lg:block  lg:w-full hidden bg-[#C40808] z-50 transition-all duration-300 
+      <div className={`lg:block  lg:w-full hidden bg-primary-red z-50 transition-all duration-300 
   ${isScrolled ? "lg:fixed top-0" : "lg:block"}`}>
         <div className="xl:px-[90px] mx-auto relative ">
           <nav className="flex items-center justify-end h-12">
@@ -495,7 +495,7 @@ export default function Header() {
 
                   <Link
                     to={link.to || "#"}
-                    className="flex items-center gap-2 text-white  px-3 py-[6px] inline-block"
+                    className="flex items-center gap-2 text-primary-white  px-3 py-[6px] inline-block"
                   >
                     {link.title}
                     {link.dropdown && (
@@ -520,8 +520,8 @@ export default function Header() {
                     "
                       >
                         <div className="flex items-center gap-2 pt-10 pb-3 pl-8 pr-6">
-                          <span className="h-10 w-[6px] bg-red-600" />
-                          <Link to={link.to} className="text-[30px] font-bold hover:text-[#C40808]">{link.title}</Link>
+                          <span className="h-10 w-[6px] bg-primary-red" />
+                          <Link to={link.to} className="text-[30px] font-bold hover:text-primary-red">{link.title}</Link>
                         </div>
                         <div className="mx-auto transition-all duration-300 ease-in-out">
 
@@ -553,9 +553,9 @@ export default function Header() {
                                         handleLeftHover(item)
                                       }
                                       className={`whitespace-nowrap flex hover:underline items-center justify-between text-[15px] ${activeLeftItem?.id === item.id
-                                        ? "text-red-600 font-semibold"
+                                        ? "text-primary-red font-semibold"
                                         : "text-[#002661] font-medium"
-                                        } hover:text-[#C40808]`}
+                                        } hover:text-primary-red`}
                                     >
                                       {item.title}
                                       {activeLeftItem?.col2 && (
@@ -583,12 +583,12 @@ export default function Header() {
                                         onMouseEnter={() => handleCol2Click(item)}
                                         className={`w-[300px] flex-shrink-0 w-full text-left whitespace-nowrap flex items-center gap-8 text-[15px] px-7 transition-all duration-200
     ${activeCol2Item?.title === item.title
-                                            ? `text-red-600 font-semibold underline ${itemHasCol3 ? "bg-[#F6F5F3] py-5" : "py-0"
+                                            ? `text-primary-red font-semibold underline ${itemHasCol3 ? "bg-[#F6F5F3] py-5" : "py-0"
                                             }`
                                             : "text-[#002661] font-medium "
                                           } 
     /* Extra safeguard: mouse move karte waqt visual feedback ke liye */
-    hover:text-[#C40808] hover:underline
+    hover:text-primary-red hover:underline
   `}                              >
                                         {item.title}
 
@@ -611,7 +611,7 @@ export default function Header() {
                                       <Link
                                         key={index}
                                         to={item.to}
-                                        className="whitespace-nowrap block hover:underline text-[15px] text-[#002661] font-medium hover:text-[#C40808]"
+                                        className="whitespace-nowrap block hover:underline text-[15px] text-[#002661] font-medium hover:text-primary-red"
                                       >
                                         {item.title}
                                       </Link>

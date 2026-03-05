@@ -33,16 +33,16 @@ const cardData: CardDataType[] = [
   },
 ];
 
-const WhyChooseUs: React.FC = () => {
-  const [active, setActive] = useState<number | null>(1);
+const WhyChooseUs: React.FC = () => {        
+  const [active, setActive] = useState<number | null>(null);
   return (
     <section className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 md:py-16 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 md:gap-5 items-start mb-8">
-        <h2 className="xl:text-5xl md:text-4xl text-3xl tracking-wide leading-tight font-extrabold text-[#0E313A] ">
+        <h2 className="xl:text-5xl md:text-4xl text-3xl tracking-wide leading-tight font-extrabold text-primary-navyblue">
           Why <br /> Choose Us
         </h2>
-        <div className=" flex lg:justify-end text-[#666666] text-[16px] leading-7 font-medium">
-          <span className="max-w-xl">
+        <div className=" flex lg:justify-end text-primary-gray text-[16px] leading-7 font-medium">
+          <span className="max-w-xl"> 
             Choosing the right partner for your overseas journey is more than a
             decision — it’s a commitment to your future. At Nisa Travel Agency,
             we bring experience, integrity, and a human touch to everything we
@@ -63,13 +63,13 @@ const WhyChooseUs: React.FC = () => {
               group xl:p-6 lg:px-4 lg:py-6 p-6 flex flex-col items-center justify-between gap-12 text-center h-full py-10 border transition-all duration-300 cursor-pointer focus:outline-none
                ${
                  isActive
-                   ? "bg-[#002661] text-white hover:bg-[#002661] hover:text-white"
-                   : "bg-[#EAF0F6] text-[#0E313A] hover:bg-[#002661] hover:text-white"
+                   ? "bg-primary-navyblue text-primary-white"
+                   : "bg-primary-lightblue text-primary-navybluehover:bg-primary-navyblue hover:text-primary-white"
                }
             `}
             //   onClick={() => setActive(isActive ? null : i)}
               onMouseEnter={() => setActive(i)}
-              onMouseLeave={() => setActive(1)}
+              onMouseLeave={() => setActive(null)}
             >
             
               {!isActive && (<img src={card.icon} alt="img" className={` transition-opacity duration-200 ${

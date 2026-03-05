@@ -14,7 +14,7 @@ const SocialIcon = ({ href, children }) => (
     to={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-black/20 hover:text-[#06213F] transition-colors"
+    className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-primary-navyblue/20 hover:text-[#06213F] transition-colors"
   >
     {children}
   </Link>
@@ -24,7 +24,7 @@ const FooterLink = ({ href, children }) => (
   <li>
     <Link
       to={href}
-      className="text-gray-300 hover:text-white transition-colors"
+      className="text-gray-300 hover:text-primary-white transition-colors"
     >
       {children}
     </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="font-manrope bg-[#002661] text-white pt-16 pb-8">
+    <footer className="font-manrope bg-[#002661] text-primary-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 md:px-16">
         {/* Top Section: Logo and Social */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
@@ -74,7 +74,7 @@ export default function Footer() {
             />
             <div>
               <div className="flex marker:selection:gap-2">
-                <h1 className="text-[24px] font-medium font-renfrew text-white">
+                <h1 className="text-[24px] font-medium font-renfrew text-primary-white">
                   Nisa Travel Agency
                 </h1>
                 <span className="pl-2 font-light text-s ">™</span>
@@ -157,7 +157,7 @@ export default function Footer() {
         {/* Bottom Section: Links */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="font-bold mb-4 text-white">Quick Links</h3>
+            <h3 className="font-bold mb-4 text-primary-white">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks1.map((link) => (
                 <FooterLink key={link.name} href={link.href}>
@@ -167,7 +167,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4 text-white">Quick Links</h3>
+            <h3 className="font-bold mb-4 text-primary-white">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks2.map((link) => (
                 <FooterLink key={link.name} href={link.href}>
@@ -177,7 +177,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4 text-white">Services</h3>
+            <h3 className="font-bold mb-4 text-primary-white">Services</h3>
             <ul className="space-y-3">
               {services1.map((link) => (
                 <FooterLink key={link.name} href={link.href}>
@@ -187,7 +187,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4 text-white">Services</h3>
+            <h3 className="font-bold mb-4 text-primary-white">Services</h3>
             <ul className="space-y-3">
               {services2.map((link) => (
                 <FooterLink key={link.name} href={link.href}>

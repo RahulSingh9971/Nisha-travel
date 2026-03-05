@@ -99,7 +99,7 @@ const CircularProgress = ({ percentage }) => {
             height: '45%'
           }}
         >
-          <span className="text-white text-xl font-bold">{percentage}%</span>
+          <span className="text-primary-white text-xl font-bold">{percentage}%</span>
         </div>
       </div>
     </div>
@@ -136,35 +136,35 @@ export default function TrustedVisaSection() {
                leading-[1.3] md:leading-[1.1] tracking-tight">
 
             <span className="block mb-2">
-              Trusted <span className="text-[#C40808]">Visa</span> &
+              Trusted <span className="text-primary-red">Visa</span> &
             </span>
-            <span className="text-[#C40808]">Emigration</span> solutions
+            <span className="text-primary-red">Emigration</span> solutions
           </h2>
 
-          <p className="mt-6 text-[#666666] font-medium leading-[28px]">
+          <p className="mt-6 text-primary-gray font-medium leading-[28px]">
             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-8 mt-[28px]">
             <div className="flex flex-col gap-2 items-start ">
-              <div className="flex gap-4 items-center text-[#C40808]">
+              <div className="flex gap-4 items-center text-primary-red">
                 <img src={Globe2} alt="Globe2" className="w-[55px] h-[55px]" />
-                <h3 className="max-w-[60%] font-extrabold text-[#0E313A] text-[22px]">Content Needs to change</h3>
+                <h3 className="max-w-[60%] font-extrabold text-primary-navyblue text-[22px]">Content Needs to change</h3>
               </div>
-              <p className="font-medium text-[16px] text-[#666666] pt-3">Almost do am or limits hearts. Resolve parties but why she shewing.</p>
+              <p className="font-medium text-[16px] text-primary-gray pt-3">Almost do am or limits hearts. Resolve parties but why she shewing.</p>
 
             </div>
             <div className="flex flex-col gap-2 items-start">
-              <div className="flex gap-4 items-center text-[#C40808]">
+              <div className="flex gap-4 items-center text-primary-red">
                 <img src={FilePenLine} alt="FilePenLine" className="w-[55px] h-[55px]" />
-                <h3 className="max-w-[60%] font-extrabold text-[#0E313A] text-[22px]">Content Needs to change</h3>
+                <h3 className="max-w-[60%] font-extrabold text-primary-navyblue text-[22px]">Content Needs to change</h3>
               </div>
-              <p className="font-medium text-[16px] text-[#666666] pt-3">Regular do am or limits hearts. Resolve parties but why she shewing.</p>
+              <p className="font-medium text-[16px] text-primary-gray pt-3">Regular do am or limits hearts. Resolve parties but why she shewing.</p>
 
             </div>
           </div>
 
-          <button className="mt-8 bg-[#C40808] hover:bg-red-700 text-white font-extrabold py-4 px-6 rounded-none text-sm tracking-wider">
+          <button className="mt-8 bg-primary-red hover:bg-red-700 text-primary-white font-extrabold py-4 px-6 rounded-none text-sm tracking-wider">
             • DISCOVER MORE •
           </button>
         </div>
@@ -173,7 +173,7 @@ export default function TrustedVisaSection() {
         <div className="relative lg:w-[40%]">
           <img src={sectionTwoHero} alt="Woman at airport checking her watch" className="w-full lg:h-auto md:h-[550px] " />
           <div className="absolute -bottom-6 md:-left-12 bg-white px-4 md:py-8 py-4 shadow-2xl md:w-52 text-center flex flex-col justify-center items-center">
-            <h4 className="font-extrabold text-[21px] text-[#0E313A] mb-3">Success Rate</h4>
+            <h4 className="font-extrabold text-[21px] text-primary-navyblue mb-3">Success Rate</h4>
             <div className="mx-auto">
               <CircularProgress percentage={100} />
             </div>

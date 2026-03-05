@@ -42,7 +42,7 @@ const values: ValueProps[] = [
 const CommitmentSection: React.FC = () => (
   <section className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 md:py-16 py-10">
     <div className="flex justify-center">
-      <p className="max-w-xl text-center text-[16px] text-[#002661] md:mb-8 ,b-4">
+      <p className="max-w-xl text-center text-[16px] text-primary-navybluemd:mb-8 ,b-4">
         At Nisa Travel Agency, our responsibility goes beyond recruitment and
         overseas placement. We are committed to making a positive impact on
         society, supporting individuals, families, and communities in meaningful
@@ -62,10 +62,10 @@ const CommitmentSection: React.FC = () => (
             className="w-full md:h-[350px] h-[300px] object-cover xl:mr-8 lg:mr-6"
           />
           <div>
-            <h3 className="font-extrabold md:text-2xl text-xl text-[#000000]">
+            <h3 className="font-extrabold md:text-2xl text-xl text-primary-navyblue">
               {value.title}
             </h3>
-            <p className="text-[15px] text-[#666666] leading-7 font-medium pt-2">
+            <p className="text-[15px] text-primary-gray leading-7 font-medium pt-2">
               {value.description}
             </p>
           </div>
@@ -76,12 +76,12 @@ const CommitmentSection: React.FC = () => (
     <div className="">
       <div className="grid lg:grid-cols-2 xl:gap-20 gap-6 xl:pt-24 md:pt-16 pt-10">
         <div className="max-w-lg">
-          <h1 className="xl:text-5xl md:text-4xl text-3xl leading-wide font-extrabold text-[#002661] md:mb-2">
+          <h1 className="xl:text-5xl md:text-4xl text-3xl leading-wide font-extrabold text-primary-navybluemd:mb-2">
             Our Commitment
           </h1>
         </div>
         <div className="flex xl:justify-end">
-          <p className="max-w-xl text-[#666666] text-[16px] leading-7 font-medium">
+          <p className="max-w-xl text-primary-gray text-[16px] leading-7 font-medium">
             At Nisa Travel Agency, corporate responsibility means creating
             opportunities that empower lives, uphold ethical standards, and
             positively impact society — one journey at a time.

@@ -128,12 +128,12 @@ const ContactSection: React.FC = () => {
   return (
     <section className="bg-white font-manrope">
       {/* Testimonials Section */}
-      <div className="bg-[#EAF0F6] md:py-10 py-8 rounded-b-[85%]" />
+      <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
       <div className="py-20 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
             <span className="text-[#06213F]">Real Words from Real </span>
-            <span className="text-red-600">People</span>
+            <span className="text-primary-red">People</span>
           </h2>
           <div className="flex items-center justify-center space-x-2">
             <div className="flex items-center">
@@ -159,7 +159,7 @@ const ContactSection: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="bg-[#EAF0F6] md:py-14 py-10 rounded-t-[85%]" />
+      <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
       {/* Contact Form Section */}
       <div className="md:pt-20 md:pb-0 px-4 pb-10">
         <div className="max-w-7xl mx-auto px-4 lg:px-4">
@@ -174,10 +174,10 @@ const ContactSection: React.FC = () => {
             </div>
 
             <div className="pb-4">
-              <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-[#0E313A] mb-4">
+              <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-primary-navyblue mb-4">
                 Connect with us!
               </h2>
-              <p className="text-[#666666] font-medium mb-8">
+              <p className="text-primary-gray font-medium mb-8">
                 Bridging talent with global opportunities through recruitment,
                 visa, and document services.
               </p>
@@ -219,7 +219,7 @@ const ContactSection: React.FC = () => {
                       dropdownClass="!bg-white"
                       enableSearch={true}
                     />
-                    {phoneError && <p className="text-red-600 text-[10px] absolute -bottom-5">{phoneError}</p>}
+                    {phoneError && <p className="text-primary-red text-[10px] absolute -bottom-5">{phoneError}</p>}
                   </div>
 
                   <label className="block relative ">
@@ -277,7 +277,7 @@ const ContactSection: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#C40808] hover:bg-red-700 text-white font-bold py-3 px-8 rounded-none"
+                  className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-3 px-8 rounded-none"
                 >
                   APPLY NOW
                 </button>

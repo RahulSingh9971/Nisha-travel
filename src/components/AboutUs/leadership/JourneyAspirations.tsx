@@ -6,7 +6,7 @@ export const JourneyCTA: React.FC = () => (
   <div className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 ">
       <div className="relative z-10  grid md:grid-cols-2 grid-cols-1 items-center justify-between">
       <div>
-        <h3 className="md:max-w-md text-3xl tracking-wide leading-tight font-semibold text-white">
+        <h3 className="md:max-w-md text-3xl tracking-wide leading-tight font-semibold text-primary-white">
           Turning aspirations into achievements, one journey at a time.
         </h3>
       </div>

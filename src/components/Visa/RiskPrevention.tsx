@@ -47,7 +47,7 @@ const RiskPrevention: React.FC = () => {
                     {updates.map((update, index) => (
                         <div key={index} className="flex flex-col items-center text-center space-y-3">
                             <div className="text-blue-600">
-                                <IoArrowBackOutlineIcon size={28} fill="currentColor" className="text-white fill-blue-600" />
+                                <IoArrowBackOutlineIcon size={28} fill="currentColor" className="text-primary-white fill-blue-600" />
                             </div>
                             <p className="text-[#002d5b] font-extrabold text-sm md:text-base leading-tight">
                                 {update.text}
@@ -64,7 +64,7 @@ const RiskPrevention: React.FC = () => {
                     <div className="md:col-span-5">
                         <h2 className="md:text-4xl text-3xl font-extrabold text-[#06213F] mb-2">
                             Risk and <br />
-                            <span className="text-[#C40808] text-[#d92323]">Error Prevention</span>
+                            <span className="text-primary-red text-[#d92323]">Error Prevention</span>
                         </h2>
 
                         <div className="mt-8 rounded-2xl overflow-hidden">
@@ -89,11 +89,11 @@ const RiskPrevention: React.FC = () => {
                             {riskItems.map((item) => (
                                 <div key={item.id} className="flex items-stretch gap-2 group cursor-default">
                                     {/* ID Number Box */}
-                                    <div className="bg-[#EAF0F6] text-[#002d5b] text-[18px] font-extrabold px-4 flex items-center justify-center rounded-md">
+                                    <div className="bg-primary-lightblue text-[#002d5b] text-[18px] font-extrabold px-4 flex items-center justify-center rounded-md">
                                         {item.id}
                                     </div>
                                     {/* Content Box */}
-                                    <div className="bg-[#EAF0F6] flex-1 px-4 py-3 flex items-center gap-3 rounded-md group-hover:bg-[#e6ecf2] transition-colors">
+                                    <div className="bg-primary-lightblue flex-1 px-4 py-3 flex items-center gap-3 rounded-md group-hover:bg-[#e6ecf2] transition-colors">
                                         <span className="text-xl">{item.icon}</span>
                                         <span className="text-[#002d5b] font-extrabold text-[16px] md:text-base">
                                             {item.text}
@@ -124,7 +124,7 @@ const RiskPrevention: React.FC = () => {
                         <SwiperSlide key={slide.id}>
                             <div className="relative bg-[#001d3d] min-h-[150px] md:min-h-[180px] flex items-center">
                                 <div className="p-10 md:p-14 z-20 w-full">
-                                    <h3 className="max-w-md text-2xl md:text-3xl font-bold text-white mb-6">
+                                    <h3 className="max-w-md text-2xl md:text-3xl font-bold text-primary-white mb-6">
                                         {slide.title}
                                     </h3>
                                     <button className="bg-white text-[#001d3d] px-8 py-3 rounded-md font-bold text-xs uppercase tracking-widest transition-transform hover:scale-105">

@@ -59,7 +59,7 @@ const MdExpandLessIcon = MdExpandLess as React.ElementType;
     return (
   <div className={`fixed inset-0 z-50 ${open ? "" : "pointer-events-none"}`}>
     <div
-      className={`fixed inset-0 bg-black bg-opacity-40 transition-opacity duration-200 ${
+      className={`fixed inset-0 bg-primary-navyblue bg-opacity-40 transition-opacity duration-200 ${
         open ? "opacity-100" : "opacity-0"
       }`}
       onClick={onClose}

@@ -88,8 +88,8 @@ export const WhoWeAre = ({ percentage, label }: { percentage: number, label: str
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[calc(100%-22px)] h-[calc(100%-22px)] bg-[#06213F] rounded-full flex items-center justify-center">
-          <span className="text-white text-xl font-bold">{percentage}%</span>
+        <div className="w-[calc(100%-22px)] h-[calc(100%-22px)] bg-primary-navyblue rounded-full flex items-center justify-center">
+          <span className="text-primary-white text-xl font-bold">{percentage}%</span>
         </div>
       </div>
     </div>
@@ -122,11 +122,11 @@ export default function TrustedVisaSection() {
             </p>
           </div>
 
-          <h2 className="font-extrabold xl:text-5xl md:text-4xl text-3xl font-bold text-[#06213F] leading-tight">
+          <h2 className="font-extrabold xl:text-5xl md:text-4xl text-3xl font-bold text-primary-navyblue leading-tight">
             Who We Are?
           </h2>
 
-          <p className="md:mt-6 mt-4 text-[#666666] text-[16px] leading-7 font-medium">
+          <p className="md:mt-6 mt-4 text-primary-gray text-[16px] leading-7 font-medium">
             Founded in 1992, Nisa Travel Agency is a trusted name in overseas
             recruitment, licensed and approved by the Ministry of External
             Affairs, Government of India (License No:
@@ -135,7 +135,7 @@ export default function TrustedVisaSection() {
             shaping global careers and building international partnerships for
             more than three decades.
           </p>
-          <p className="md:mt-6 mt-4 text-[#666666] text-[16px] leading-7 font-medium">
+          <p className="md:mt-6 mt-4 text-primary-gray text-[16px] leading-7 font-medium">
             Over the years, we have grown into a trusted name in overseas
             recruitment, helping organizations worldwide find the right talent
             while supporting individuals in achieving their career aspirations

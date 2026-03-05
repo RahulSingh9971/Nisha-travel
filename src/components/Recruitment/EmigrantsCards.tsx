@@ -26,7 +26,7 @@ export default function EmigrantsCards() {
             <img src={card.image} alt={card.title} className="w-75 h-56 mb-6" />
             <h2 className="lg:text-4xl text-3xl font-extrabold text-[#002661] mb-4">{card.title}</h2>
             <p className="mb-6 text-[#002661] text-base leading-relaxed">{card.text}</p>
-            <button className="bg-[#C40808] text-white font-bold px-8 py-2 shadow hover:bg-red-700 transition">{card.button}</button>
+            <button className="bg-primary-red text-primary-white font-bold px-8 py-2 shadow hover:bg-red-700 transition">{card.button}</button>
           </div>
         ))}
       </div>

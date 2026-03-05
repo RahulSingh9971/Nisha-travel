@@ -146,7 +146,7 @@ const StatCircle: React.FC<StatCircleProps> = ({
 
 export default function TrustedGlobalVisa() {
     return (
-        <section className="bg-[#EAF0F6] overflow-hidden font-manrope xl:pt-24 md:pt-16 pt-10">
+        <section className="bg-primary-lightblue overflow-hidden font-manrope xl:pt-24 md:pt-16 pt-10">
             <div className="max-w-7xl mx-auto  lg:px-8 md:px-12 px-4">
                   <style>
         {`
@@ -160,15 +160,15 @@ export default function TrustedGlobalVisa() {
                     {/* Right Column: Bubble Stats */}
                     <div className="relative h-96 md:order-1 order-2">
                         {/* Decorative dots */}
-                        <div className="absolute top-0 right-20 w-5 h-5 bg-[#DD565C] rounded-full opacity-80"></div>
-                        <div className="absolute bottom-16 right-12 w-8 h-8 bg-[#DD565C] rounded-full opacity-80"></div>
-                        <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-10 w-8 h-8 bg-[#DD565C] rounded-full opacity-80"></div>
+                        <div className="absolute top-0 right-20 w-5 h-5 bg-primary-lightred rounded-full opacity-80"></div>
+                        <div className="absolute bottom-16 right-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
+                        <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-10 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
 
                         {/* Main stats bubbles */}
                         <StatCircle
                             size={120}
-                            bgColor="bg-[#C40808]"
-                            textColor="text-white"
+                            bgColor="bg-primary-red"
+                            textColor="text-primary-white"
                             value="50k+"
                             label="Customer Globally"
                             valueSize="text-3xl"
@@ -178,7 +178,7 @@ export default function TrustedGlobalVisa() {
                         <StatCircle
                             size={240}
                             bgColor="bg-white"
-                            textColor="text-[#06213F]"
+                            textColor="text-primary-navyblue"
                             value="1.5M+"
                             label="Documents Processed"
                             valueSize="text-5xl"
@@ -189,7 +189,7 @@ export default function TrustedGlobalVisa() {
                         <StatCircle
                             size={110}
                             bgColor="bg-white"
-                            textColor="text-[#06213F]"
+                            textColor="text-primary-navyblue"
                             value="7k+"
                             label="Successful Recruitment"
                             valueSize="text-2xl"
@@ -199,8 +199,8 @@ export default function TrustedGlobalVisa() {
                         />
                         <StatCircle
                             size={120}
-                            bgColor="bg-[#002661]"
-                            textColor="text-white"
+                            bgColor="bg-primary-navyblue"
+                            textColor="text-primary-white"
                             value="33"
                             label="Years of Overseas Recruitment"
                             valueSize="text-4xl"
@@ -211,14 +211,14 @@ export default function TrustedGlobalVisa() {
                     {/* Left Column: Text Content */}
                     <div className="md:order-2 order-1">
                         <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight">
-                            <span className="text-[#C40808]">Trusted Global </span>
+                            <span className="text-primary-red">Trusted Global </span>
                             <br />
-                            <span className="text-[#002661]">Visa Partner</span>
+                            <span className="text-primary-navyblue">Visa Partner</span>
                         </h2>
-                        <p className="my-6 text-[#666666] text-[16px] leading-7 font-medium">
+                        <p className="my-6 text-primary-gray text-[16px] leading-7 font-medium">
                             With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide.
                         </p>
-                        <button className="font-Poppins text-[16px] font-normal bg-[#C40808] text-white px-8 py-2">
+                        <button className="font-Poppins text-[16px] font-normal bg-primary-red text-primary-white px-8 py-2">
                             Know More
                         </button>
 

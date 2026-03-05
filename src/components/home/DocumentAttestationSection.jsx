@@ -4,10 +4,10 @@ import Ellipse from "../.././assets/images/Ellipse.png";
 
 const AttestationButton = ({ text, isHighlighted = false }) => (
   <div
-    className={`border-l-4 ${isHighlighted ? "border-[#C40808]" : "border-gray-300"
+    className={`border-l-4 ${isHighlighted ? "border-primary-red" : "border-gray-300"
       } pl-4 py-2`}
   >
-    <button className="text-left text-[#0E313A] font-extrabold hover:text-[#C40808] transition-colors">
+    <button className="text-left text-primary-navybluefont-extrabold hover:text-primary-red transition-colors">
       {text}
     </button>
   </div>
@@ -17,8 +17,8 @@ const ServiceCard = ({
   image,
   title,
   subtitle,
-  bgColor = "bg-[#0E313A]",
-  textColor = "text-white",
+  bgColor = "bg-primary-navyblue",
+  textColor = "text-primary-white",
 }) => (
   <div
     className={`relative overflow-hidden rounded-[20px] h-[280px] ${bgColor} ${textColor} group cursor-pointer`}
@@ -26,7 +26,7 @@ const ServiceCard = ({
     {image && (
       <div className="absolute inset-0">
         <img src={image} alt={title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-primary-navyblue bg-opacity-40"></div>
       </div>
     )}
     <div className="relative z-10 p-6 h-full flex flex-col justify-end">
@@ -64,9 +64,9 @@ export default function DocumentAttestationSection() {
             </div>
             <div className="md:order-2 order-1">
               <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight mb-6">
-                <span className="text-[#06213F] block mb-2">Reliable  <span className="text-[#C40808]">Document</span></span>
+                <span className="text-primary-navyblue block mb-2">Reliable  <span className="text-primary-red">Document</span></span>
 
-                <span className="text-[#C40808]">Attestation <span className="text-[#06213F]">Services</span></span>
+                <span className="text-primary-red">Attestation <span className="text-primary-navyblue">Services</span></span>
 
               </h2>
 
@@ -90,17 +90,17 @@ export default function DocumentAttestationSection() {
       </div>
 
       {/* Specialised Services Section */}
-      <div className="bg-[#EAF0F6] py-10 ">
+      <div className="bg-primary-lightblue py-10 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Left - Text Content */}
             <div>
               <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight mb-4">
-                <span className="text-[#06213F] block mb-2">Explore</span>
-                <span className="text-[#C40808]">specialised services</span>
+                <span className="text-primary-navyblue block mb-2">Explore</span>
+                <span className="text-primary-red">specialised services</span>
               </h2>
 
-              <p className="font-medium text-[#0E313A] text-md leading-relaxed">
+              <p className="font-medium text-primary-navyblue text-md leading-relaxed">
                 Discover a wide range of value-added services, from document
                 attestation to premium visa support, designed to make your
                 overseas journey smoother, faster, and completely hassle-free.
@@ -154,11 +154,11 @@ export default function DocumentAttestationSection() {
 
             {/* Explore Other Solutions */}
             <div className="col-span-1">
-              <div className="bg-[#2A6ABA] text-white rounded-[20px] h-[280px] p-6 flex flex-col justify-between">
+              <div className="bg-[#2A6ABA] text-primary-white rounded-[20px] h-[280px] p-6 flex flex-col justify-between">
                 <h3 className="text-2xl font-bold leading-tight">
                   Explore Other solutions we offer
                 </h3>
-                <Link to="/ourcoreservices" className="bg-[#C40808] hover:bg-red-700 text-white font-semibold py-3 px-5  text-sm w-fit">
+                <Link to="/ourcoreservices" className="bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-5  text-sm w-fit">
                   KNOW MORE
                 </Link>
               </div>

@@ -6,7 +6,7 @@ import salicon from "../../assets/images/salicon.svg";
 import { FiArrowUpRight } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-
+import { API_CONFIG } from "../../config/apiConfig"
 const FiArrowUpRightIcon = FiArrowUpRight as React.ElementType;
 const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
 const GrLocationIcon = HiOutlineLocationMarker as React.ElementType;
@@ -43,12 +43,10 @@ const JobCards: React.FC = () => {
   useEffect(() => {
     const fetchPageConfig = async () => {
       try {
-        const res = await fetch("https://cms.nisatravels.com/api/job-page", {
-          headers: {
-            "x-api-key": "7802a1979d7472728fe22f93ccaf3755",
-            Accept: "application/json",
-          },
-        });
+        const res = await fetch(`${API_CONFIG.BASE_URL}/job-page`,
+          {
+            headers: API_CONFIG.HEADERS,
+          });
         const result = await res.json();
         if (result.success && result.data?.jobs_section) {
           setJobsSection(result.data.jobs_section);
@@ -70,14 +68,10 @@ const JobCards: React.FC = () => {
         params.append("per_page", String(jobsSection?.per_page ?? 6));
 
         const res = await fetch(
-          `https://cms.nisatravels.com/api/jobs?${params.toString()}`,
+          `${API_CONFIG.BASE_URL}/jobs?${params.toString()}`,
           {
-            headers: {
-              "x-api-key": "7802a1979d7472728fe22f93ccaf3755",
-              Accept: "application/json",
-            },
-          }
-        );
+            headers: API_CONFIG.HEADERS,
+          });
         const result = await res.json();
         if (result.success) {
           const jobData: Job[] = (result.data ?? []).map((j: any) => ({
@@ -126,7 +120,7 @@ const JobCards: React.FC = () => {
       {/* ── Header Row ── */}
       <div className="flex md:flex-row flex-col md:items-center gap-2 justify-between mb-6 lg:px-6 md:px-12 px-4">
         <h2 className="text-4xl font-extrabold">
-          <span className="text-red-600">{sectionTitle}</span> {sectionHighlight}
+          <span className="text-primary-red">{sectionTitle}</span> {sectionHighlight}
         </h2>
 
         {/* Country Filter */}
@@ -153,7 +147,7 @@ const JobCards: React.FC = () => {
       {/* ── Loading State ── */}
       {loading && (
         <div className="flex justify-center items-center py-16">
-          <div className="w-10 h-10 border-4 border-[#C40808] border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-primary-red border-t-transparent rounded-full animate-spin" />
         </div>
       )}
 
@@ -181,19 +175,19 @@ const JobCards: React.FC = () => {
                 >
                   {/* Hover expanding circle */}
                   <div className="absolute bottom-6 left-[130px] z-0 pointer-events-none">
-                    <span className="block w-8 h-8 rounded-full bg-[#C40808] opacity-0 scale-0 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-[65]" />
+                    <span className="block w-8 h-8 rounded-full bg-primary-red opacity-0 scale-0 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-[65]" />
                   </div>
 
                   <div className="relative z-10">
                     {/* Country Badge */}
                     {job.country && (
-                      <div className="text-xs font-bold bg-[#002661] text-white px-2 py-1 rounded-full mb-2 w-fit">
+                      <div className="text-xs font-bold bg-[#002661] text-primary-white px-2 py-1 rounded-full mb-2 w-fit">
                         {job.country.toUpperCase()}
                       </div>
                     )}
 
                     {/* Job Title */}
-                    <div className="font-extrabold text-[#0E313A] text-[20px] mb-5 transition-colors duration-500 group-hover:text-white">
+                    <div className="font-extrabold text-primary-navyblue text-[20px] mb-5 transition-colors duration-500 group-hover:text-primary-white">
                       {job.title}
                     </div>
 
@@ -202,14 +196,14 @@ const JobCards: React.FC = () => {
                       {/* Experience */}
                       {job.experience && (
                         <div className="text-sm text-gray-600 flex items-center gap-2 mb-2">
-                          <div className="lg:p-2 p-1 bg-[#EAF0F6] rounded-full transition-colors duration-500 group-hover:bg-white">
+                          <div className="lg:p-2 p-1 bg-primary-lightblue rounded-full transition-colors duration-500 group-hover:bg-white">
                             <img src={expicon} alt="experience" className="h-4 w-4" />
                           </div>
                           <div className="flex flex-col">
-                            <span className="text-[#0E313A] text-[12px] font-semibold transition-colors duration-500 group-hover:text-white/80">
+                            <span className="text-primary-navyblue text-[12px] font-semibold transition-colors duration-500 group-hover:text-primary-white/80">
                               Experience
                             </span>
-                            <span className="text-[#0E313A] text-[14px] font-extrabold transition-colors duration-500 group-hover:text-white">
+                            <span className="text-primary-navyblue text-[14px] font-extrabold transition-colors duration-500 group-hover:text-primary-white">
                               {job.experience}
                             </span>
                           </div>
@@ -219,14 +213,14 @@ const JobCards: React.FC = () => {
                       {/* Industry */}
                       {job.industry && (
                         <div className="text-sm text-gray-600 flex items-center gap-2 mb-2">
-                          <div className="lg:p-2 p-1 bg-[#EAF0F6] rounded-full transition-colors duration-500 group-hover:bg-white">
+                          <div className="lg:p-2 p-1 bg-primary-lightblue rounded-full transition-colors duration-500 group-hover:bg-white">
                             <img src={indicon} alt="industry" className="h-4 w-4" />
                           </div>
                           <div className="flex flex-col">
-                            <span className="text-[#0E313A] text-[12px] font-semibold transition-colors duration-500 group-hover:text-white/80">
+                            <span className="text-primary-navyblue text-[12px] font-semibold transition-colors duration-500 group-hover:text-primary-white/80">
                               Industry
                             </span>
-                            <span className="text-[#0E313A] text-[14px] font-extrabold transition-colors duration-500 group-hover:text-white">
+                            <span className="text-primary-navyblue text-[14px] font-extrabold transition-colors duration-500 group-hover:text-primary-white">
                               {job.industry}
                             </span>
                           </div>
@@ -236,14 +230,14 @@ const JobCards: React.FC = () => {
                       {/* Salary Range */}
                       {job.salary_range && (
                         <div className="text-sm text-gray-600 flex items-center gap-2 mb-2">
-                          <div className="lg:p-2 p-1 bg-[#EAF0F6] rounded-full transition-colors duration-500 group-hover:bg-white">
+                          <div className="lg:p-2 p-1 bg-primary-lightblue rounded-full transition-colors duration-500 group-hover:bg-white">
                             <img src={salicon} alt="salary" className="h-4 w-4" />
                           </div>
                           <div className="flex flex-col">
-                            <span className="text-[#0E313A] text-[12px] font-semibold transition-colors duration-500 group-hover:text-white/80">
+                            <span className="text-primary-navyblue text-[12px] font-semibold transition-colors duration-500 group-hover:text-primary-white/80">
                               Salary Range
                             </span>
-                            <span className="text-[#0E313A] text-[14px] font-extrabold transition-colors duration-500 group-hover:text-white">
+                            <span className="text-primary-navyblue text-[14px] font-extrabold transition-colors duration-500 group-hover:text-primary-white">
                               {job.salary_range}
                             </span>
                           </div>
@@ -254,10 +248,10 @@ const JobCards: React.FC = () => {
 
                   {/* Know More Button */}
                   <Link to={`/JobPosting/${job.slug ?? job.id}`} className="flex gap-2 mt-6">
-                    <button className="relative z-20 transition-colors duration-500 group-hover:text-white text-[#0E313A] text-[24] uppercase font-bold">
+                    <button className="relative z-20 transition-colors duration-500 group-hover:text-primary-white text-primary-navyblue text-[24] uppercase font-bold">
                       Know More
                     </button>
-                    <button className="flex items-center justify-center bg-[#C40808] text-white p-1 rounded-full transition-transform duration-500 group-hover:rotate-45 group-hover:bg-[#0E313A]">
+                    <button className="flex items-center justify-center bg-primary-red text-primary-white p-1 rounded-full transition-transform duration-500 group-hover:rotate-45 group-hover:bg-primary-navyblue">
                       <FiArrowUpRightIcon size={23} />
                     </button>
                   </Link>
@@ -269,7 +263,7 @@ const JobCards: React.FC = () => {
           {/* ── CTA Button ── */}
           <div className="flex justify-center mt-8">
             <Link to={ctaLink}>
-              <button className="bg-[#C40808] text-white font-bold px-10 py-3">
+              <button className="bg-primary-red text-primary-white font-bold px-10 py-3">
                 {ctaText}
               </button>
             </Link>
@@ -281,3 +275,4 @@ const JobCards: React.FC = () => {
 };
 
 export default JobCards;
+// hello

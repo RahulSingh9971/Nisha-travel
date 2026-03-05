@@ -38,7 +38,7 @@ const UniversityDisciplines: React.FC = () => {
               </ul>
             ))}
           </div>
-          <button className="mt-8 px-8 py-2 bg-[#C21807] text-white font-bold text-sm rounded-sm hover:bg-red-800 transition-colors uppercase tracking-wider">
+          <button className="mt-8 px-8 py-2 bg-[#C21807] text-primary-white font-bold text-sm rounded-sm hover:bg-red-800 transition-colors uppercase tracking-wider">
             Contact Us
           </button>
         </div>
@@ -57,7 +57,7 @@ const UniversityDisciplines: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button className="mt-8 px-8 py-2 bg-[#C21807] text-white font-bold text-sm rounded-sm hover:bg-red-800 transition-colors uppercase tracking-wider">
+          <button className="mt-8 px-8 py-2 bg-[#C21807] text-primary-white font-bold text-sm rounded-sm hover:bg-red-800 transition-colors uppercase tracking-wider">
             Contact Us
           </button>
         </div>

@@ -90,12 +90,12 @@ const RealWorldServices: React.FC = () => {
   return (
     <section className="relative bg-white font-manrope">
       {/* Testimonials Section */}
-      <div className="bg-[#EAF0F6] md:py-10 py-8 rounded-b-[85%]" />
+      <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
       <div className="py-20 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
             <span className="text-[#06213F]">Real Words from Real </span>
-            <span className="text-red-600">People</span>
+            <span className="text-primary-red">People</span>
           </h2>
           <div className="flex items-center justify-center space-x-2">
             <div className="flex items-center">
@@ -121,9 +121,9 @@ const RealWorldServices: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="bg-[#EAF0F6] md:py-[60px] py-14 rounded-t-[85%]" />
+      <div className="bg-primary-lightblue md:py-[60px] py-14 rounded-t-[85%]" />
        <div className="mt-auto">
-              <button className="absolute left-1/2 -translate-x-1/2 md:bottom-10 bottom-8 bg-[#C40808] text-white font-bold text-sm px-5 py-2 ">
+              <button className="absolute left-1/2 -translate-x-1/2 md:bottom-10 bottom-8 bg-primary-red text-primary-white font-bold text-sm px-5 py-2 ">
                 CONTACT US
               </button>
             </div>

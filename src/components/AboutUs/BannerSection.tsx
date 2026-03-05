@@ -19,7 +19,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
 }) => {
   return (
     <div
-      className="relative w-full md:h-80 h-60 flex font-manrope items-center justify-center text-white"
+      className="relative w-full md:h-80 h-60 flex font-manrope items-center justify-center text-primary-white"
       style={{
         backgroundImage: `url(${bannerImg})`,
         backgroundSize: "cover",
@@ -28,7 +28,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-primary-navyblue/50"></div>
 
       {/* Title */}
       <div className="flex flex-col md:gap-3 gap-2">
@@ -37,12 +37,12 @@ const BannerSection: React.FC<BannerSectionProps> = ({
         </h1>
         {/* Breadcrumb */}
         <nav className="relative z-10 mb-2 w-full flex justify-center">
-          <ol className="flex space-x-1 text-gray-700 text-[16px] font-medium">
+          <ol className="flex space-x-1 text-primary-navybluetext-[16px] font-medium">
             {path.map((item, idx) => (
               <React.Fragment key={idx}>
                 {item.href ? (
                   <li>
-                    <Link to={item.href} className="hover:underline text-white">
+                    <Link to={item.href} className="hover:underline text-primary-white">
                       {item.label}
                     </Link>
                   </li>
@@ -55,7 +55,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
                 )}
                 {idx < path.length - 1 && (
                   <li>
-                    <span className="mx-1 text-white">/</span>
+                    <span className="mx-1 text-primary-white">/</span>
                   </li>
                 )}
               </React.Fragment>

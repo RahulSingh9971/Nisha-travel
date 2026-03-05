@@ -66,7 +66,7 @@ const FAQCard: React.FC<FAQCardProps> = ({ faq }) => {
   const IconComponent = Icon as React.ElementType;
   return (
     <div
-      className={`bg-[#EAF0F6] rounded-3xl mb-4 px-6 py-5 transition-all duration-300 shadow-sm ${
+      className={`bg-primary-lightblue rounded-3xl mb-4 px-6 py-5 transition-all duration-300 shadow-sm ${
         open ? "border border-[#c3d5eb]" : ""
       }`}
       style={{ cursor: "pointer" }}
@@ -90,7 +90,7 @@ const FAQSection: React.FC = () => {
     <section className="bg-white lg:px-8 md:px-12 px-4 md:py-16 py-10 font-manrope">
       <div className="max-w-3xl mx-auto text-center mb-10">
         <h2 className="text-4xl font-extrabold leading-[44px] mb-2">
-          <span className="text-[#C40808]">Frequently</span>
+          <span className="text-primary-red">Frequently</span>
           <span className="text-[#06213F] block">Asked Questions</span>
         </h2>
       </div>
@@ -100,7 +100,7 @@ const FAQSection: React.FC = () => {
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button className="bg-[#C40808] text-white font-bold rounded-full px-8 py-3 shadow hover:bg-red-700 transition">
+        <button className="bg-primary-red text-primary-white font-bold rounded-full px-8 py-3 shadow hover:bg-red-700 transition">
           GET EMIGRATION SUPPORT
         </button>
       </div>

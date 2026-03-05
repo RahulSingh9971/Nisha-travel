@@ -7,10 +7,10 @@ const RecruitmentOverview = () => {
       <img src={familyImg} alt="Happy Family" className="md:order-0 order-1 w-full mx-auto" />
       <div className="md:order-1 order-0">
         <h2 className="xl:text-[38px] md:text-4xl text-3xl font-extrabold mb-2 leading-wide">
-          <span className="text-[#C40808]">Recruitment</span>
-          <span className="text-[#0E313A] block">Overview</span>
+          <span className="text-primary-red">Recruitment</span>
+          <span className="text-primary-navyblue block">Overview</span>
         </h2>
-        <p className=" lg:pt-0 md:pt-2 text-[#666666] text-[16px] leading-7 font-medium">
+        <p className=" lg:pt-0 md:pt-2 text-primary-gray text-[16px] leading-7 font-medium">
           Our process is transparent, efficient, and designed to ensure both
           employers and jobseekers experience a smooth and secure recruitment
           journey.

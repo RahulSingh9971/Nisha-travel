@@ -5,7 +5,7 @@ import joblocation3 from "../../assets/images/joblocation3.png";
 import joblocation4 from "../../assets/images/joblocation4.png";
 import joblocation5 from "../../assets/images/joblocation5.png";
 import joblocation6 from "../../assets/images/joblocation6.png";
-
+import { API_CONFIG } from "../../config/apiConfig"
 
 // Images ka array taaki loop mein use ho sake
 const locationImages = [joblocation1, joblocation2, joblocation3, joblocation4, joblocation5, joblocation6];
@@ -20,12 +20,9 @@ const JobsByLocation: React.FC = () => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch("https://cms.nisatravels.com/api/jobs/countries", {
-          headers: {
-            "x-api-key": "7802a1979d7472728fe22f93ccaf3755",
-            "Accept": "application/json"
-          }
-        });
+        const response = await fetch(`${API_CONFIG.BASE_URL}/jobs/countries`,  {
+                headers: API_CONFIG.HEADERS,
+              });
 
         const result = await response.json();
         if (result.success) {
@@ -45,15 +42,15 @@ const JobsByLocation: React.FC = () => {
   return (
 
     <>
-      <section className="bg-[#EAF0F6]">
+      <section className="bg-primary-lightblue">
         {/* Heading */}
         <div className=" max-w-7xl mx-auto px-4 md:px-8 xl:pt-20 lg:pt-16 py-10">
           <div className="text-center mb-10">
             <h1 className="xl:text-5xl md:text-4xl text-3xl font-extrabold lg:mb-6 mb-4 leading-tight">
-              <span className="text-[#C40808]">Jobs by </span>
-              <span className="text-[#0E313A]"> Location</span>
+              <span className="text-primary-red">Jobs by </span>
+              <span className="text-primary-navyblue"> Location</span>
             </h1>
-            <p className="mb-7 text-[#666666] text-base font-medium leading-7">
+            <p className="mb-7 text-primary-gray text-base font-medium leading-7">
               Find your favourite jobs and get the benefits of yourself
             </p>
           </div>

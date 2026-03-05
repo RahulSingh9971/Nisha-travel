@@ -26,7 +26,7 @@ const ServiceCard = ({ image, title, description, isFirst }) => (
     </div>
     <button
       size="icon"
-      className="absolute top-32 flex justify-center items-center right-6 w-12 h-12 bg-[#C40808] hover:bg-red-700 rounded-full text-white shadow-lg"
+      className="absolute top-32 flex justify-center items-center right-6 w-12 h-12 bg-primary-red hover:bg-red-700 rounded-full text-primary-white shadow-lg"
     >
       {/* {"->"} */}
       <img src={ArrowRight} alt="Globe2" className="h-auto" />
@@ -42,11 +42,11 @@ const JobCard = ({ location, position, image, onSeeDetails }) => (
     >
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
       <div className="absolute top-4 left-4">
-        <span className="text-white/90 text-md font-ibmplex font-normal px-3 py-1.5 rounded-lg">
+        <span className="text-primary-white/90 text-md font-ibmplex font-normal px-3 py-1.5 rounded-lg">
           {location}
         </span>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+      <div className="absolute bottom-0 left-0 right-0 p-6 text-primary-white">
         <h3 className="text-2xl font-normal font-ibmplex">{position}</h3>
         <button
           onClick={onSeeDetails}
@@ -114,9 +114,9 @@ export default function VisaEmigrationJobsSection() {
           <div className="flex md:flex-row flex-col pt-10 gap-8 justify-between md:items-center items-end mb-12 ml-[32%]">
             <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold ">
               <span className="text-[#06213F]">Visa & </span>
-              <span className="text-[#C40808]">Emigrations</span>
+              <span className="text-primary-red">Emigrations</span>
             </h2>
-            <button className="bg-[#C40808] hover:bg-red-700 text-white font-extrabold py-2 px-6 text-sm tracking-wider">
+            <button className="bg-primary-red hover:bg-red-700 text-primary-white font-extrabold py-2 px-6 text-sm tracking-wider">
               • DISCOVER MORE •
             </button>
           </div>
@@ -184,7 +184,7 @@ export default function VisaEmigrationJobsSection() {
             <div>
               <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight">
                 <span className="text-[#06213F] block mb-2">Hot Jobs You Can</span>
-                <span className="text-[#C40808]">Apply for Today</span>
+                <span className="text-primary-red">Apply for Today</span>
               </h2>
             </div>
             <div className="flex justify-end">
@@ -193,7 +193,7 @@ export default function VisaEmigrationJobsSection() {
                   Our mission is to simplify your journey, from applying for
                   your dream job to settling abroad with confidence.
                 </p>
-                <button className="bg-[#C40808] hover:bg-red-700 text-white font-extrabold py-3 px-6 text-sm tracking-wider">
+                <button className="bg-primary-red hover:bg-red-700 text-primary-white font-extrabold py-3 px-6 text-sm tracking-wider">
                   • SEE OPEN POSITIONS •
                 </button>
               </div>

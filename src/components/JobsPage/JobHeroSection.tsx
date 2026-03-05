@@ -47,10 +47,10 @@ const JobHeroSection: React.FC = () => {
       {/* Right: Headline and Content */}
       <div className="order-1 lg:order-2">
         <h1 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-6 leading-tight">
-          <span className="text-[#C40808]">The Easiest Way</span>
-          <span className="text-[#0E313A]"> to get your new job</span>
+          <span className="text-primary-red">The Easiest Way</span>
+          <span className="text-primary-navyblue"> to get your new job</span>
         </h1>
-        <p className="mb-7 text-[#666666] text-base font-medium leading-7">
+        <p className="mb-7 text-primary-gray text-base font-medium leading-7">
           Each month, more than 3 million job seekers visit our website in their
           search for work, making over 140,000 applications every single day.
         </p>
@@ -77,7 +77,7 @@ const JobHeroSection: React.FC = () => {
                     {industriesList.map((item) => (
                       <div
                         key={item}
-                        className={`px-4 py-2.5 text-[13px] cursor-pointer hover:bg-gray-50 ${selectedInd === item ? "bg-[#FDECEC] text-[#C40808] font-bold" : "text-[#444444]"}`}
+                        className={`px-4 py-2.5 text-[13px] cursor-pointer hover:bg-gray-50 ${selectedInd === item ? "bg-[#FDECEC] text-primary-red font-bold" : "text-[#444444]"}`}
                         onClick={() => { setSelectedInd(item); setIsIndOpen(false); }}
                       >
                         {item}
@@ -107,7 +107,7 @@ const JobHeroSection: React.FC = () => {
                   {locationsList.map((item) => (
                     <div
                       key={item}
-                      className={`px-4 py-2.5 text-[13px] cursor-pointer hover:bg-gray-50 ${selectedLoc === item ? "bg-[#FDECEC] text-[#C40808] font-bold" : "text-[#444444]"}`}
+                      className={`px-4 py-2.5 text-[13px] cursor-pointer hover:bg-gray-50 ${selectedLoc === item ? "bg-[#FDECEC] text-primary-red font-bold" : "text-[#444444]"}`}
                       onClick={() => { setSelectedLoc(item); setIsLocOpen(false); }}
                     >
                       {item}
@@ -125,8 +125,8 @@ const JobHeroSection: React.FC = () => {
               className=" pl-2 text-[13px] text-[#444444] placeholder:text-[#4F5E64] outline-none bg-transparent"
             />
           </div>
-          <button type="button" className="flex gap-2 items-center bg-[#C40808] text-[14px] text-white font-semibold px-6 py-2.5 rounded-md shadow-md hover:bg-[#a30606] transition-all whitespace-nowrap ml-2">
-            <IoSearchIcon className="text-white text-lg" /> Search
+          <button type="button" className="flex gap-2 items-center bg-primary-red text-[14px] text-primary-white font-semibold px-6 py-2.5 rounded-md shadow-md hover:bg-[#a30606] transition-all whitespace-nowrap ml-2">
+            <IoSearchIcon className="text-primary-white text-lg" /> Search
           </button>
         </form>
         <div className="text-[14px] text-[#4F5E64]">

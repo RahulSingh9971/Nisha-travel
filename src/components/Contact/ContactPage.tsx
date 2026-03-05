@@ -148,12 +148,12 @@ const handleSubmit = async (e: React.FormEvent) => {
         <div className="flex lg:flex-row flex-col xl:gap-8 lg:gap-1 md:gap-8">
           {/* Contact Form */}
           <div className="lg:w-1/2">
-            <p className="mb-4 text-[#666666] text-base leading-relaxed">
+            <p className="mb-4 text-primary-gray text-base leading-relaxed">
               Let’s start planning your next adventure.
             </p>
             <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-8">
-              <span className="text-[#C40808]">We’re just a</span>
-              <span className="text-[#0E313A] block">message away</span>
+              <span className="text-primary-red">We’re just a</span>
+              <span className="text-primary-navyblueblock">message away</span>
             </h2>
             
             {/* STATUS MESSAGE UI */}
@@ -168,46 +168,46 @@ const handleSubmit = async (e: React.FormEvent) => {
             <form onSubmit={handleSubmit} className="grid gap-8 mt-4">
               <div className=" w-[90%] grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-4">
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#002661]">First Name*</label>
+                  <label className="text-primary-navyblue">First Name*</label>
                   <input
                   name="name" // API key ke mutabiq
                     value={formData.name}
                     onChange={handleChange}
-                    className="placeholder:text-[#002661] md:border-2 border border-[#002661] w-full px-3 md:py-3 py-2"
+                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 md:py-3 py-2"
                     placeholder="First Name"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#002661]">Email Address*</label>
+                  <label className="text-primary-navyblue">Email Address*</label>
                   <input
                   name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="placeholder:text-[#002661] md:border-2 border border-[#002661] w-full px-3 py-3"
+                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
                     placeholder="Email Address"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#002661]">Phone*</label>
+                  <label className="text-primary-navyblue">Phone*</label>
                   <input
                   name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="placeholder:text-[#002661] md:border-2 border border-[#002661] w-full px-3 py-3"
+                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
                     placeholder="Phone"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#002661]">Message</label>
+                  <label className="text-primary-navyblue">Message</label>
                   <input
                   name="message"
                   value={formData.message}
                     onChange={handleChange}
-                    className="placeholder:text-[#002661] md:border-2 border border-[#002661] w-full px-3 py-3"
+                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
                     placeholder="Type Your Message"
                     required
                   />
@@ -217,7 +217,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               <button
               type="submit"
                   disabled={loading}
-           className={`${loading ? 'bg-gray-400' : 'bg-[#C40808]'} w-[30%] text-white font-bold px-5 py-2 mt-3`}
+           className={`${loading ? 'bg-gray-400' : 'bg-primary-red'} w-[30%] text-primary-white font-bold px-5 py-2 mt-3`}
               >
                {loading ? "SENDING..." : "SUBMIT"}
               </button>
@@ -226,16 +226,16 @@ const handleSubmit = async (e: React.FormEvent) => {
           {/* Contact Info */}
           <div className="mt-3 md:mt-0 xl:border-l-[3px] xl:pl-10 border-gray-200">
             <h2 className=" md:text-3xl text-2xl font-extrabold md:mb-8 mb-4">
-              <span className="text-[#C40808]">We’re here to help</span>
-              <span className="text-[#0E313A] block">get in touch!</span>
+              <span className="text-primary-red">We’re here to help</span>
+              <span className="text-primary-navyblueblock">get in touch!</span>
             </h2>
             <div className="grid md:grid-cols-2 grid-cols-1 md:gap-3 gap-2 text-sm">
               {contactBlocks.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex md:gap-2 gap-3 items-center py-3 text-[#002661]"
+                  className="flex md:gap-2 gap-3 items-center py-3 text-primary-navyblue"
                 >
-                  <div className="md:w-14 w-11 md:h-14 h-11 p-2 flex items-center justify-center rounded-full border-[#002661] border-2">
+                  <div className="md:w-14 w-11 md:h-14 h-11 p-2 flex items-center justify-center rounded-full border-primary-navyblue border-2">
                     <span className="text-[22px]">{item.icon}</span>
                   </div>
 
@@ -258,12 +258,12 @@ const handleSubmit = async (e: React.FormEvent) => {
                       <span className="font-medium md:text-[16px] text-[14px] truncate">
                         {/* Check if it's an Email (contains @) */}
                         {item.value.includes("@") ? (
-                          <a href={`mailto:${item.value}`} className="hover:text-[#C40808] hover:underline transition-colors">
+                          <a href={`mailto:${item.value}`} className="hover:text-primary-red hover:underline transition-colors">
                             {item.value}
                           </a>
                         ) : (
                           /* Otherwise treat as Phone number */
-                          <a href={`tel:${item.value.replace(/\s+/g, '')}`} className="hover:text-[#C40808] hover:underline transition-colors">
+                          <a href={`tel:${item.value.replace(/\s+/g, '')}`} className="hover:text-primary-red hover:underline transition-colors">
                             {item.value}
                           </a>
                         )}
@@ -276,13 +276,13 @@ const handleSubmit = async (e: React.FormEvent) => {
           </div>
         </div>
       </div>
-      <div className="bg-[#EAF0F6]">
+      <div className="bg-primary-lightblue">
         <div className=" font-manrope max-w-7xl mx-auto md:py-16 py-10 px-4 md:px-12 lg:px-8">
           <div className="max-w-lg mx-auto">
-            <h2 className="text-center lg:text-5xl md:text-4xl text-3xl text-[#002661] font-extrabold pb-2">
+            <h2 className="text-center lg:text-5xl md:text-4xl text-3xl text-primary-navybluefont-extrabold pb-2">
               Our Branches
             </h2>
-            <p className="font-inter text-center text-[#002661] pb-4 opacity-[60%]">
+            <p className="font-inter text-center text-primary-navybluepb-4 opacity-[60%]">
               Contact us today for expert advice, and unbeatable deals your
               career starts here!
             </p>
@@ -291,8 +291,8 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="flex justify-center gap-3 rounded-full p-1 bg-white border border-[#d2d5db] w-fit mb-7">
               <button
                 className={`font-bold px-6 md:py-2 py-1 lg:w-[250px] md:w-[200px]  rounded-full ${tab === "India"
-                    ? "bg-[#C40808] text-white"
-                    : " text-[#0E313A]"
+                    ? "bg-primary-red text-primary-white"
+                    : " text-primary-navyblue"
                   }`}
                 onClick={() => setTab("India")}
               >
@@ -300,8 +300,8 @@ const handleSubmit = async (e: React.FormEvent) => {
               </button>
               <button
                 className={`font-bold px-6 md:py-2 py-1 lg:w-[250px] md:w-[200px] rounded-full ${tab === "International"
-                    ? "bg-[#c40808] text-white"
-                    : "bg-white text-[#0E313A]"
+                    ? "bg-primary-red text-primary-white"
+                    : "bg-white text-primary-navyblue"
                   }`}
                 onClick={() => setTab("International")}
               >
@@ -313,18 +313,18 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="grid md:grid-cols-3 lg:gap-10 md:gap-4 gap-10 pt-3">
               {branchesIndia.map((branch, idx) => (
                 <div key={idx} className="w-[80%]">
-                  <div className="w-10 h-1 bg-[#002661]" />
-                  <div className="font-bold text-[#002661] text-xl mb-1 mt-3">
+                  <div className="w-10 h-1 bg-primary-navyblue" />
+                  <div className="font-bold text-primary-navybluetext-xl mb-1 mt-3">
                     {branch.city}
                   </div>
-                  <div className="text-[#002661] font-semibold opacity-[80%] text-sm mb-4">
+                  <div className="text-primary-navybluefont-semibold opacity-[80%] text-sm mb-4">
                     {branch.address}
                   </div>
                   <div className="flex gap-2">
                     {branch.icons.map((icon, iIdx) => (
                       <div
                         key={iIdx}
-                        className="flex justify-center items-center w-8 h-8 text-[#002661] md:border-2 border border-[#002661]"
+                        className="flex justify-center items-center w-8 h-8 text-primary-navybluemd:border-2 border border-primary-navyblue"
                       >
                         {icon}
                       </div>

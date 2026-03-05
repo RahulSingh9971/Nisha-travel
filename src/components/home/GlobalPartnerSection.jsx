@@ -105,13 +105,13 @@ export default function GlobalPartnerSection() {
         {/* Left Column: Text Content */}
         <div className="md:pr-8 relative z-10">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight">
-            <span className="text-[#C40808] block mb-3">Trusted Global</span>
-            <span className="text-[#0E313A]">Visa Partner</span>
+            <span className="text-primary-red block mb-3">Trusted Global</span>
+            <span className="text-primary-navyblue">Visa Partner</span>
           </h2>
           <p className="mt-6 text-gray-600 leading-[26px]">
             With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide.
           </p>
-          <button className="mt-28 bg-[#C40808] hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
+          <button className="mt-28 bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
             • KNOW MORE •
           </button>
         </div>
@@ -126,8 +126,8 @@ export default function GlobalPartnerSection() {
           {/* Main stats bubbles */}
           <StatCircle
             size={130}
-            bgColor="bg-[#C40808]"
-            textColor="text-white"
+            bgColor="bg-primary-red"
+            textColor="text-primary-white"
             value="50k+"
             label="Customer Globally"
             valueSize="text-3xl font-extrabold"
@@ -162,7 +162,7 @@ export default function GlobalPartnerSection() {
           <StatCircle
             size={140}
             bgColor="bg-[#002661]"
-            textColor="text-white"
+            textColor="text-primary-white"
             value="33"
             label="Years of Overseas Recruitment"
             valueSize="text-4xl font-extrabold"

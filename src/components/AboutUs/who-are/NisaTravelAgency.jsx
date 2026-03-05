@@ -34,16 +34,16 @@ function NisaTravelAgency() {
   ];
 
   return (
-    <section className="bg-[#EAF0F6] font-manrope md:pt-8 md:pb-16 py-10">
+    <section className="bg-primary-lightblue font-manrope md:pt-8 md:pb-16 py-10">
       <div className="max-w-7xl mx-auto lg:px-8 md:px-12 px-4">
         <div className="grid lg:grid-cols-2 gap-5 mb-10 justify-between items-center">
           <h1 className="md:text-4xl text-3xl font-extrabold tracking-wide leading-10">
-            <span className="font-medium font-renfrew text-[#C40808]">Nisa Travel Agency</span>
-            <span className="font-extrabold  block text-[#253858] ">is Registered &amp;</span>
-            <span className="font-extrabold  text-[#253858]">Authorized by MEA</span>
+            <span className="font-medium font-renfrew text-primary-red">Nisa Travel Agency</span>
+            <span className="font-extrabold  block text-primary-gray ">is Registered &amp;</span>
+            <span className="font-extrabold  text-primary-gray">Authorized by MEA</span>
           </h1>
           <div className=" flex justify-end">
-            <p className="max-w-xl text-[#666666] text-[16px] leading-7 font-medium">
+            <p className="max-w-xl text-primary-gray text-[16px] leading-7 font-medium">
               Under the Emigration Act, 1983, Recruiting Agents (RAs) are
               required to register with the Protector General of Emigrants (PGE)
               or the respective Protector of Emigrants (PoE) based on their
@@ -59,10 +59,10 @@ function NisaTravelAgency() {
           {features.map((item, index) => (
             <div key={index} className="flex flex-col items-start gap-2">
               <img src={item.icon} alt={item.title} className="w-auto h-14" />
-              <h3 className="font-extrabold md:pt-[24px] pt-[18px] text-[22px] text-[#253858]">
+              <h3 className="font-extrabold md:pt-[24px] pt-[18px] text-[22px] text-primary-gray">
                 {item.title}
               </h3>
-              <p className="text-[#666666] text-[16px] leading-7 font-medium">{item.desc}</p>
+              <p className="text-primary-gray text-[16px] leading-7 font-medium">{item.desc}</p>
             </div>
           ))}
         </div>

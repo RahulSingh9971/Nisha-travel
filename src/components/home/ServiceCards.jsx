@@ -35,17 +35,17 @@ export default function ServiceCards() {
           {services.map((service, index) => (
             <div key={index} className="border-[#0E313A33] border bg-white shadow-lg flex flex-col mx-2">
               <div className="p-6 flex-grow">
-                <h3 className="text-[18px] font-extrabold text-[#0E313A] mb-2">
+                <h3 className="text-[18px] font-extrabold text-primary-navyblue mb-2">
                   {service.title}
                 </h3>
-                <p className="text-[#0E313A] font-semibold text-sm leading-relaxed">
+                <p className="text-primary-navyblue font-semibold text-sm leading-relaxed">
                   {service.description}
                 </p>
               </div>
               <div className="px-0 pb-0 pt-2">
              <Link  to={service.link}><button
                
-                  className="w-full bg-[#002661] font-extrabold text-left px-6 hover:bg-[#C40808] text-white font-semibold py-3 text-[14px] rounded-none"
+                  className="w-full bg-[#002661] font-extrabold text-left px-6 hover:bg-primary-red text-primary-white font-semibold py-3 text-[14px] rounded-none"
                   variant="default"
                 >
                   {service.buttonText}

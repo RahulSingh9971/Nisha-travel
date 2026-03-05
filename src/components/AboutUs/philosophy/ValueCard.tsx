@@ -15,10 +15,10 @@ interface ValueCardProps {
 const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description }) => (
   <div className="flex flex-col items-center text-center space-y-6 px-3">
     <img src={icon} alt="icon" className="h-auto w-14" />
-    <h3 className="font-extrabold md:text-2xl text-xl text-[#002661]">
+    <h3 className="font-extrabold md:text-2xl text-xl text-primary-navyblue">
       {title}
     </h3>
-    <p className="text-[15px] text-[#666666] font-medium">{description}</p>
+    <p className="text-[15px] text-primary-gray font-medium">{description}</p>
   </div>
 );
 
@@ -60,7 +60,7 @@ const ValuesSection: React.FC = () => {
     <section className="">
       <div className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 md:py-16 py-10 ">
         <div className="flex justify-center">
-          <p className="max-w-xl text-center text-[16px] text-[#002661] mb-8">
+          <p className="max-w-xl text-center text-[16px] text-primary-navybluemb-8">
             At Nisa Travel Agency, our work is guided by principles that have
             defined us for over three decades. Every decision, every service,
             and every journey we facilitate is rooted in values that put people
@@ -78,14 +78,14 @@ const ValuesSection: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="bg-[#EAF0F6]">
+      <div className="bg-primary-lightblue">
         <div className="grid md:grid-cols-2 font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4  md:py-16 py-10 ">
           <div></div>
           <div className=" max-w-xl">
-            <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-[#002661] mb-3">
+            <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-primary-navybluemb-3">
               Our Promise
             </h2>
-            <p className="text-[#666666] text-[16px] font-medium mx-auto">
+            <p className="text-primary-gray text-[16px] font-medium mx-auto">
               Your success is our success. Every placement, every opportunity,
               and every milestone we achieve reflects our unwavering commitment
               to families, careers, and dreams fulfilled.
