@@ -348,15 +348,18 @@ export default function Header() {
             //     }
             //   ]
             // },
-            {id: "Industries", title: "Industries" },
-            {id: "jobs",
+            { id: "Industries", title: "Industries" },
+            {
+              id: "jobs",
               title: "Jobs Abroad",
               to: "/jobs"
             },
-            {id: "Foreign",
+            {
+              id: "Foreign",
               title: "Foreign Employers (FE)"
             },
-            {id: "Emigrants",
+            {
+              id: "Emigrants",
               title: "Emigrants"
             }
           ]
@@ -446,46 +449,44 @@ export default function Header() {
         </motion.div>
       </div>
       {/* Top bar with logo, approval, and track button */}
-      <div className="max-w-7xl lg:px-6 md:pr-12 md:pl-8 pr-[16px] mx-auto ">
-        <div className="flex justify-between items-center py-1 lg:pr-4">
-          <div className="flex items-center xl:space-x-4 md:space-x-2">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <img
-                src={logo}
-                alt="Nisa Travel Agency Logo"
-                className="xl:h-[69px] md:h-[80px] h-[60px]"
-              />
-            </Link>
-            {/* Approval Info */}
-            <div className="hidden lg:block border-l pl-4">
-              <p className="text-primary-teal xl:text-[14px] md:text-[13px] font-normal xl:leading-[22px] md:leading-[20px]">
-                Approved by
-                <span className="font-extrabold block">
-                  {" "}
-                  The Ministry of External Affairs, Government of India
-                </span>
-                <span className="block">
-                  {" "}
-                  License No: B0646/DEL/PER/1000+/5/7922/2007
-                </span>
-              </p>
+      <div className={`${isScrolled ? "fixed top-0 left-0 w-full shadow-md" : "relative"} bg-white z-50 transition-all duration-300`}>
+        <div className="max-w-7xl mx-auto lg:px-6 md:pr-12 md:pl-8 pr-[16px]">
+          <div className="flex justify-between items-center py-1 lg:pr-4">
+            <div className="flex items-center xl:space-x-4 md:space-x-2">       
+              <Link to="/" className="flex items-center">
+                <img
+                  src={logo}
+                  alt="Nisa Travel Agency Logo"
+                  className="xl:h-[69px] md:h-[80px] h-[60px]"
+                />
+              </Link>             
+              <div className="hidden lg:block border-l pl-4">
+                <p className="text-primary-teal xl:text-[14px] md:text-[13px] font-normal xl:leading-[22px] md:leading-[20px]">
+                  Approved by
+                  <span className="font-extrabold block">
+                    {" "}
+                    The Ministry of External Affairs, Government of India
+                  </span>
+                  <span className="block">
+                    {" "}
+                    License No: B0646/DEL/PER/1000+/5/7922/2007
+                  </span>
+                </p>
+              </div>
             </div>
+            <button className="lg:block hidden bg-primary-red hover:bg-red-700 text-primary-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
+              TRACK HERE
+            </button>
+            <MdOutlineMenu
+              onClick={() => setSidebarOpen(true)}
+              className="md:text-[48px] text-[30px] block lg:hidden text-accent-orange"
+            />
           </div>
-
-          {/* Track Here Button */}
-          <button className="lg:block hidden bg-accent-orange hover:bg-red-700 text-primary-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
-            TRACK HERE
-          </button>
-          <MdOutlineMenu
-            onClick={() => setSidebarOpen(true)}
-            className="md:text-[48px] text-[30px] block lg:hidden text-accent-orange"
-          />
         </div>
       </div>
 
       <div className={`lg:block  lg:w-full hidden bg-primary-red z-50 transition-all duration-300 
-  ${isScrolled ? "lg:fixed top-0" : "lg:block"}`}>
+  ${isScrolled ? "lg:fixed top-[76px]" : "lg:block"}`}>
         <div className="xl:px-[90px] mx-auto relative ">
           <nav className="flex items-center justify-end h-12">
             <div className="flex items-center space-x-8 font-poppins">
