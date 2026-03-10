@@ -2,6 +2,7 @@ import OurServices from "../components/services/OurServices";
 import whoWeAreBannerImg from "../assets/images/gallery4.jpg";
 import BannerSection from "../components/AboutUs/BannerSection";
 import RealWorldServices from "../components/services/RealWorldServices";
+import SecurityAndPartners from "../components/SecurityAndPartners";
 
 const path = [
   { label: "service / visa", href: "/service/visa/coreservices" },
@@ -17,6 +18,7 @@ const ServicesPage = () => {
         path={path}
       />
       <OurServices />
+      <SecurityAndPartners/>
       <RealWorldServices />
     </main>
   );

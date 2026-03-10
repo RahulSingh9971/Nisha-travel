@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/fulllogo.svg";
 import { MdOutlineMenu } from "react-icons/md";
 import Sidebar from "./Sidebar";
@@ -80,7 +80,8 @@ export default function Header() {
               to: "/recruitment",
               col2: [
                 {
-                  title: "Industries"
+                  title: "Industries",
+                  to:"/visaservices"
                 },
                 {
                   title: "Jobs Abroad",
@@ -348,7 +349,7 @@ export default function Header() {
             //     }
             //   ]
             // },
-            { id: "Industries", title: "Industries" },
+            { id: "Industries", title: "Industries" ,to:"/visaservices"},
             {
               id: "jobs",
               title: "Jobs Abroad",
@@ -370,7 +371,6 @@ export default function Header() {
     { title: "Contact", to: "/contact" }
   ];
 
-  const navigate = useNavigate();
 
   // parent + active items
   const [activeParent, setActiveParent] = useState(null);

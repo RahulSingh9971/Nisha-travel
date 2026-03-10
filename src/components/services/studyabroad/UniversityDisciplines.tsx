@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { LuCirclePlus } from "react-icons/lu";
 import { RxCrossCircled } from "react-icons/rx";
 import { IconType } from "react-icons";
@@ -19,6 +19,7 @@ import roadmap from '../../../assets/images/road-map.png'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import SecurityAndPartners from '../../SecurityAndPartners';
 
 const IoIosArrowBackIcon = IoIosArrowBack as React.ElementType;
 const IoIosArrowForwardIcon = IoIosArrowForward as React.ElementType;
@@ -62,25 +63,25 @@ const faqs: FAQItem[] = [
     iconOpen: LuCirclePlus,
     iconClosed: RxCrossCircled,
   },
-    {
+  {
     question: "What are the requirements for a student visa?",
     answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
     iconOpen: LuCirclePlus,
     iconClosed: RxCrossCircled,
   },
-    {
+  {
     question: "Can I work while studying abroad?",
     answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
     iconOpen: LuCirclePlus,
     iconClosed: RxCrossCircled,
   },
-    {
+  {
     question: "What are the requirements for a student visa?",
     answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
     iconOpen: LuCirclePlus,
     iconClosed: RxCrossCircled,
   },
-     {
+  {
     question: "What are the requirements for a student visa?",
     answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
     iconOpen: LuCirclePlus,
@@ -172,7 +173,7 @@ const UniversityDisciplines: React.FC = () => {
     },
     // Add more items to see the slider in action!
   ];
-    const Programs = [
+  const Programs = [
     { title: "Free Counseling & Profile Assessment", img: "https://images.unsplash.com/photo-1498243639159-04980f576212?q=80&w=800" },
     { title: "STEM Programs", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" },
     { title: "Medicine Programs", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800" },
@@ -180,7 +181,7 @@ const UniversityDisciplines: React.FC = () => {
     { title: "Arts & Commerce Programs", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800" },
     { title: "Film Making Programs", img: "https://images.unsplash.com/photo-1523050853023-8c2d27443ef8?q=80&w=800" }
   ];
-const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -189,7 +190,7 @@ const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
     <>
       <section className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 py-5 grid grid-cols-1 lg:grid-cols-2 xl:gap-20 lg:gap-10 gap-14 items-center">
-        
+
         <div className="lg:max-w-xl md:max-w-lg">
           <p className='text-[14px] text-primary-red'>{'Home > Service > Study Abroad'}</p>
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4 mt-1">
@@ -200,9 +201,9 @@ const [activeIndex, setActiveIndex] = useState<number | null>(null);
           </p>
           <div className="flex gap-5 items-center pt-8 font-bold text-[14px]">
             <button className="uppercase text-primary-white bg-primary-red px-6 py-2 ">
-             Book a Free Consultation
+              Book a Free Consultation
             </button>
-            
+
           </div>
         </div>
         <img
@@ -259,65 +260,65 @@ const [activeIndex, setActiveIndex] = useState<number | null>(null);
       <section className="max-w-7xl mx-auto px-0 py-10 relative">
         <h2 className="text-4xl font-bold text-center text-primary-navyblue mb-12">Find a Course</h2>
 
-      <div className='xl:px-0 lg:px-10 md:px-0'>
+        <div className='xl:px-0 lg:px-10 md:px-0'>
           <Swiper
-          modules={[Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation={{
-            nextEl: '.next-button',
-            prevEl: '.prev-button',
-          }}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="relative"
-        >
-          {courseData.map((course) => (
-            <SwiperSlide key={course.id}>
-              <div className="flex flex-col items-center">
-                {/* Image Container */}
-                <div className="relative aspect-[1.1/0.8] overflow-hidden rounded-2xl shadow-sm">
-                  {/* {course.overlayText && (
+            modules={[Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.next-button',
+              prevEl: '.prev-button',
+            }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="relative"
+          >
+            {courseData.map((course) => (
+              <SwiperSlide key={course.id}>
+                <div className="flex flex-col items-center">
+                  {/* Image Container */}
+                  <div className="relative aspect-[1.1/0.8] overflow-hidden rounded-2xl shadow-sm">
+                    {/* {course.overlayText && (
                     <div className="absolute inset-0 bg-red-900/40 z-10 flex items-center p-8">
                       <p className="text-white text-2xl font-bold leading-tight w-2/3 uppercase">
                         {course.overlayText}
                       </p>
                     </div>
                   )} */}
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-[300px] h-full object-cover"
-                  />
-                </div>
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-[300px] h-full object-cover"
+                    />
+                  </div>
 
-                {/* Text Section */}
-                <div className="mt-3 max-w-[80%] text-center space-y-2">
-                  <h3 className="text-primary-navyblue font-extrabold text-[19px] leading-snug min-h-[3rem]">
-                    {course.title}
-                  </h3>
-                  <a
-                    href={course.link}
-                    className="inline-block text-primary-red font-bold text-[12px] uppercase tracking-wide hover:underline decoration-2 underline-offset-4"
-                  >
-                    Know More
-                  </a>
+                  {/* Text Section */}
+                  <div className="mt-3 max-w-[80%] text-center space-y-2">
+                    <h3 className="text-primary-navyblue font-extrabold text-[19px] leading-snug min-h-[3rem]">
+                      {course.title}
+                    </h3>
+                    <a
+                      href={course.link}
+                      className="inline-block text-primary-red font-bold text-[12px] uppercase tracking-wide hover:underline decoration-2 underline-offset-4"
+                    >
+                      Know More
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
 
-          {/* Custom Navigation Buttons */}
-          <button className="prev-button absolute left-[-10px] top-[40%] -translate-y-1/2 z-20 p-2 text-gray-800 hover:text-primary-red transition-colors">
-            <IoIosArrowBackIcon size={32} strokeWidth={3} />
-          </button>
-          <button className="next-button absolute right-[-10px] top-[40%] -translate-y-1/2 z-20 p-2 text-gray-800 hover:text-primary-red transition-colors">
-            <IoIosArrowForwardIcon size={32} strokeWidth={3} />
-          </button>
-        </Swiper>
-      </div>
+            {/* Custom Navigation Buttons */}
+            <button className="prev-button absolute left-[-10px] top-[40%] -translate-y-1/2 z-20 p-2 text-gray-800 hover:text-primary-red transition-colors">
+              <IoIosArrowBackIcon size={32} strokeWidth={3} />
+            </button>
+            <button className="next-button absolute right-[-10px] top-[40%] -translate-y-1/2 z-20 p-2 text-gray-800 hover:text-primary-red transition-colors">
+              <IoIosArrowForwardIcon size={32} strokeWidth={3} />
+            </button>
+          </Swiper>
+        </div>
       </section>
       <section className="max-w-7xl mx-auto px-4 py-10 space-y-10">
         {/* Top Section: Image Left, Text Right */}
@@ -380,6 +381,7 @@ const [activeIndex, setActiveIndex] = useState<number | null>(null);
         <img src={mapimg} alt='map-image' />
         <div className='absolute bottom-10 xl:px-[140px] lg:px-[100px] md:px-[50px]'> <p className='text-primary-white text-[14px]  text-center'>United Kingdom, Ireland, Germany, Canada, New Zealand, Australia, United States of America, France, Netherlands, Italy, Sweden, Switzerland, Denmark, Malaysia, Singapore, Japan, South Korea, China, United Arab Emirates, Russia, Bulgaria, Georgia, Kazakhstan, Uzbekistan, Philippines, Ukraine</p></div>
       </section>
+      <SecurityAndPartners/>
       <section className="relative w-full mx-auto py-20 bg-white overflow-hidden">
         {/* Header Section */}
         <div className="xl:mb-12 md:mb-0 xl:pl-20 md:pl-10 pl-5">
@@ -454,84 +456,83 @@ const [activeIndex, setActiveIndex] = useState<number | null>(null);
       </section>
       <section className='max-w-7xl mx-auto px-4 py-12'>
         <div className="bg-[#ED1A3A] text-white p-8 md:p-12 rounded-[30px] flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-      {/* Left Side: Logo */}
-      <div className="text-6xl md:text-8xl font-black tracking-tighter">
-        IELTS<span className="text-sm font-normal align-top text-primary-navyblue">™</span>
-      </div>
+          {/* Left Side: Logo */}
+          <div className="text-6xl md:text-8xl font-black tracking-tighter">
+            IELTS<span className="text-sm font-normal align-top text-primary-navyblue">™</span>
+          </div>
 
-      {/* Right Side: Content */}
-      <div className="flex flex-col gap-6 lg:mr-28">
-        <ul className="space-y-2 list-disc list-inside text-sm md:text-base font-bold">
-          <li>Book an IELTS Test</li>
-          <li>What is IELTS?</li>
-          <li>IELTS Preparation & Training</li>
-        </ul>
-        
-        <button className="bg-primary-white text-primary-navyblue font-bold py-2 px-6 hover:bg-gray-100 transition-colors w-fit uppercase text-sm tracking-wider">
-          Prepare for IELTS
-        </button>
-      </div>
-    </div>
-    <div className="py-16 px-4 text-center max-w-2xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-primary-navyblue mb-2">
-        Prefer to <span className="text-primary-red">Study in India</span>
-      </h2>
-      
-      <p className="text-primary-navyblue font-extrabold text-lg leading-relaxed mb-8">
-        We also assist students with admissions to leading Indian universities 
-        and institutions, helping them choose the right course and college 
-        based on their career goals.
-      </p>
+          {/* Right Side: Content */}
+          <div className="flex flex-col gap-6 lg:mr-28">
+            <ul className="space-y-2 list-disc list-inside text-sm md:text-base font-bold">
+              <li>Book an IELTS Test</li>
+              <li>What is IELTS?</li>
+              <li>IELTS Preparation & Training</li>
+            </ul>
 
-      <button className="bg-primary-red text-white font-bold py-2 px-8 hover:bg-red-700 transition-all uppercase text-sm tracking-wide">
-        Explore Study in India
-      </button>
-    </div>
+            <button className="bg-primary-white text-primary-navyblue font-bold py-2 px-6 hover:bg-gray-100 transition-colors w-fit uppercase text-sm tracking-wider">
+              Prepare for IELTS
+            </button>
+          </div>
+        </div>
+        <div className="py-16 px-4 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary-navyblue mb-2">
+            Prefer to <span className="text-primary-red">Study in India</span>
+          </h2>
+
+          <p className="text-primary-navyblue font-extrabold text-lg leading-relaxed mb-8">
+            We also assist students with admissions to leading Indian universities
+            and institutions, helping them choose the right course and college
+            based on their career goals.
+          </p>
+
+          <button className="bg-primary-red text-white font-bold py-2 px-8 hover:bg-red-700 transition-all uppercase text-sm tracking-wide">
+            Explore Study in India
+          </button>
+        </div>
       </section>
-       <section className="bg-[#EAF0F6] lg:px-8 md:px-12 px-4 pt-5 font-manrope">
-      <div className=" text-center mb-10">
-        <h2 className="md:text-5xl text-3xl font-extrabold lg:leading-[64px] mb-2">
-          <span className="text-primary-red block md:mb-3">Frequently</span>
-          <span className="text-[#06213F]  ">Asked Questions</span>
-        </h2>
-      </div>
+      <section className="bg-[#EAF0F6] lg:px-8 md:px-12 px-4 pt-5 font-manrope">
+        <div className=" text-center mb-10">
+          <h2 className="md:text-5xl text-3xl font-extrabold lg:leading-[64px] mb-2">
+            <span className="text-primary-red block md:mb-3">Frequently</span>
+            <span className="text-[#06213F]  ">Asked Questions</span>
+          </h2>
+        </div>
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
-        {faqs.map((faq, idx) => {
-          // Yahan check ho raha hai ki ye wala index open hai ya nahi
-          const isOpen = activeIndex === idx;
-          const IconComponent = (isOpen ? faq.iconClosed : faq.iconOpen) as React.ElementType;
-          return (
-            <div
-              key={idx}
-              className={`bg-primary-white rounded-3xl mb-4 px-6 py-5 transition-all duration-300 shadow-sm cursor-pointer ${
-                isOpen ? "border border-[#c3d5eb]" : ""
-              }`}
-              onClick={() => toggleFAQ(idx)}
-            >
-              <div className="flex items-center justify-between font-extrabold text-[#002661]">
-                <span className="text-lg">{faq.question}</span>
-                <span>
-                  <IconComponent className="font-extrabold text-[25px]" />
-                </span>
-              </div>
-              
-              {isOpen && (
-                <div className="max-w-[80%] mt-2 text-[#002661] text-sm">
-                  {faq.answer}
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+          {faqs.map((faq, idx) => {
+            // Yahan check ho raha hai ki ye wala index open hai ya nahi
+            const isOpen = activeIndex === idx;
+            const IconComponent = (isOpen ? faq.iconClosed : faq.iconOpen) as React.ElementType;
+            return (
+              <div
+                key={idx}
+                className={`bg-primary-white rounded-3xl mb-4 px-6 py-5 transition-all duration-300 shadow-sm cursor-pointer ${isOpen ? "border border-[#c3d5eb]" : ""
+                  }`}
+                onClick={() => toggleFAQ(idx)}
+              >
+                <div className="flex items-center justify-between font-extrabold text-[#002661]">
+                  <span className="text-lg">{faq.question}</span>
+                  <span>
+                    <IconComponent className="font-extrabold text-[25px]" />
+                  </span>
                 </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
 
-      <div className="flex justify-center mt-10">
-        <button className="bg-primary-red text-primary-white font-bold px-8 py-3 shadow hover:bg-red-700 transition">
-          Book a Free Consultation
-        </button>
-      </div>
-    </section>
+                {isOpen && (
+                  <div className="max-w-[80%] mt-2 text-[#002661] text-sm">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <button className="bg-primary-red text-primary-white font-bold px-8 py-3 shadow hover:bg-red-700 transition">
+            Book a Free Consultation
+          </button>
+        </div>
+      </section>
     </>
   );
 };

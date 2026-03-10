@@ -1,6 +1,6 @@
 import { useState } from "react";
-import redStar from "../.././assets/images/redStar.png";
-import sectionSixHero from "../.././assets/images/section-six-hero.png";
+import redStar from "../assets/images/redStar.png";
+import sectionSixHero from "../assets/images/section-six-hero.png";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { IoIosArrowDown } from "react-icons/io";
@@ -55,7 +55,7 @@ const TestimonialCard: React.FC<Testimonial> = ({
   </div>
 );
 
-const VisaContact: React.FC = () => {
+const ContactSection: React.FC = () => {
  const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
    const [formData, setFormData] = useState<FormData>({
      name: "",
@@ -66,48 +66,7 @@ const VisaContact: React.FC = () => {
      message: "",
    });
    const [phoneError, setPhoneError] = useState("");
-  // const testimonials: Testimonial[] = [
-  //   {
-  //     rating: "5.0",
-  //     title: "Best Visa Agency!",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  //     name: "Tiffany",
-  //     location: "from Canada",
-  //     avatar:
-  //       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
-  //   },
-  //   {
-  //     rating: "5.0",
-  //     title: "Best Visa Agency!",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  //     name: "Tiffany",
-  //     location: "from Canada",
-  //     avatar:
-  //       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
-  //   },
-  //   {
-  //     rating: "5.0",
-  //     title: "Best Visa Agency!",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  //     name: "Tiffany",
-  //     location: "from Canada",
-  //     avatar:
-  //       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
-  //   },
-  //   {
-  //     rating: "5.0",
-  //     title: "Best Visa Agency!",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-  //     name: "Tiffany",
-  //     location: "from Canada",
-  //     avatar:
-  //       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
-  //   },
-  // ];
+  
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -287,4 +246,4 @@ const VisaContact: React.FC = () => {
     </section>
   );
 };
-export default VisaContact;
+export default ContactSection;
