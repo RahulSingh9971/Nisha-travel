@@ -60,8 +60,14 @@ const FAQCard: React.FC<{ faq: FAQItem }> = ({ faq }) => {
 const ChevronUp = FiChevronUp as React.ElementType;
 const ChevronDown = FiChevronDown as React.ElementType;
 
-const StampingCard: React.FC<{ stamping: StampingRecord }> = ({ stamping }) => {
-  const [open, setOpen] = useState(true); // default open like screenshot
+const StampingCard: React.FC<{ stamping: StampingRecord; index: number }> = ({ stamping, index }) => {
+  const [open, setOpen] = useState(() => {
+    if (typeof window !== "undefined") {
+      const isMobile = window.innerWidth < 768; // md breakpoint in Tailwind is 768px
+      return isMobile ? index < 1 : index < 2;
+    }
+    return index < 2;
+  });
 
   return (
     <div className="border border-gray-200 rounded-lg bg-white overflow-hidden mb-4">
@@ -271,8 +277,8 @@ const VisaStampingDetailPage: React.FC = () => {
 
             {/* Two Column Grid for Accordion Cards */}
             <div className="grid md:grid-cols-2 gap-4">
-              {filteredStampings.map(stamping => (
-                <StampingCard key={stamping.id} stamping={stamping} />
+              {filteredStampings.map((stamping, index) => (
+                <StampingCard key={stamping.id} stamping={stamping} index={index} />
               ))}
             </div>
           </>
