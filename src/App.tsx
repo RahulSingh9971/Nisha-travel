@@ -26,6 +26,7 @@ import CompactAttestation from "./pages/attestation/CompactAttestation";
 import Jobs from "./pages/JobPages/Jobs";
 import JobPosting from "./components/JobsPage/jobdetailpage/JobPosting";
 import StudyAbroadPage from "./pages/Services/StudyAbroadPage";
+import VisaStampingDetailPage from "./pages/VisaStampingDetailPage";
 import WhatsAppIcon from "./components/WhatsAppIcon";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
             <Route path="/attestationcommercial" element={<CompactAttestation />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
             <Route path="/studyabroadpage" element={<StudyAbroadPage />} />
+            <Route path="/visa-stamping/:country" element={<VisaStampingDetailPage />} />
 
           </Routes>
         </main>
