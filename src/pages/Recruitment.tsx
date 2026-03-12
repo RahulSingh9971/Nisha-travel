@@ -9,6 +9,7 @@ import DeploymentProcess from "../components/Recruitment/DeploymentProcess";
 import JobCards from "../components/JobsPage/JobCards";
 import ContactSection from "../components/JobsPage/ContactSection";
 import DownloadBrochure from "../components/JobsPage/DownloadBrochure";
+import SecurityAndPartners from "../components/SecurityAndPartners";
 
 const Recruitment = () => {
   return (
@@ -19,6 +20,7 @@ const Recruitment = () => {
       <EmigrantsCards />
       <IndustriesWeCater />
       <DeploymentProcess/>
+      <SecurityAndPartners/>
       <FAQSection />
       {/* <ServicesContactpage /> */}
       <DownloadBrochure/>
