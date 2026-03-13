@@ -377,12 +377,12 @@ const UniversityDisciplines: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className='relative'>
+      <section className='relative max-w-7xl mx-auto'>
         <img src={mapimg} alt='map-image' />
-        <div className='absolute bottom-10 xl:px-[140px] lg:px-[100px] md:px-[50px]'> <p className='text-primary-white text-[14px]  text-center'>United Kingdom, Ireland, Germany, Canada, New Zealand, Australia, United States of America, France, Netherlands, Italy, Sweden, Switzerland, Denmark, Malaysia, Singapore, Japan, South Korea, China, United Arab Emirates, Russia, Bulgaria, Georgia, Kazakhstan, Uzbekistan, Philippines, Ukraine</p></div>
+        {/* <div className='absolute bottom-10 xl:px-[140px] lg:px-[100px] md:px-[50px]'> <p className='text-primary-white text-[14px]  text-center'>United Kingdom, Ireland, Germany, Canada, New Zealand, Australia, United States of America, France, Netherlands, Italy, Sweden, Switzerland, Denmark, Malaysia, Singapore, Japan, South Korea, China, United Arab Emirates, Russia, Bulgaria, Georgia, Kazakhstan, Uzbekistan, Philippines, Ukraine</p></div> */}
       </section>
       <SecurityAndPartners/>
-      <section className="relative w-full mx-auto py-20 bg-white overflow-hidden">
+      <section className="relative max-w-7xl mx-auto py-20 bg-white overflow-hidden">
         {/* Header Section */}
         <div className="xl:mb-12 md:mb-0 xl:pl-20 md:pl-10 pl-5">
           <h2 className="text-3xl md:text-4xl font-bold text-[#002147] leading-tight max-w-md">
@@ -455,7 +455,7 @@ const UniversityDisciplines: React.FC = () => {
         </div>
       </section>
       <section className='max-w-7xl mx-auto px-4 py-12'>
-        <div className="bg-[#ED1A3A] text-white p-8 md:p-12 rounded-[30px] flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+        <div className="bg-[#C61C30] text-white p-8 md:p-12 rounded-[30px] flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
           {/* Left Side: Logo */}
           <div className="text-6xl md:text-8xl font-black tracking-tighter">
             IELTS<span className="text-sm font-normal align-top text-primary-navyblue">™</span>
