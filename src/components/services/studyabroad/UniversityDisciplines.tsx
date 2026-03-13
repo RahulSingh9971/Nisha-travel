@@ -377,14 +377,14 @@ const UniversityDisciplines: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className='relative max-w-7xl mx-auto'>
+      <section className='relative max-w-8xl mx-auto'>
         <img src={mapimg} alt='map-image' />
         {/* <div className='absolute bottom-10 xl:px-[140px] lg:px-[100px] md:px-[50px]'> <p className='text-primary-white text-[14px]  text-center'>United Kingdom, Ireland, Germany, Canada, New Zealand, Australia, United States of America, France, Netherlands, Italy, Sweden, Switzerland, Denmark, Malaysia, Singapore, Japan, South Korea, China, United Arab Emirates, Russia, Bulgaria, Georgia, Kazakhstan, Uzbekistan, Philippines, Ukraine</p></div> */}
       </section>
       <SecurityAndPartners/>
-      <section className="relative max-w-7xl mx-auto py-20 bg-white overflow-hidden">
+      <section className="relative py-20 bg-white overflow-hidden">
         {/* Header Section */}
-        <div className="xl:mb-12 md:mb-0 xl:pl-20 md:pl-10 pl-5">
+        <div className="max-w-7xl mx-auto xl:mb-12 md:mb-0 xl:pl-10 md:pl-10 pl-5">
           <h2 className="text-3xl md:text-4xl font-bold text-[#002147] leading-tight max-w-md">
             Step-by-Step Study Abroad Process
           </h2>
@@ -397,7 +397,7 @@ const UniversityDisciplines: React.FC = () => {
             <img
               src={roadmap}
               alt="Roadmap path"
-              className="w-full md:h-[620px] object-contain opacity-90"
+              className="max-w-8xl mx-auto w-full md:h-[620px] object-contain opacity-90"
             />
           </div>
 
@@ -427,7 +427,7 @@ const UniversityDisciplines: React.FC = () => {
         </div>
 
         {/* Bottom Right Description */}
-        <div className="absolute md:bottom-10 md:right-10 right-5 max-w-xs text-right block">
+        <div className="max-w-7xl mx-auto absolute md:bottom-10 md:right-10 right-5 max-w-xs text-right block">
           <p className="text-gray-500 md:text-sm text-[12px] leading-relaxed">
             A quick guide to various visa types, helping you understand their purpose, eligibility, and use for work, travel, study, medical, and family needs.
           </p>
