@@ -78,7 +78,7 @@ const JobApplyPopup: React.FC<JobApplyPopupProps> = ({ jobId, jobTitle, isOpen, 
     setFieldErrors({});
 
     const submitData = new FormData();
-    
+
     // Append text fields
     Object.entries(formData).forEach(([key, value]) => {
       if (value) {
@@ -109,7 +109,7 @@ const JobApplyPopup: React.FC<JobApplyPopupProps> = ({ jobId, jobTitle, isOpen, 
       });
 
       const result = await response.json();
-      
+
       if (response.ok && result.success) {
         setSuccessMsg(result.message || 'Application submitted successfully!');
         // Reset form or close after a delay
@@ -173,7 +173,7 @@ const JobApplyPopup: React.FC<JobApplyPopupProps> = ({ jobId, jobTitle, isOpen, 
           )}
 
           <form id="applyJobForm" onSubmit={handleSubmit} className="space-y-8">
-            
+
             {/* Basic Info */}
             <section>
               <h3 className="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Basic Info <span className="text-red-500 text-sm font-normal">*Required</span></h3>

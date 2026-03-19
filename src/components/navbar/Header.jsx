@@ -368,6 +368,7 @@ export default function Header() {
       ]
     },
     { title: "Gallery", to: "/gallery" },
+    { title: "Blog", to: "/blog" },
     { title: "Contact", to: "/contact" }
   ];
 
@@ -474,9 +475,9 @@ export default function Header() {
                 </p>
               </div>
             </div>
-            <button className="lg:block hidden bg-primary-red hover:bg-red-700 text-primary-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
+            <Link to="/track-application" className="lg:flex hidden items-center justify-center bg-primary-red hover:bg-red-700 text-primary-white text-[16px] xl:px-8 md:px-6 xl:h-[44px] md:h-[40px] font-semibold font-poppins rounded-none">
               TRACK HERE
-            </button>
+            </Link>
             <MdOutlineMenu
               onClick={() => setSidebarOpen(true)}
               className="md:text-[48px] text-[30px] block lg:hidden text-accent-orange"

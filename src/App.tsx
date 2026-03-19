@@ -28,6 +28,10 @@ import JobPosting from "./components/JobsPage/jobdetailpage/JobPosting";
 import StudyAbroadPage from "./pages/Services/StudyAbroadPage";
 import VisaStampingDetailPage from "./pages/VisaStampingDetailPage";
 import WhatsAppIcon from "./components/WhatsAppIcon";
+import TrackApplication from "./pages/TrackApplication";
+import ApplicationStatus from "./pages/ApplicationStatus";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 function App() {
   return (
@@ -65,6 +69,10 @@ function App() {
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
             <Route path="/studyabroadpage" element={<StudyAbroadPage />} />
             <Route path="/visa-stamping/:country" element={<VisaStampingDetailPage />} />
+            <Route path="/track-application" element={<TrackApplication />} />
+            <Route path="/application-status" element={<ApplicationStatus />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog-detail" element={<BlogDetailPage />} />
 
           </Routes>
         </main>
