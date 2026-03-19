@@ -377,8 +377,8 @@ const UniversityDisciplines: React.FC = () => {
           </div>
         </div>
       </section>
-      <section className='relative max-w-8xl mx-auto'>
-        <img src={mapimg} alt='map-image' />
+      <section className='relative w-full overflow-hidden'>
+        <img src={mapimg} alt='map-image' className='w-full object-cover' />
         {/* <div className='absolute bottom-10 xl:px-[140px] lg:px-[100px] md:px-[50px]'> <p className='text-primary-white text-[14px]  text-center'>United Kingdom, Ireland, Germany, Canada, New Zealand, Australia, United States of America, France, Netherlands, Italy, Sweden, Switzerland, Denmark, Malaysia, Singapore, Japan, South Korea, China, United Arab Emirates, Russia, Bulgaria, Georgia, Kazakhstan, Uzbekistan, Philippines, Ukraine</p></div> */}
       </section>
       <SecurityAndPartners/>

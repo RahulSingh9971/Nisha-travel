@@ -15,6 +15,7 @@ import {
 } from 'react-icons/fa';
 import { MdWork, MdApartment } from 'react-icons/md';
 import { API_CONFIG } from "../../../config/apiConfig"
+import JobApplyPopup from './JobApplyPopup';
 
 // ── Icon casts ──────────────────────────────────────────────
 const FaPlaneIcon = FaPlane as React.ElementType;
@@ -127,6 +128,7 @@ const JobPosting: React.FC = () => {
   const [job, setJob] = useState<JobDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isApplyPopupOpen, setIsApplyPopupOpen] = useState(false);
 
   useEffect(() => {
     if (!slug) { setError(true); setLoading(false); return; }
@@ -279,7 +281,9 @@ const JobPosting: React.FC = () => {
               )}
             </div>
 
-            <button className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
+            <button 
+              onClick={() => setIsApplyPopupOpen(true)}
+              className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors mb-12">
               APPLY HERE
             </button>
 
@@ -379,7 +383,9 @@ const JobPosting: React.FC = () => {
               </div>
             </div>
 
-            <button className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors">
+            <button 
+              onClick={() => setIsApplyPopupOpen(true)}
+              className="bg-primary-red hover:bg-red-700 text-primary-white font-bold py-2 px-8 rounded-full transition-colors">
               APPLY HERE
             </button>
           </div>
@@ -449,6 +455,14 @@ const JobPosting: React.FC = () => {
           </div>
         </div>
       </main>
+      {job && (
+        <JobApplyPopup 
+          jobId={job.id} 
+          jobTitle={job.title} 
+          isOpen={isApplyPopupOpen} 
+          onClose={() => setIsApplyPopupOpen(false)} 
+        />
+      )}
     </div>
   );
 };
