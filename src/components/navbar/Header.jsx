@@ -470,7 +470,7 @@ export default function Header() {
                   </span>
                   <span className="block">
                     {" "}
-                    License No: B0646/DEL/PER/1000+/5/7922/2007
+                    License No: B0646/DEL/PER/1000+/4¾/7922/2007
                   </span>
                 </p>
               </div>

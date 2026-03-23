@@ -72,7 +72,7 @@ function App() {
             <Route path="/track-application" element={<TrackApplication />} />
             <Route path="/application-status" element={<ApplicationStatus />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog-detail" element={<BlogDetailPage />} />
+            <Route path="/blog-detail/:slug" element={<BlogDetailPage />} />
 
           </Routes>
         </main>
