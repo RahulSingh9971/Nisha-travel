@@ -1,6 +1,8 @@
 import downloadwhite from "../../../assets/images/download-white.svg";
 import downloadred from "../../../assets/images/download-red.svg";
 import bowcher from "../../../assets/images/bowcher.webp";
+import wakalaPdf from "../../../assets/pdf/NTA Wakala.pdf";
+import { handleWakalaDownload } from "../../../utils/downloadHelpers";
 
 const Downloadbrochure: React.FC = () => (
   <>
@@ -23,7 +25,7 @@ const Downloadbrochure: React.FC = () => (
             <img src={downloadwhite} alt="downloadwhite" className="" />{" "}
             DOWNLOAD BROCHURE
           </button>
-          <button className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[18px] text-[14px] border-[3px] text-primary-red font-bold py-2 hover:shadow-md transition">
+          <button onClick={() => handleWakalaDownload(wakalaPdf)} className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[18px] text-[14px] border-[3px] text-primary-red font-bold py-2 hover:shadow-md transition">
             <img src={downloadred} alt="downloadred" className="" /> DOWNLOAD
             SAUDI WAKALA
           </button>
