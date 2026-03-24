@@ -2,7 +2,17 @@ import downloadwhite from "../../../assets/images/download-white.svg";
 import downloadred from "../../../assets/images/download-red.svg";
 import bowcher from "../../../assets/images/bowcher.webp";
 
-const Downloadbrochure: React.FC = () => (
+interface DownloadBrochureProps {
+  title: string | null | undefined;
+  description?: string | null | undefined;
+  pdfUrl: string | null | undefined;
+  bgImg: string | null | undefined;
+  saudiWakalaUrl?: string | null | undefined;
+}
+const Downloadbrochure = ({ title, description, pdfUrl, bgImg, saudiWakalaUrl }: DownloadBrochureProps) => {
+  if (!pdfUrl) return null; // PDF nahi hai toh hide kar do
+
+  return (
   <>
     <section className="bg-primary-lightblue">
 
@@ -12,33 +22,40 @@ const Downloadbrochure: React.FC = () => (
       {/* Text & Buttons */}
       <div className="flex-1">
         <h1 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-3 leading-tight">
-          <span className="text-primary-red">Download </span>
-          <span className="text-primary-navyblue"> Brochure</span>
+         <span className="text-primary-red">
+              {title?.includes("Download") ? "Download " : ""}
+            </span>
+            <span className="text-primary-navyblue">
+              {title?.replace("Download", "") || "Brochure"}
+            </span>
         </h1>
         <p className="mb-8 text-primary-gray text-base font-medium leading-7">
-          Join us on this journey as we share our expertise, ignite conversation
+         {description}
         </p>
-        <div className="flex xl:flex-row flex-col gap-3 lg:w-[80%] md:w-full w-[90%] ">
-          <button className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[18px] text-[14px] text-primary-white font-bold  py-2 hover:bg-primary-red transition">
-            <img src={downloadwhite} alt="downloadwhite" className="" />{" "}
-            DOWNLOAD BROCHURE
-          </button>
-          <button className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[18px] text-[14px] border-[3px] text-primary-red font-bold py-2 hover:shadow-md transition">
-            <img src={downloadred} alt="downloadred" className="" /> DOWNLOAD
-            SAUDI WAKALA
-          </button>
-        </div>
+       <div className="flex xl:flex-row flex-col gap-3 lg:w-[85%]">
+            {/* Main Link - Always Safe */}
+            <a href={pdfUrl || "#"} target="_blank" rel="noreferrer" className="bg-primary-red px-6 py-3 text-white font-bold text-center">
+              DOWNLOAD BROCHURE
+            </a>
+
+            {/* Saudi Wakala Link - Only show if URL exists in API */}
+          
+              <a href={saudiWakalaUrl || "#"} target="_blank" rel="noreferrer" className="border-[3px] border-primary-red text-primary-red px-6 py-3 font-bold text-center">
+                DOWNLOAD SAUDI WAKALA
+              </a>
+          </div>
       </div>
       {/* Illustration - replace with actual image */}
       <div>
         <img
-          src={bowcher} // Replace with correct img path
-          alt="Brochure Illustration"
+         src={bgImg ?? undefined} 
+  alt={title ?? "Brochure"}
           className="w-full lg:h-[300px] h-[280px]"
         />
       </div>
     </div>
   </>
 );
+};
 
 export default Downloadbrochure;

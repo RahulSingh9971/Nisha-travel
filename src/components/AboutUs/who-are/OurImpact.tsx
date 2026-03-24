@@ -143,8 +143,23 @@ const StatCircle: React.FC<StatCircleProps> = ({
     </div>
   );
 };
+interface OurImpactProps {
+  title?: string;
+  description?: string;
+  stats?: Array<{ number: string; label: string }>;
+}
+export default function OurImpact({ title, description, stats = [] }: OurImpactProps){
+  const bubbleConfigs = [
+    { size: 120, bgColor: "bg-primary-red", textColor: "text-primary-white", valueSize: "text-3xl", labelSize: "text-xs", position: "top-0 lg:left-24" },
+    { size: 240, bgColor: "bg-[#93BBD533]", textColor: "text-primary-navyblue", valueSize: "text-5xl", labelSize: "text-base", position: "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", shadow: "shadow-xl" },
+    { size: 110, bgColor: "bg-white", textColor: "text-primary-navyblue", valueSize: "text-2xl", labelSize: "text-xs", position: "top-8 right-0", shadow: "shadow-2xl" },
+    { size: 120, bgColor: "bg-primary-navyblue", textColor: "text-primary-white", valueSize: "text-4xl", labelSize: "text-xs", position: "bottom-0 right-24" },
+  ];
 
-export default function OurImpact() {
+  // AGAR STATS NAHI HAIN TO KUCH MAT DIKHAO
+  if (!stats || stats.length === 0) {
+    return null; // Ya phir aap sirf text wala column dikha sakte hain
+  }
   return (
     <section className=" overflow-hidden font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:pt-24 xl:pb-48 md:pt-16 md:pb-32 pt-10 pb-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
@@ -157,7 +172,21 @@ export default function OurImpact() {
             <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
 
             {/* Main stats bubbles */}
-            <StatCircle
+            {stats.slice(0, 4).map((stat, index) => (
+        <StatCircle
+          key={index}
+          size={bubbleConfigs[index].size}
+          bgColor={bubbleConfigs[index].bgColor}
+          textColor={bubbleConfigs[index].textColor}
+          value={stat.number}  // API data
+          label={stat.label}    // API data
+          valueSize={bubbleConfigs[index].valueSize}
+          labelSize={bubbleConfigs[index].labelSize}
+          position={bubbleConfigs[index].position}
+          shadow={bubbleConfigs[index].shadow}
+        />
+      ))}
+            {/* <StatCircle
               size={120}
               bgColor="bg-primary-red"
               textColor="text-primary-white"
@@ -198,26 +227,24 @@ export default function OurImpact() {
               valueSize="text-4xl"
               labelSize="text-xs"
               position="bottom-0 right-24"
-            />
-          </div>{" "}
+            /> */}
+          </div>
           {/* Left Column: Text Content */}
           <div className="md:order-2 order-1">
             <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight">
-              <span className="text-primary-red">Our impact</span>
+             <span className="text-primary-red">
+                {title?.includes("Our impact") ? "Our impact" : ""}
+              </span>
               <br />
-              <span className="text-primary-navyblue">speaks for itself:</span>
+              <span>{title?.replace("Our impact", "") || "speaks for itself:"}</span>
             </h2>
             <p className="mt-6 text-primary-gray text-[16px] leading-7 font-medium">
-              We have built a robust network with branch offices in Mumbai &
-              Cochin and Beyond India, our global presence extends to Kuwait,
-              Qatar, Saudi Arabia, Oman, UAE, United Kingdom, Portugal, Germany,
-              GermanyMauritius, Malaysia, Vietnam, Lesotho, and
-              Zimbabwe—strengthening our international reach and reputation.
+             {description}
             </p>
-                      <p className="mt-6 text-primary-gray text-[16px] leading-7 font-medium"> At
+                      {/* <p className="mt-6 text-primary-gray text-[16px] leading-7 font-medium"> At
               Nisa Travel Agency, we don’t just provide recruitment solutions—we
               build lasting relationships, empower businesses, and open doors to
-              new opportunities for thousands of professionals worldwide.</p>
+              new opportunities for thousands of professionals worldwide.</p> */}
            
           </div>
         </div>
