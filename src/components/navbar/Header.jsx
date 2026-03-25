@@ -173,15 +173,15 @@ export default function Header() {
                   title: "Document Attestation"
                 },
                 {
-                  to: "/attestationeducation",
+                  to: "/attestation-details",
                   title: "Kuwait Embassy"
                 },
                 {
-                  to: "/attestationprivate",
+                  to: "/attestation-details",
                   title: "Saudi Embassy"
                 },
                 {
-                  to: "/attestationcommercial",
+                  to: "/attestation-details",
                   title: "Qatar Embassy"
                 },
                 {

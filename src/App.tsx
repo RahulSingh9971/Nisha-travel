@@ -14,15 +14,10 @@ import GalleryPage from "./pages/GalleryPage";
 import ServicesPage from "./pages/Services";
 import VisaPage from "./pages/VisaPage";
 import AboutJourneyAwards from "./pages/About/AboutJourneyAwards";
-import PrivacyPolicy from "./components/policy/PrivacyPolicy";
-import PaymentPolicy from "./components/policy/PaymentPolicy";
-import RefundPolicy from "./components/policy/RefundPolicy";
-import Termconditions from "./components/policy/Termconditions";
+import PolicyPage from "./pages/PolicyPage";
 import ScrollToTop from "./components/ScrollTotop";
+import AttestationDetails from "./pages/attestation/AttestationDetails";
 import Attestation from "./pages/attestation/Attestation";
-import EducationalAttestation from "./pages/attestation/EducationalAttestation";
-import PrivateAttestation from "./pages/attestation/PrivateAttestation";
-import CompactAttestation from "./pages/attestation/CompactAttestation";
 import Jobs from "./pages/JobPages/Jobs";
 import JobPosting from "./components/JobsPage/jobdetailpage/JobPosting";
 import StudyAbroadPage from "./pages/Services/StudyAbroadPage";
@@ -49,35 +44,32 @@ function App() {
             <Route path="/about/leadership" element={<AboutLeadership />} />
             <Route path="/about/philosophy" element={<AboutPhilosophy />} />
             <Route path="/about/corporate" element={<AboutCorporate />} />
-            <Route
-              path="/ourcoreservices"
-              element={<ServicesPage />}
-            />
+            <Route path="/ourcoreservices" element={<ServicesPage />} />
             <Route path="/recruitment" element={<Recruitment />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/visaservices" element={<VisaPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-            <Route path="/paymentpolicy" element={<PaymentPolicy />} />
-            <Route path="/refundpolicy" element={<RefundPolicy />} />
-            <Route path="/termconditions" element={<Termconditions />} />
+            <Route path="/policies/:slug" element={<PolicyPage />} />
             <Route path="/attestationdocument" element={<Attestation />} />
-            <Route path="/attestationeducation" element={<EducationalAttestation />} />
-            <Route path="/attestationprivate" element={<PrivateAttestation />} />
-            <Route path="/attestationcommercial" element={<CompactAttestation />} />
+            <Route path="/attestation-details" element={<AttestationDetails />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
             <Route path="/studyabroadpage" element={<StudyAbroadPage />} />
-            <Route path="/visa-stamping/:country" element={<VisaStampingDetailPage />} />
+            <Route
+              path="/visa-stamping/:country"
+              element={<VisaStampingDetailPage />}
+            />
             <Route path="/track-application" element={<TrackApplication />} />
             <Route path="/application-status" element={<ApplicationStatus />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog-detail/:slug" element={<BlogDetailPage />} />
-
           </Routes>
         </main>
         <Footer />
-        <WhatsAppIcon phoneNumber="9958218855" message="I'm interested in your services!" />
+        <WhatsAppIcon
+          phoneNumber="9958218855"
+          message="I'm interested in your services!"
+        />
       </div>
     </BrowserRouter>
   );
