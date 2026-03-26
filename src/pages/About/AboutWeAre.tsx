@@ -9,73 +9,85 @@ import WhoWeAre from "../../components/AboutUs/who-are/WhoWeAre";
 import { API_CONFIG } from "../../config/apiConfig"
 import NisaTravelAgency from "../../components/AboutUs/who-are/NisaTravelAgency";
 
-
-// Define the path for breadcrumb
-const path = [
-  // { label: "Home", href: "/" },
-  { label: "Who We Are", href: "/about/weare" },
-  { label: "Who We Are?" }
-];
-
 const AboutWeAre = () => {
   const [apiData, setApiData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // 2. Axios call (headers ke saath)
         const response = await axios.get(`${API_CONFIG.BASE_URL}/who-we-are`, {
           headers: API_CONFIG.HEADERS
         });
-
-        // Axios mein data hamesha 'response.data' ke andar milta hai
-        const result = response.data;
-
-        if (result.success) {
-          setApiData(result.data);
-          console.log("✅ Axios Data Received:", result.data);
+        if (response.data.success) {
+          setApiData(response.data.data);
         }
       } catch (error: any) {
-        // Axios errors ko handle karna aasaan hai
         console.error("❌ Axios Error:", error.response?.data || error.message);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
+
+// --- MOVE THESE CHECKS ABOVE THE DESTRUCTURING ---
   if (loading) return <div className="py-20 text-center font-bold">Loading...</div>;
   if (!apiData) return <div className="py-20 text-center text-red-500">Failed to load data.</div>;
+
+  // Now it is safe to destructure because apiData is guaranteed to exist
+  const {
+    experience_years = 0,
+    experience_text = "",
+    title = "",
+    description_1 = "",
+    description_2 = "",
+    image_url = "",
+    impact_title = "",
+    impact_description = "",
+    stats = [],
+    mea_title = "",
+    mea_description = "",
+    mea_features = [],
+    brochure_title = "",
+    brochure_description = "",
+    brochure_pdf_url = "#",
+    brochure_bg_image_url = "",
+    saudi_wakla_pdf_url = "#"
+  } = apiData;
   return (
     <main>
-      <BannerSection title="Who We Are?" bannerImg={whoWeAreBannerImg} path={path} />
+      <BannerSection title="Who We Are?" bannerImg={whoWeAreBannerImg} position="50% 30%" />
+
       <WhoWeAre data={{
-        experience_years: apiData.experience_years,
-        experience_text: apiData.experience_text,
-        title: apiData.title,
-        description_1: apiData.description_1,
-        description_2: apiData.description_2,
-        image_url: apiData.image_url
+        experience_years,
+        experience_text,
+        title,
+        description_1,
+        description_2,
+        image_url
       }} />
-      <OurImpact title={apiData.impact_title}
-        description={apiData.impact_description}
-        stats={apiData.stats} />
 
-      <NisaTravelAgency title={apiData.mea_title}
-        description={apiData.mea_description}
-        features={apiData.mea_features} />
+      <OurImpact 
+        title={impact_title}
+        description={impact_description}
+        stats={stats} 
+      />
 
-      <Downloadbrochure title={apiData.brochure_title}
-        description={apiData.brochure_description}
-        pdfUrl={apiData.brochure_pdf_url}
-        bgImg={apiData.brochure_bg_image_url} 
-        saudiWakalaUrl={apiData.saudi_wakla_pdf_url}/>
+      <NisaTravelAgency 
+        title={mea_title}
+        description={mea_description}
+        features={mea_features} 
+      />
+
+      <Downloadbrochure 
+        title={brochure_title}
+        description={brochure_description}
+        pdfUrl={brochure_pdf_url}
+        bgImg={brochure_bg_image_url}
+        saudiWakalaUrl={saudi_wakla_pdf_url} 
+      />
     </main>
   );
 };
-
 export default AboutWeAre;
