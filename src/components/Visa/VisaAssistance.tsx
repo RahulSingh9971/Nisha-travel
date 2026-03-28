@@ -24,6 +24,8 @@ import flagUrl6 from '../../assets/images/uaeflag.png';
 import flagUrl7 from '../../assets/images/iraqflag.png';
 import SecurityAndPartners from "../SecurityAndPartners";
 import { API_CONFIG } from "../../config/apiConfig";
+import wakalaPdf from "../../assets/pdf/NTA Wakala.pdf";
+import { handleWakalaDownload } from "../../utils/downloadHelpers";
 
 const GrLocationIcon = HiOutlineLocationMarker as React.ElementType;
 const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
@@ -560,7 +562,7 @@ const VisaAssistance = () => {
                 <button className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[14px] text-[12px] text-primary-white font-bold py-2 hover:bg-primary-red transition">
                   <img src={downloadwhite} alt="downloadwhite" /> VISA DOCUMENT CHECKLIST PDF
                 </button>
-                <button className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[14px] text-[12px] border-[3px] text-primary-red font-bold py-2 transition">
+                <button onClick={() => handleWakalaDownload(wakalaPdf)} className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[14px] text-[12px] border-[3px] text-primary-red font-bold py-2 transition">
                   <img src={downloadred} alt="downloadred" /> DOWNLOAD SAUDI WAKALA
                 </button>
                 <button className="flex items-center justify-center gap-2 px-4 lg:text-[14px] text-[12px] text-primary-red font-bold py-2 transition">

@@ -37,28 +37,28 @@ export default function Footer() {
     { name: "About Us", href: "#" },
     { name: "Services", href: "#" },
     { name: "Jobs Abroad", href: "#" },
-    { name: "Recruitment", href: "#" }
+    { name: "Recruitment", href: "#" },
   ];
 
   const quickLinks2 = [
     { name: "Gallery", href: "#" },
     { name: "Contact Us", href: "#" },
-    { name: "Privacy Policy", href: "/privacypolicy" },
-    { name: "Terms Of Service", href: "/termconditions" },
-    { name: "Refund Policy", href: "/refundpolicy" }
+    { name: "Privacy Policy", href: "/policies/privacy-policy" },
+    { name: "Terms Of Service", href: "/policies/terms-conditions" },
+    { name: "Refund Policy", href: "/policies/refund-policy" },
   ];
 
   const services1 = [
     { name: "Overseas Recruitment", href: "#" },
     { name: "Visa Stamping & Assistance", href: "#" },
     { name: "Emigration & PCC Services", href: "#" },
-    { name: "Document Attestation & Apostille", href: "#" }
+    { name: "Document Attestation & Apostille", href: "#" },
   ];
 
   const services2 = [
     { name: "Air Ticketing & Holiday Packages", href: "#" },
     { name: "Healthcare Licensing", href: "#" },
-    { name: "Study Abroad Programs", href: "#" }
+    { name: "Study Abroad Programs", href: "#" },
   ];
 
   return (
@@ -142,13 +142,37 @@ export default function Footer() {
                 Part II, New Delhi 110049, INDIA.
               </p>
               <div className="flex flex-wrap gap-2 mt-2 text-[16px] uppercase text-gray-200 font-medium">
-                <a href="https://maps.app.goo.gl/zLKifqUJjs1iTbiM9" target="_blank" className=" hover:text-blue-300">New Delhi</a>
+                <a
+                  href="https://maps.app.goo.gl/zLKifqUJjs1iTbiM9"
+                  target="_blank"
+                  className=" hover:text-blue-300"
+                >
+                  New Delhi
+                </a>
                 <span className="">|</span>
-                <a href="https://maps.app.goo.gl/72xRyUbRxyjBr2Dg9" target="_blank" className=" hover:text-blue-300">Mumbai</a>
+                <a
+                  href="https://maps.app.goo.gl/72xRyUbRxyjBr2Dg9"
+                  target="_blank"
+                  className=" hover:text-blue-300"
+                >
+                  Mumbai
+                </a>
                 <span className="">|</span>
-                <a href="https://maps.app.goo.gl/G9h3kmJC4eNFbhBr6" target="_blank" className=" hover:text-blue-300">Kochi</a>
+                <a
+                  href="https://maps.app.goo.gl/G9h3kmJC4eNFbhBr6"
+                  target="_blank"
+                  className=" hover:text-blue-300"
+                >
+                  Kochi
+                </a>
                 <span className="">|</span>
-                <a href="https://maps.app.goo.gl/zTgWTVvEvE4R93ad8" target="_blank" className=" hover:text-blue-300">Kerala</a>
+                <a
+                  href="https://maps.app.goo.gl/zTgWTVvEvE4R93ad8"
+                  target="_blank"
+                  className=" hover:text-blue-300"
+                >
+                  Kerala
+                </a>
               </div>
             </div>
           </div>
