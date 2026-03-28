@@ -52,6 +52,10 @@ function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/policies/:slug" element={<PolicyPage />} />
             <Route path="/attestationdocument" element={<Attestation />} />
+            <Route path="/attestationeducation" element={<EducationalAttestation />} />
+            <Route path="/attestationprivate" element={<PrivateAttestation />} />
+            <Route path="/attestationcommercial" element={<CompactAttestation />} />
+            <Route path="/job_opening_details/:slug" element={<JobPosting />} />
             <Route path="/attestation-details" element={<AttestationDetails />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
             <Route path="/studyabroadpage" element={<StudyAbroadPage />} />

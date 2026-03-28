@@ -4,18 +4,13 @@ import BannerSection from "../components/AboutUs/BannerSection";
 import RealWorldServices from "../components/services/RealWorldServices";
 import SecurityAndPartners from "../components/SecurityAndPartners";
 
-const path = [
-  { label: "service / visa", href: "/service/visa/coreservices" },
-  { label: "our core services" }
-];
-
 const ServicesPage = () => {
   return (
     <main>
       <BannerSection
         title="Our Core Services"
         bannerImg={whoWeAreBannerImg}
-        path={path}
+         position="50% 30%"
       />
       <OurServices />
       <SecurityAndPartners/>

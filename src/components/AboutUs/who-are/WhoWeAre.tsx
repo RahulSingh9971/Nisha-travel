@@ -7,24 +7,21 @@ import sectionTwoHero from "../../../assets/images/whoweare.webp";
 const useScrollCounter = (target: number, duration = 2500) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  useEffect(() => {
-   let animationFrameId: number;
+  
+ useEffect(() => {
+    let animationFrameId: number;
+    // Reset count when target changes
+    setCount(0); 
 
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting) {
-         
+        if (entry.isIntersecting && target > 0) {
           animateCount();
-        } else {
-          
-          setCount(0);
-          cancelAnimationFrame(animationFrameId);
         }
       },
-      { threshold: 0.2 } 
+      { threshold: 0.2 }
     );
-
     const animateCount = () => {
      let startTime: number | null = null
 
@@ -95,9 +92,21 @@ export const WhoWeAre = ({ percentage, label }: { percentage: number, label: str
     </div>
   );
 };
+// Interface for API Data
+interface TrustedVisaProps {
+  data: {
+    experience_years: string;
+    experience_text: string;
+    title: string;
+    description_1: string;
+    description_2: string;
+    image_url: string;
+  };
+}
 
-export default function TrustedVisaSection() {
-  const { count: count33, ref } = useScrollCounter(33, 2500); 
+export default function TrustedVisaSection({ data }: TrustedVisaProps) {
+const targetNumber = parseInt(data?.experience_years) || 33;
+  const { count: animatedCount, ref } = useScrollCounter(targetNumber, 2500);
   const thirtyThreeStyle = {
     backgroundImage: `url(${doubleThree})`,
     backgroundSize: 'cover',
@@ -106,6 +115,8 @@ export default function TrustedVisaSection() {
     backgroundClip: 'text',
     color: 'transparent',
   };
+  // Fallback check
+  if (!data) return null;
   return (
     <section ref={ref} className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 xl:py-24 md:py-16 py-10">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -113,37 +124,27 @@ export default function TrustedVisaSection() {
         <div>
           <div className="flex items-center mb-6">
             <div className="text-8xl font-extrabold" style={thirtyThreeStyle}>
-           {count33}
+         {animatedCount}
             </div>
-            <p className="ml-4 text-lg font-extrabold text-gray-700 leading-tight">
-              Years of Overseas
-              <br />
-              Recruitment & Support
+           <p className="ml-4 text-lg font-extrabold text-gray-700 leading-tight uppercase">
+              {/* API se aaya hua experience text */}
+              {data.experience_text.split('&').map((text, i) => (
+                <span key={i}>
+                  {text.trim()} {i === 0 && <br />}
+                </span>
+              ))}
             </p>
           </div>
 
           <h2 className="font-extrabold xl:text-5xl md:text-4xl text-3xl font-bold text-primary-navyblue leading-tight">
-            Who We Are?
+           {data.title}
           </h2>
 
           <p className="md:mt-6 mt-4 text-primary-gray text-[16px] leading-7 font-medium">
-            Founded in 1992, Nisa Travel Agency is a trusted name in overseas
-            recruitment, licensed and approved by the Ministry of External
-            Affairs, Government of India (License No:
-            B-0646/DEL/PER/1000+/5/7922/2007). With our corporate office in New
-            Delhi and a strong presence across major Indian cities, we have been
-            shaping global careers and building international partnerships for
-            more than three decades.
+           {data.description_1}
           </p>
           <p className="md:mt-6 mt-4 text-primary-gray text-[16px] leading-7 font-medium">
-            Over the years, we have grown into a trusted name in overseas
-            recruitment, helping organizations worldwide find the right talent
-            while supporting individuals in achieving their career aspirations
-            abroad. Our guiding principle has always been simple—quality,
-            integrity, and excellence in service. With over 33 years of
-            expertise, we understand the ever-evolving needs of businesses and
-            candidates, and deliver solutions that are efficient, reliable, and
-            future-ready.
+          {data.description_2}
           </p>
 
         </div>
@@ -151,9 +152,10 @@ export default function TrustedVisaSection() {
         {/* Right Column */}
         <div className="relative">
           <img
-            src={sectionTwoHero}
-            alt="Woman at airport checking her watch"
-            className="w-full h-auto"
+           src={data.image_url || sectionTwoHero} // API image ya local fallback
+              alt={data.title}
+            // 
+            className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105"
           />
          
         </div>

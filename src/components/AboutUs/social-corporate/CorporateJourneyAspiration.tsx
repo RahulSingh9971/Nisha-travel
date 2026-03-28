@@ -1,12 +1,12 @@
 
 import svgimg from "../../../assets/images/Subtract.png"; // Replace with your actual image
 
-interface JourneyCTAProps {
+interface CorporateJourneyAspirationProps {
   title?: string;
   image?: string;
 }
 
-export const JourneyCTA: React.FC<JourneyCTAProps> = ({ title, image }) => (
+export const CorporateJourneyAspiration: React.FC<CorporateJourneyAspirationProps> = ({ title, image }) => (
   <section className="relative md:py-16 pt-10">
   <div className="font-manrope max-w-7xl mx-auto lg:px-8 md:px-12 px-4 ">
       <div className="relative z-10  grid md:grid-cols-2 grid-cols-1 items-center justify-between">

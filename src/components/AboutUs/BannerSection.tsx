@@ -9,34 +9,34 @@ interface BreadcrumbItem {
 interface BannerSectionProps {
   title: string;
   bannerImg: string;
-  path: BreadcrumbItem[];
+  position?: string;
 }
 
 const BannerSection: React.FC<BannerSectionProps> = ({
   title,
   bannerImg,
-  path,
+  position
 }) => {
   return (
     <div
-      className="relative w-full md:h-80 h-60 flex font-manrope items-center justify-center text-primary-white"
+      className="relative w-full md:h-[280px] h-50 flex font-manrope items-center justify-center text-primary-white"
       style={{
         backgroundImage: `url(${bannerImg})`,
         backgroundSize: "cover",
-    backgroundPosition: "50% 30%",
+    backgroundPosition: position
         
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-primary-navyblue/50"></div>
+      <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Title */}
       <div className="flex flex-col md:gap-3 gap-2">
-        <h1 className="relative tracking-wide leading-tight md:text-5xl text-3xl font-extrabold z-10 text-center max-w-xl">
+        <h1 className="relative tracking-wide leading-tight lg:text-[42px] text-3xl font-extrabold z-10 text-center">
           {title}
         </h1>
         {/* Breadcrumb */}
-        <nav className="relative z-10 mb-2 w-full flex justify-center">
+        {/* <nav className="relative z-10 mb-2 w-full flex justify-center">
           <ol className="flex space-x-1 text-primary-navybluetext-[16px] font-medium">
             {path.map((item, idx) => (
               <React.Fragment key={idx}>
@@ -61,7 +61,7 @@ const BannerSection: React.FC<BannerSectionProps> = ({
               </React.Fragment>
             ))}
           </ol>
-        </nav>
+        </nav> */}
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ const TestimonialCard = ({
   <div className="bg-white p-6 rounded-lg shadow-sm">
     <div className="flex items-center mb-3">
       {[...Array(5)].map((_, i) => (
-        <img key={i} src={redStar} alt={`average rating`} className="w-3 h-auto" />
+        <img key={`star-${i}`} src={redStar} alt={`average rating`} className="w-3 h-auto" />
       ))}
       <span className="ml-2 text-sm font-bold text-gray-800">{rating}</span>
     </div>
@@ -123,6 +123,7 @@ export default function TestimonialsContactSection() {
             <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
                 <img
+                key={`star-${i}`}
                   src={grayStar}
                   alt={`average rating`}
                   className="w-3 h-auto"
@@ -141,7 +142,7 @@ export default function TestimonialsContactSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
+            <TestimonialCard key={`testimonial-${index}`} {...testimonial} />
           ))}
         </div>
       </div>

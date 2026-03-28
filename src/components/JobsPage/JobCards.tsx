@@ -247,7 +247,7 @@ const JobCards: React.FC = () => {
                   </div>
 
                   {/* Know More Button */}
-                  <Link to={`/JobPosting/${job.slug ?? job.id}`} className="flex gap-2 mt-6">
+                  <Link to={`/job_opening_details/${job.slug ?? job.id}`} className="flex gap-2 mt-6">
                     <button className="relative z-20 transition-colors duration-500 group-hover:text-primary-white text-primary-navyblue text-[24] uppercase font-bold">
                       Know More
                     </button>
