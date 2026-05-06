@@ -18,15 +18,23 @@ import PolicyPage from "./pages/PolicyPage";
 import ScrollToTop from "./components/ScrollTotop";
 import AttestationDetails from "./pages/attestation/AttestationDetails";
 import Attestation from "./pages/attestation/Attestation";
+import EducationalAttestation from "./pages/attestation/EducationalAttestation";
+import PrivateAttestation from "./pages/attestation/PrivateAttestation";
+import CompactAttestation from "./pages/attestation/CompactAttestation";
+import AcademicDocumentsPage from "./pages/attestation/AcademicDocumentsPage";
+import CommercialDocumentsPage from "./pages/attestation/CommercialDocumentsPage";
+import PersonalDocumentsPage from "./pages/attestation/PersonalDocumentsPage";
 import Jobs from "./pages/JobPages/Jobs";
 import JobPosting from "./components/JobsPage/jobdetailpage/JobPosting";
 import StudyAbroadPage from "./pages/Services/StudyAbroadPage";
 import VisaStampingDetailPage from "./pages/VisaStampingDetailPage";
 import WhatsAppIcon from "./components/WhatsAppIcon";
+import FloatingDownloadCTA from "./components/FloatingDownloadCTA";
 import TrackApplication from "./pages/TrackApplication";
 import ApplicationStatus from "./pages/ApplicationStatus";
 import BlogPage from "./pages/BlogPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import wakalaImage from "./assets/images/nta-wakala.jpg";
 
 function App() {
   return (
@@ -55,6 +63,9 @@ function App() {
             <Route path="/attestationeducation" element={<EducationalAttestation />} />
             <Route path="/attestationprivate" element={<PrivateAttestation />} />
             <Route path="/attestationcommercial" element={<CompactAttestation />} />
+            <Route path="/academic-documents-attestation" element={<AcademicDocumentsPage />} />
+            <Route path="/commercial-documents-attestation" element={<CommercialDocumentsPage />} />
+            <Route path="/personal-documents-attestation" element={<PersonalDocumentsPage />} />
             <Route path="/job_opening_details/:slug" element={<JobPosting />} />
             <Route path="/attestation-details" element={<AttestationDetails />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
@@ -70,6 +81,10 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <FloatingDownloadCTA
+          fileUrl={wakalaImage}
+          label="Download Saudi Wakala"
+        />
         <WhatsAppIcon
           phoneNumber="9958218855"
           message="I'm interested in your services!"

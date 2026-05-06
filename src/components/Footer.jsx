@@ -9,56 +9,78 @@ import Youtube from ".././assets/images/y.webp";
 import Twitter from ".././assets/images/x.webp";
 import { Link } from "react-router-dom";
 
-const SocialIcon = ({ href, children }) => (
-  <Link
-    to={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-primary-navyblue/20 hover:text-[#06213F] transition-colors"
-  >
-    {children}
-  </Link>
-);
+const isExternalLink = (href = "") =>
+  href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 
-const FooterLink = ({ href, children }) => (
-  <li>
+const SocialIcon = ({ href, children }) =>
+  isExternalLink(href) ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-primary-navyblue/20 hover:text-[#06213F] transition-colors"
+    >
+      {children}
+    </a>
+  ) : (
     <Link
       to={href}
-      className="text-gray-300 hover:text-primary-white transition-colors"
+      className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-primary-navyblue/20 hover:text-[#06213F] transition-colors"
     >
       {children}
     </Link>
+  );
+
+const FooterLink = ({ href, children }) => (
+  <li>
+    {isExternalLink(href) ? (
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="text-gray-300 hover:text-primary-white transition-colors"
+      >
+        {children}
+      </a>
+    ) : (
+      <Link
+        to={href}
+        className="text-gray-300 hover:text-primary-white transition-colors"
+      >
+        {children}
+      </Link>
+    )}
   </li>
 );
 
 export default function Footer() {
   const quickLinks1 = [
-    { name: "Home", href: "#" },
-    { name: "About Us", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Jobs Abroad", href: "#" },
-    { name: "Recruitment", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about/weare" },
+    { name: "Services", href: "/ourcoreservices" },
+    { name: "Jobs Abroad", href: "/jobs" },
+    { name: "Recruitment", href: "/recruitment" },
   ];
 
   const quickLinks2 = [
-    { name: "Gallery", href: "#" },
-    { name: "Contact Us", href: "#" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact Us", href: "/contact" },
     { name: "Privacy Policy", href: "/policies/privacy-policy" },
     { name: "Terms Of Service", href: "/policies/terms-conditions" },
     { name: "Refund Policy", href: "/policies/refund-policy" },
   ];
 
   const services1 = [
-    { name: "Overseas Recruitment", href: "#" },
-    { name: "Visa Stamping & Assistance", href: "#" },
-    { name: "Emigration & PCC Services", href: "#" },
-    { name: "Document Attestation & Apostille", href: "#" },
+    { name: "Overseas Recruitment", href: "/recruitment" },
+    { name: "Visa Stamping & Assistance", href: "/visaservices" },
+    { name: "Emigration & PCC Services", href: "/ourcoreservices" },
+    { name: "Document Attestation & Apostille", href: "/attestationdocument" },
   ];
 
   const services2 = [
-    { name: "Air Ticketing & Holiday Packages", href: "#" },
-    { name: "Healthcare Licensing", href: "#" },
-    { name: "Study Abroad Programs", href: "#" },
+    { name: "Air Ticketing & Holiday Packages", href: "/ourcoreservices" },
+    { name: "Healthcare Licensing", href: "/ourcoreservices" },
+    { name: "Study Abroad Programs", href: "/studyabroadpage" },
   ];
 
   return (
@@ -85,20 +107,20 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <SocialIcon href="#">
+            <SocialIcon href="https://www.facebook.com/nisatravels">
               <img src={Facebook} alt="Facebook" className="w-5 h-auto" />
             </SocialIcon>
-            <SocialIcon href="#">
+            <SocialIcon href="https://www.instagram.com/nisatravels">
               <img src={Instagram} alt="Instagram" className="w-5 h-auto" />
             </SocialIcon>
-            <SocialIcon href="#">
+            <SocialIcon href="https://www.tiktok.com/@nisatravels">
               <img src={Music} alt="Music" className="w-5 h-auto" />
             </SocialIcon>{" "}
             {/* TikTok */}
-            <SocialIcon href="#">
+            <SocialIcon href="https://www.youtube.com/@nisatravels">
               <img src={Youtube} alt="Youtube" className="w-5 h-auto" />
             </SocialIcon>
-            <SocialIcon href="#">
+            <SocialIcon href="https://x.com/nisatravels">
               <img src={Twitter} alt="Twitter" className="w-5 h-auto" />
             </SocialIcon>{" "}
             {/* X */}
@@ -111,12 +133,9 @@ export default function Footer() {
             <img src={Phone} alt="Phone" className="w-6 h-auto" />
             <div>
               <p className="text-gray-400">Tel</p>
-              <Link
-                to="tel:01141050464"
-                className="text-gray-200 hover:underline"
-              >
+              <a href="tel:01141050464" className="text-gray-200 hover:underline">
                 011-4105-0464
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -124,12 +143,12 @@ export default function Footer() {
             <img src={Mail} alt="Mail" className="w-6 h-auto" />
             <div>
               <p className="text-gray-400">Mail</p>
-              <Link
-                to="mailto:hello@nisatravels.com"
+              <a
+                href="mailto:hello@nisatravels.com"
                 className="text-gray-200 hover:underline"
               >
                 hello@nisatravels.com
-              </Link>
+              </a>
             </div>
           </div>
 

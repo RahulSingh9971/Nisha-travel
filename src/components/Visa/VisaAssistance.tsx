@@ -10,6 +10,7 @@ import img from "../../assets/images/Rectangle.png";
 import downloadwhite from "../../assets/images/download-white.svg";
 import downloadred from "../../assets/images/download-red.svg";
 import bowcher from "../../assets/images/bowcher.webp";
+import wakalaImage from "../../assets/images/nta-wakala.jpg";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { LuCirclePlus } from "react-icons/lu";
@@ -24,8 +25,7 @@ import flagUrl6 from '../../assets/images/uaeflag.png';
 import flagUrl7 from '../../assets/images/iraqflag.png';
 import SecurityAndPartners from "../SecurityAndPartners";
 import { API_CONFIG } from "../../config/apiConfig";
-import wakalaPdf from "../../assets/pdf/NTA Wakala.pdf";
-import { handleWakalaDownload } from "../../utils/downloadHelpers";
+import { handleWakalaDownload, openLeadCaptureDownload } from "../../utils/downloadHelpers";
 
 const GrLocationIcon = HiOutlineLocationMarker as React.ElementType;
 const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
@@ -275,6 +275,14 @@ const VisaAssistance = () => {
     "bg-indigo-900/60", "bg-orange-500/60", "bg-cyan-500/60",
     "bg-sky-600/60", "bg-stone-600/60", "bg-teal-500/60"
   ];
+
+  const openBrochureDownload = (fileUrl: string, label: string) => {
+    openLeadCaptureDownload({
+      fileUrl,
+      title: `Download ${label}`,
+      successMessage: "Your document download has started successfully.",
+    });
+  };
 
   return (
     <>
@@ -550,23 +558,27 @@ const VisaAssistance = () => {
           <div className="flex xl:flex-row flex-col gap-3 lg:w-full md:w-full w-full">
             {brochureFiles.length > 0 ? (
               brochureFiles.map((file, i) => (
-                <a key={i} href={file.file_url} target="_blank" rel="noopener noreferrer">
-                  <button className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[14px] text-[12px] text-primary-white font-bold py-2 hover:bg-red-700 transition">
-                    <img src={downloadwhite} alt="download" />
-                    {file.label.toUpperCase()}
-                  </button>
-                </a>
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => openBrochureDownload(file.file_url, file.label)}
+                  className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[14px] text-[12px] text-primary-white font-bold py-2 hover:bg-red-700 transition"
+                >
+                  <img src={downloadwhite} alt="download" />
+                  {file.label.toUpperCase()}
+                </button>
               ))
             ) : (
               <>
-                <button className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[14px] text-[12px] text-primary-white font-bold py-2 hover:bg-primary-red transition">
+                <button
+                  type="button"
+                  onClick={() => openBrochureDownload(wakalaImage, "Visa Document Checklist")}
+                  className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[14px] text-[12px] text-primary-white font-bold py-2 hover:bg-primary-red transition"
+                >
                   <img src={downloadwhite} alt="downloadwhite" /> VISA DOCUMENT CHECKLIST PDF
                 </button>
-                <button onClick={() => handleWakalaDownload(wakalaPdf)} className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[14px] text-[12px] border-[3px] text-primary-red font-bold py-2 transition">
+                <button type="button" onClick={() => handleWakalaDownload(wakalaImage)} className="flex items-center justify-center gap-2 border-[#E74C3C] px-4 lg:text-[14px] text-[12px] border-[3px] text-primary-red font-bold py-2 transition">
                   <img src={downloadred} alt="downloadred" /> DOWNLOAD SAUDI WAKALA
-                </button>
-                <button className="flex items-center justify-center gap-2 px-4 lg:text-[14px] text-[12px] text-primary-red font-bold py-2 transition">
-                  <img src={downloadred} alt="downloadred" /> RECRUITMENT FORM
                 </button>
               </>
             )}
