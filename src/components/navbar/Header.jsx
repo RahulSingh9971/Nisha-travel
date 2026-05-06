@@ -198,6 +198,18 @@ export default function Header() {
                 },
                 {
                   title: "Other Embassy Attestation"
+                },
+                {
+                  title: "Academic / Educational Attestation",
+                  to: "/academic-documents-attestation"
+                },
+                {
+                  title: "Commercial Documents Attestation",
+                  to: "/commercial-documents-attestation"
+                },
+                {
+                  title: "Personal / Private Attestation",
+                  to: "/personal-documents-attestation"
                 }
               ]
             },
@@ -410,6 +422,9 @@ export default function Header() {
     // if (item.to) navigate(item.to);
   };
 
+  const hasLongTitle = (items = []) =>
+    items.some((item) => (item?.title || "").trim().length > 30);
+
   return (
     <header className="bg-white shadow-sm">
       <div className="bg-primary-navyblue text-primary-white py-2 flex gap-x-2 overflow-x-hidden w-full">
@@ -513,12 +528,13 @@ export default function Header() {
                     activeLeftItem && (
                       <div
                         className="
-                      absolute top-full
+                      absolute top-full mt-2
                      left-1/2 -translate-x-1/2 right-0
                       bg-white rounded-[0px] shadow-lg
                       z-30 w-fit max-auto
                       opacity-100 visible
                       transition-all duration-200 ease-out
+                      max-h-[calc(100vh-140px)] overflow-y-auto overflow-x-visible
                     "
                       >
                         <div className="flex items-center gap-2 pt-10 pb-3 pl-8 pr-6">
@@ -530,18 +546,24 @@ export default function Header() {
                           {link.dropdown.map((menu, idx) => {
                             const hasCol2 = activeLeftItem?.col2 && activeLeftItem.col2.length > 0;
                             const hasCol3 = activeCol2Item?.col3 && activeCol2Item.col3.length > 0;
+                            const col2HasLongTitle = hasLongTitle(activeLeftItem?.col2);
+                            const col3HasLongTitle = hasLongTitle(activeCol2Item?.col3);
 
-                            // Width logic: Fixed values taaki content width ko hila na sake
-                            let containerWidth = "w-[300px]"; // Default (Col 1)
+                            // Default compact layout, sirf long text hone par width badhe
+                            let containerWidth = "min-w-[300px]"; // Default (Col 1)
                             if (hasCol2 && hasCol3) {
-                              containerWidth = "w-[900px]"; // 300 + 300 + 300
+                              containerWidth = col2HasLongTitle || col3HasLongTitle
+                                ? "min-w-[900px]"
+                                : "min-w-[840px]";
                             } else if (hasCol2) {
-                              containerWidth = "w-[600px]"; // 300 + 300
+                              containerWidth = col2HasLongTitle
+                                ? "min-w-[700px]"
+                                : "min-w-[620px]";
                             }
                             return (
                               <div
                                 key={idx}
-                                className={`flex h-full ${containerWidth} transition-all duration-300`}
+                                className={`flex h-full ${containerWidth} transition-all duration-300 items-start`}
                               >
 
                                 <div className="w-[300px] flex-shrink-0 space-y-6 pb-10 pt-4 pl-8 pr-6">
@@ -554,7 +576,7 @@ export default function Header() {
                                       onMouseEnter={() =>
                                         handleLeftHover(item)
                                       }
-                                      className={`whitespace-nowrap flex hover:underline items-center justify-between text-[15px] ${activeLeftItem?.id === item.id
+                                      className={`flex hover:underline items-start justify-between gap-4 text-[15px] ${activeLeftItem?.id === item.id
                                         ? "text-primary-red font-semibold"
                                         : "text-[#002661] font-medium"
                                         } hover:text-primary-red`}
@@ -571,7 +593,7 @@ export default function Header() {
                                 </div>
 
 
-                                {activeLeftItem?.col2 && activeLeftItem.col2.length > 0 && (<div className="flex-1 space-y-6 pb-10 pt-4  border-l border-gray-200">
+                                {activeLeftItem?.col2 && activeLeftItem.col2.length > 0 && (<div className={`${col2HasLongTitle ? "w-[400px]" : "w-[320px]"} flex-shrink-0 space-y-6 pb-10 pt-4 border-l border-gray-200`}>
                                   {activeLeftItem?.col2?.map((item, index) => {
 
                                     const itemHasCol3 = item.col3 && item.col3.length > 0;
@@ -583,7 +605,7 @@ export default function Header() {
                                         type="button"
 
                                         onMouseEnter={() => handleCol2Click(item)}
-                                        className={`w-[300px] flex-shrink-0 w-full text-left whitespace-nowrap flex items-center gap-8 text-[15px] px-7 transition-all duration-200
+                                        className={`w-full text-left ${col2HasLongTitle ? "" : "whitespace-nowrap"} flex items-start justify-between gap-4 text-[15px] px-7 transition-all duration-200
     ${activeCol2Item?.title === item.title
                                             ? `text-primary-red font-semibold underline ${itemHasCol3 ? "bg-[#F6F5F3] py-5" : "py-0"
                                             }`
@@ -608,12 +630,12 @@ export default function Header() {
 
 
                                 {hasCol3 && (
-                                  <div className="w-[300px] flex-shrink-0 space-y-6 bg-[#F6F5F3]  pb-10 pt-4 pl-8 pr-8">
+                                  <div className={`${col3HasLongTitle ? "w-[320px]" : "w-[280px]"} flex-shrink-0 space-y-6 bg-[#F6F5F3] pb-10 pt-4 pl-8 pr-8`}>
                                     {activeCol2Item?.col3?.map((item, index) => (
                                       <Link
                                         key={index}
                                         to={item.to}
-                                        className="whitespace-nowrap block hover:underline text-[15px] text-[#002661] font-medium hover:text-primary-red"
+                                        className={`block ${col3HasLongTitle ? "" : "whitespace-nowrap"} hover:underline text-[15px] text-[#002661] font-medium hover:text-primary-red`}
                                       >
                                         {item.title}
                                       </Link>
