@@ -528,15 +528,14 @@ export default function Header() {
                     activeLeftItem && (
                       <div
                         className="
-                      absolute top-full mt-2
+                      absolute top-full pt-2
                      left-1/2 -translate-x-1/2 right-0
-                      bg-white rounded-[0px] shadow-lg
                       z-30 w-fit max-auto
                       opacity-100 visible
                       transition-all duration-200 ease-out
-                      max-h-[calc(100vh-140px)] overflow-y-auto overflow-x-visible
                     "
                       >
+                        <div className="bg-white rounded-[0px] shadow-lg w-full h-full max-h-[calc(100vh-140px)] overflow-y-auto overflow-x-visible">
                         <div className="flex items-center gap-2 pt-10 pb-3 pl-8 pr-6">
                           <span className="h-10 w-[6px] bg-primary-red" />
                           <Link to={link.to} className="text-[30px] font-bold hover:text-primary-red">{link.title}</Link>
@@ -645,7 +644,7 @@ export default function Header() {
                               </div>
                             );
                           })}
-                        </div></div>
+                        </div></div></div>
                     )}
                 </div>
               ))}

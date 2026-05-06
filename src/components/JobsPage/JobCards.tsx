@@ -79,7 +79,7 @@ const JobCards: React.FC = () => {
             title: j.title ?? j.position ?? "Job Opening",
             country: j.country ?? j.location ?? "",
             experience: j.experience ?? j.experience_required ?? "",
-            industry: j.industry ?? j.category ?? "",
+            industry: j.industry ?? j.category?.name ?? (typeof j.category === 'string' ? j.category : ""),
             salary_range: j.salary_range ?? j.salary ?? "",
             slug: j.slug ?? String(j.id),
           }));

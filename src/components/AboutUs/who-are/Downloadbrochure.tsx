@@ -1,5 +1,6 @@
 import { FaFileArrowDown } from "react-icons/fa6";
 import saudiWakalaImage from "../../../assets/images/nta-wakala.jpg";
+import { handleWakalaDownload, openLeadCaptureDownload } from "../../../utils/downloadHelpers";
 
 const FaFileArrowDownIcon = FaFileArrowDown as React.ElementType;
 
@@ -32,21 +33,24 @@ const Downloadbrochure = ({ title, description, pdfUrl, bgImg, saudiWakalaUrl }:
             {description}
           </p>
           <div className="flex lg:flex-row flex-col gap-3 lg:w-[85%]">
-            <a
-              href={pdfUrl || "#"}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => openLeadCaptureDownload({ fileUrl: pdfUrl || "#", title: "Download Brochure" })}
               className="flex gap-2 items-center bg-primary-red px-6 py-3 text-white font-bold text-center"
             >
               <FaFileArrowDownIcon className="text-white" />
               DOWNLOAD BROCHURE
-            </a>
+            </button>
 
             {/* Saudi Wakala Link - Only show if URL exists in API */}
             {saudiWakalaFileUrl && (
-              <a href={saudiWakalaFileUrl} target="_blank" rel="noreferrer" className="flex gap-2 items-center border-2 border-primary-red px-6 py-3 text-primary-red font-bold text-center">
+              <button 
+                type="button"
+                onClick={() => handleWakalaDownload(saudiWakalaFileUrl)}
+                className="flex gap-2 items-center border-2 border-primary-red px-6 py-3 text-primary-red font-bold text-center"
+              >
                 <FaFileArrowDownIcon className="text-primary-red" />   DOWNLOAD SAUDI WAKALA
-              </a>
+              </button>
             )}
           </div>
         </div>

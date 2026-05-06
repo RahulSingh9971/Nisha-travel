@@ -2,7 +2,7 @@ import downloadwhite from "../../assets/images/download-white.svg";
 import downloadred from "../../assets/images/download-red.svg";
 import bowcher from "../../assets/images/bowcher.webp";
 import wakalaImage from "../../assets/images/nta-wakala.jpg";
-import { handleWakalaDownload } from "../../utils/downloadHelpers";
+import { handleWakalaDownload, openLeadCaptureDownload } from "../../utils/downloadHelpers";
 
 const DownloadBrochure: React.FC = () => (
   <>
@@ -18,7 +18,11 @@ const DownloadBrochure: React.FC = () => (
           Join us on this journey as we share our expertise, ignite conversation
         </p>
         <div className="flex xl:flex-row flex-col gap-3 lg:w-[80%] md:w-full w-[90%] ">
-          <button className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[18px] text-[14px] text-primary-white font-bold  py-2 hover:bg-primary-red transition">
+          <button 
+            type="button" 
+            onClick={() => openLeadCaptureDownload({ fileUrl: wakalaImage, title: "Download Brochure" })} 
+            className="flex items-center justify-center gap-2 bg-primary-red px-4 lg:text-[18px] text-[14px] text-primary-white font-bold  py-2 hover:bg-primary-red transition"
+          >
             <img src={downloadwhite} alt="downloadwhite" className="" />{" "}
             DOWNLOAD BROCHURE
           </button>
