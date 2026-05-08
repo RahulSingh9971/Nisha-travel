@@ -153,7 +153,8 @@ const handleSubmit = async (e: React.FormEvent) => {
             </p>
             <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-8">
               <span className="text-primary-red">We’re just a</span>
-              <span className="text-primary-navyblueblock">message away</span>
+              <br className="hidden md:block" />
+              <span className="text-primary-navyblue">message away</span>
             </h2>
             
             {/* STATUS MESSAGE UI */}
@@ -227,7 +228,8 @@ const handleSubmit = async (e: React.FormEvent) => {
           <div className="mt-3 md:mt-0 xl:border-l-[3px] xl:pl-10 border-gray-200">
             <h2 className=" md:text-3xl text-2xl font-extrabold md:mb-8 mb-4">
               <span className="text-primary-red">We’re here to help</span>
-              <span className="text-primary-navyblueblock">get in touch!</span>
+              <br className="hidden md:block" />
+              <span className="text-primary-navyblue">get in touch!</span>
             </h2>
             <div className="grid md:grid-cols-2 grid-cols-1 md:gap-3 gap-2 text-sm">
               {contactBlocks.map((item, idx) => (

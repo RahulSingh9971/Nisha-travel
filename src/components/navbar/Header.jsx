@@ -30,7 +30,7 @@ export default function Header() {
     { title: "Home", to: "/" },
     {
       title: "Who we are",
-      to: "/about/weare",
+      to: "/about/who-we-are",
       dropdown: [
         {
           subMenuCol1: [
@@ -42,12 +42,12 @@ export default function Header() {
             {
               id: "journey",
               title: "Our Journey",
-              to: "/about/ourjourney"
+              to: "/about/our-journey"
             },
             {
               id: "drives",
               title: "What drives us",
-              to: "/about/whatdrives"
+              to: "/about/mission-and-vision"
             },
             {
               id: "leadership",
@@ -57,12 +57,12 @@ export default function Header() {
             {
               id: "philosophy",
               title: "Our values / Philosophy",
-              to: "/about/philosophy"
+              to: "/about/core-values"
             },
             {
               id: "corporate",
               title: "Corporate Social Responsibility",
-              to: "/about/corporate"
+              to: "/about/csr"
             }
           ]
         }
@@ -81,7 +81,7 @@ export default function Header() {
               col2: [
                 {
                   title: "Industries",
-                  to:"/visaservices"
+                  to:"/visa-services"
                 },
                 {
                   title: "Jobs Abroad",
@@ -98,7 +98,7 @@ export default function Header() {
             {
               id: "VisaStamping",
               title: "Visa Stamping & Assistance",
-              to: "/visaservices",
+              to: "/visa-services",
               col2: [
                 {
                   title: "Saudi Visa Stamping",
@@ -108,7 +108,7 @@ export default function Header() {
                   title: "Kuwait Visa Stamping",
                   col3: [
                     {
-                      to: "/visaservices",
+                      to: "/visa-services",
                       title: "Work Visa",
                     },
                     {
@@ -216,35 +216,42 @@ export default function Header() {
             {
               id: "Abroad",
               title: "Study Abroad",
-              to: "/studyabroadpage",
+              to: "/study-abroad-page",
               col2: [
                 {
-                  title: "Consulting"
+                  title: "Consulting",
+                  to: "/study-abroad-page#programs"
                 },
                 {
-                  title: "STEM Programs"
+                  title: "STEM Programs",
+                  to: "/study-abroad-page#programs"
                 },
                 {
-                  title: "Medicine Programs"
+                  title: "Medicine Programs",
+                  to: "/study-abroad-page#programs"
                 },
                 {
-                  title: "Paramedics & Nursing Programs"
+                  title: "Paramedics & Nursing Programs",
+                  to: "/study-abroad-page#programs"
                 },
                 {
-                  title: "Arts & Commerce Programs"
+                  title: "Arts & Commerce Programs",
+                  to: "/study-abroad-page#programs"
                 },
                 {
-                  title: "Film Making Programs"
+                  title: "Film Making Programs",
+                  to: "/study-abroad-page#programs"
                 }
               ]
             },
             {
               id: "Study",
               title: "Study in India",
-              to: "#",
+              to: "/study-abroad-page#study-in-india",
               col2: [
                 {
-                  title: "Career Counselling"
+                  title: "Career Counselling",
+                  to: "/study-abroad-page#study-in-india"
                 }
               ]
             },
@@ -361,7 +368,7 @@ export default function Header() {
             //     }
             //   ]
             // },
-            { id: "Industries", title: "Industries" ,to:"/visaservices"},
+            { id: "Industries", title: "Industries" ,to:"/visa-services"},
             {
               id: "jobs",
               title: "Jobs Abroad",

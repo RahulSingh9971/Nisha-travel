@@ -25,7 +25,7 @@ export default function HeroSection() {
                         <span className="">You Can Trust</span>
                     </h1>
 
-                    <Link to="/visaservices" className="  bg-primary-red hover:bg-red-700 text-primary-white md:px-10 px-3 md:py-2 py-[6px] text-[16px] font-semibold font-poppins rounded-none">
+                    <Link to="/visa-services" className="  bg-primary-red hover:bg-red-700 text-primary-white md:px-10 px-3 md:py-2 py-[6px] text-[16px] font-semibold font-poppins rounded-none">
                         APPLY VISA
                     </Link>
                 </div>

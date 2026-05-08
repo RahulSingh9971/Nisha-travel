@@ -46,17 +46,17 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about/weare" element={<AboutPage />} />
-            <Route path="/about/ourjourney" element={<AboutJourneyAwards />} />
-            <Route path="/about/whatdrives" element={<AboutDrives />} />
+            <Route path="/about/who-we-are" element={<AboutPage />} />
+            <Route path="/about/our-journey" element={<AboutJourneyAwards />} />
+            <Route path="/about/mission-and-vision" element={<AboutDrives />} />
             <Route path="/about/leadership" element={<AboutLeadership />} />
-            <Route path="/about/philosophy" element={<AboutPhilosophy />} />
-            <Route path="/about/corporate" element={<AboutCorporate />} />
+            <Route path="/about/core-values" element={<AboutPhilosophy />} />
+            <Route path="/about/csr" element={<AboutCorporate />} />
             <Route path="/ourcoreservices" element={<ServicesPage />} />
             <Route path="/recruitment" element={<Recruitment />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/jobs" element={<Jobs />} />
-            <Route path="/visaservices" element={<VisaPage />} />
+            <Route path="/visa-services" element={<VisaPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/policies/:slug" element={<PolicyPage />} />
             <Route path="/attestationdocument" element={<Attestation />} />
@@ -69,7 +69,7 @@ function App() {
             <Route path="/job_opening_details/:slug" element={<JobPosting />} />
             <Route path="/attestation-details" element={<AttestationDetails />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
-            <Route path="/studyabroadpage" element={<StudyAbroadPage />} />
+            <Route path="/study-abroad-page" element={<StudyAbroadPage />} />
             <Route
               path="/visa-stamping/:country"
               element={<VisaStampingDetailPage />}

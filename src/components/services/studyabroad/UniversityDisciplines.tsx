@@ -420,7 +420,7 @@ const UniversityDisciplines: React.FC = () => {
       </section>
 
       {/* ── Programs Section ── */}
-      <section className="bg-primary-lightblue py-16 px-4">
+      <section id="programs" className="bg-primary-lightblue py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#002147]">
@@ -467,7 +467,7 @@ const UniversityDisciplines: React.FC = () => {
         </div>
 
         {/* ── Study in India ── */}
-        <div className="py-16 px-4 text-center max-w-2xl mx-auto">
+        <div id="study-in-india" className="py-16 px-4 text-center max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary-navyblue mb-2">
             {pageData?.study_in_india?.title || (
               <>Prefer to <span className="text-primary-red">Study in India</span></>

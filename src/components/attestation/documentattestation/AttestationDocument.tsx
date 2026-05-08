@@ -19,7 +19,7 @@ const AttestationDocument = () => {
           <p className="max-w-md md:pt-4 pt-2 pb-3 md:pb-6 text-primary-gray text-[16px] leading-7 font-medium ">
             Our visa experts guide you through every step — from document preparation to application submission — ensuring a smooth and successful process for any destination.
           </p>
-          <Link to="/visaservices" className="font-Poppins text-[16px] font-bold bg-primary-red text-primary-white px-8 py-2">
+          <Link to="/visa-services" className="font-Poppins text-[16px] font-bold bg-primary-red text-primary-white px-8 py-2">
             Apply Visa
           </Link>
         </div>

@@ -6,7 +6,7 @@ import whoWeAreBannerImg from "../../assets/images/banner4.webp";
 import ValuesSection from "../../components/AboutUs/philosophy/ValueCard";
 
 const AboutPhilosophy = () => {
-      const [apiData, setApiData] = useState<any>(null);
+  const [apiData, setApiData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,12 +37,12 @@ const AboutPhilosophy = () => {
   if (!apiData) return <div className="py-20 text-center text-red-500">Failed to load data.</div>;
 
   const {
-  title = "Our Philosophy", // Default title agar admin ne nahi dala
-  description = "", 
-  values_list = [], // Sabse zaroori: Array ko empty rakhein taaki .map() na toote
-  promise_title = "Our Promise",
-  promise_image_url = "/fallback-image.jpg" // Local image as backup
-} = apiData || {};
+    title = "Our Philosophy", // Default title agar admin ne nahi dala
+    description = "",
+    values_list = [], // Sabse zaroori: Array ko empty rakhein taaki .map() na toote
+    promise_title = "Our Promise",
+    promise_image_url = "/fallback-image.jpg" // Local image as backup
+  } = apiData || {};
   return (
     <main>
       <BannerSection
@@ -50,9 +50,9 @@ const AboutPhilosophy = () => {
         bannerImg={apiData.hero_bg_image_url || whoWeAreBannerImg}
         position="50% 30%"
       />
-      
+
       {/* Passing all relevant data to the section */}
-      <ValuesSection 
+      <ValuesSection
         description={apiData.description}
         values={apiData.values_list}
         promiseTitle={apiData.promise_title}

@@ -4,6 +4,9 @@ import { API_CONFIG } from "../../config/apiConfig";
 import { JourneyAndAwards } from '../../components/AboutUs/our-journey/JourneyAndAwards';
 import BannerSection from "../../components/AboutUs/BannerSection";
 
+import { JourneyCTA } from "../../components/AboutUs/leadership/JourneyAspirations";
+import ctaImage from "../../assets/images/section-six-hero.png";
+
 const AboutJourneyAwards = () => {
   const [apiData, setApiData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -52,6 +55,11 @@ const AboutJourneyAwards = () => {
         awardsDesc={apiData.awards_description}
         // TRICK: Agar awards empty hain toh empty array bhejo
         awardsList={apiData.awards || []} 
+      />
+
+      <JourneyCTA 
+        title="Ready to begin your journey? Let's write your success story together."
+        image={ctaImage}
       />
     </main>
   );

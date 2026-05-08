@@ -214,7 +214,7 @@ const VisaStampingDetailPage: React.FC = () => {
           <div className="flex-1">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-              <button onClick={() => navigate("/visaservices")} className="hover:text-primary-red transition-colors">
+              <button onClick={() => navigate("/visa-services")} className="hover:text-primary-red transition-colors">
                 Visa Services
               </button>
               <span>›</span>
@@ -258,7 +258,7 @@ const VisaStampingDetailPage: React.FC = () => {
               No stamping records are available for {countryName} at the moment. Please check back later.
             </p>
             <button
-              onClick={() => navigate("/visaservices")}
+              onClick={() => navigate("/visa-services")}
               className="mt-6 bg-primary-red text-white font-bold px-8 py-3 rounded hover:bg-red-700 transition-colors"
             >
               Back to Visa Services

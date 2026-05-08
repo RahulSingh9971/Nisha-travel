@@ -20,13 +20,13 @@ export const JourneyCTA: React.FC<JourneyCTAProps> = ({ title, image }) => (
             <span className="h-1 w-1 rounded-full bg-primary-navyblue" />
           </button>
       </div>
-     <div className="md:absolute -bottom-16 md:right-20">
+     {image && <div className="md:absolute -bottom-16 md:right-20">
        <img
         src={image}
         alt="Traveler"
         className="w-auto md:h-[320px] h-70 object-cover rounded-xl mt-6 md:mt-0"
       />
-     </div>
+     </div>}
     </div>
 
     <img

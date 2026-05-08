@@ -56,7 +56,7 @@ const FooterLink = ({ href, children }) => (
 export default function Footer() {
   const quickLinks1 = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about/weare" },
+    { name: "About Us", href: "/about/who-we-are" },
     { name: "Services", href: "/ourcoreservices" },
     { name: "Jobs Abroad", href: "/jobs" },
     { name: "Recruitment", href: "/recruitment" },
@@ -72,7 +72,7 @@ export default function Footer() {
 
   const services1 = [
     { name: "Overseas Recruitment", href: "/recruitment" },
-    { name: "Visa Stamping & Assistance", href: "/visaservices" },
+    { name: "Visa Stamping & Assistance", href: "/visa-services" },
     { name: "Emigration & PCC Services", href: "/ourcoreservices" },
     { name: "Document Attestation & Apostille", href: "/attestationdocument" },
   ];
@@ -80,7 +80,7 @@ export default function Footer() {
   const services2 = [
     { name: "Air Ticketing & Holiday Packages", href: "/ourcoreservices" },
     { name: "Healthcare Licensing", href: "/ourcoreservices" },
-    { name: "Study Abroad Programs", href: "/studyabroadpage" },
+    { name: "Study Abroad Programs", href: "/study-abroad-page" },
   ];
 
   return (

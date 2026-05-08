@@ -107,6 +107,14 @@ const firstRow = values.slice(0, 3);
             <p className="text-primary-gray text-[16px] font-medium mx-auto leading-[28px]">
              {promiseDesc || "Your success is our success. We stay committed to your dreams."}
             </p>
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="mt-6 flex items-center gap-3 bg-[#001D3D] text-[14px] text-white px-4 py-3 font-semibold uppercase tracking-wider transition-all hover:bg-opacity-90"
+            >
+              <span className="h-1 w-1 rounded-full bg-white" />
+              <span>Contact Us</span>
+              <span className="h-1 w-1 rounded-full bg-white" />
+            </button>
           </div>
 
           <div className=" pt-8">

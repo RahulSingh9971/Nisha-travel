@@ -444,7 +444,7 @@ const VisaAssistance = () => {
                 {updatesTitle}
               </h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-start">
+            <div className="flex flex-wrap justify-center gap-8 items-start">
               {updates.map((update: any, index: number) => (
                 <div key={index} className="flex flex-col items-center text-center space-y-3">
                   <div className="text-blue-600">

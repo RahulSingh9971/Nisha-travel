@@ -8,6 +8,7 @@ import Downloadbrochure from "../../components/AboutUs/who-are/Downloadbrochure"
 import WhoWeAre from "../../components/AboutUs/who-are/WhoWeAre";
 import { API_CONFIG } from "../../config/apiConfig"
 import NisaTravelAgency from "../../components/AboutUs/who-are/NisaTravelAgency";
+import { JourneyCTA } from "../../components/AboutUs/what-drives/JourneyTogether";
 
 const AboutWeAre = () => {
   const [apiData, setApiData] = useState<any>(null);
@@ -86,6 +87,10 @@ const AboutWeAre = () => {
         pdfUrl={brochure_pdf_url}
         bgImg={brochure_bg_image_url}
         saudiWakalaUrl={saudi_wakla_pdf_url} 
+      />
+
+      <JourneyCTA 
+        title="Ready to begin your journey? Let's write your success story together."
       />
     </main>
   );
