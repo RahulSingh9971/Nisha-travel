@@ -5,68 +5,31 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { IoIosArrowDown } from "react-icons/io";
 
-// Type definitions
-type Testimonial = {
-  rating: string;
-  title: string;
-  description: string;
-  name: string;
-  location: string;
-  avatar: string;
-};
+import TestimonialSection from "./common/TestimonialSection";
 
 type FormData = {
   name: string;
   email: string;
   phone: string;
   visaCountry: string;
-    visaService: string;
+  visaService: string;
   message: string;
 };
 
-const TestimonialCard: React.FC<Testimonial> = ({
-  rating,
-  title,
-  description,
-  name,
-  location,
-  avatar,
-}) => (
-  <div className="bg-white p-6 rounded-lg shadow-sm">
-    <div className="flex items-center mb-3">
-      {[...Array(5)].map((_, i) => (
-        <img src={redStar} alt={`average rating`} className="w-3 h-auto" />
-      ))}
-      <span className="ml-2 text-sm font-bold text-gray-800">{rating}</span>
-    </div>
-    <h3 className="font-extrabold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600 text-sm leading-relaxed mb-4">{description}</p>
-    <div className="flex items-center">
-      <img
-        src={avatar}
-        alt={name}
-        className="w-10 h-10 rounded-full mr-3 object-cover"
-      />
-      <div>
-        <p className="font-medium text-gray-800 text-sm">{name}</p>
-        <p className="font-medium text-gray-500 text-xs">{location}</p>
-      </div>
-    </div>
-  </div>
-);
+
 
 const ContactSection: React.FC = () => {
- const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
-   const [formData, setFormData] = useState<FormData>({
-     name: "",
-     email: "",
-     phone: "",
-     visaCountry: "",
-       visaService: "",
-     message: "",
-   });
-   const [phoneError, setPhoneError] = useState("");
-  
+  const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    visaCountry: "",
+    visaService: "",
+    message: "",
+  });
+  const [phoneError, setPhoneError] = useState("");
+
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -74,7 +37,7 @@ const ContactSection: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-   e.preventDefault();
+    e.preventDefault();
     // Basic Validation
     if (formData.phone.length < 10) {
       setPhoneError("Please enter a valid phone number.");
@@ -85,38 +48,9 @@ const ContactSection: React.FC = () => {
   return (
     <section className="bg-white font-manrope">
       {/* Testimonials Section */}
-      {/* <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
-      <div className="py-20 max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
-            <span className="text-[#06213F]">Real Words from Real </span>
-            <span className="text-primary-red">People</span>
-          </h2>
-          <div className="flex items-center justify-center space-x-2">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <img
-                  src={grayStar}
-                  alt={`average rating`}
-                  className="w-3 h-auto"
-                />
-              ))}
-              <span className="ml-2 font-bold text-gray-800">5.0</span>
-              <span className="ml-1font-medium text-gray-600">
-                (190+ Reviews)
-              </span>
-            </div>
-            <img src={google} alt="Google" className="h-6 ml-4" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
-          ))}
-        </div>
-      </div>
-      <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" /> */}
+      <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
+      <TestimonialSection />
+      <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
       {/* Contact Form Section */}
       <div className="md:pt-20 md:pb-0 px-4 pb-10">
         <div className="max-w-7xl mx-auto px-4 lg:px-4">
@@ -130,7 +64,7 @@ const ContactSection: React.FC = () => {
               />
             </div>
 
-          <div className="pb-4">
+            <div className="pb-4">
               <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold text-primary-navyblue mb-4">
                 Connect with us!
               </h2>

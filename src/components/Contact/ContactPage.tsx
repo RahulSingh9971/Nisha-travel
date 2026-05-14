@@ -3,6 +3,11 @@ import { IoCallOutline, IoCall } from "react-icons/io5";
 import { LuMail } from "react-icons/lu";
 import { FaLocationDot } from "react-icons/fa6";
 import { API_CONFIG } from "../../config/apiConfig";
+import Swal from "sweetalert2";
+import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 const IoCallOutlineIcon = IoCallOutline as React.ElementType;
 const LuMailIcon = LuMail as React.ElementType;
 const IoCallIcon = IoCall as React.ElementType;
@@ -68,79 +73,105 @@ const branchesIndia = [
   },
 ];
 
-const ContactPage: React.FC = () => {
-const [tab, setTab] = useState("India");
-  const [loading, setLoading] = useState(false);
-  const [statusMsg, setStatusMsg] = useState({ type: "", text: "" });
+const getIcon = (iconName: string) => {
+  switch (iconName) {
+    case "fa-envelope":
+    case "envelope":
+      return <LuMailIcon />;
+    case "fa-phone":
+    case "phone":
+    case "call":
+      return <IoCallOutlineIcon />;
+    default:
+      return <LuMailIcon />;
+  }
+};
 
+const ContactPage: React.FC = () => {
+  const [tab, setTab] = useState("India");
+  const [loading, setLoading] = useState(false);
   const [pageData, setPageData] = useState<any>(null);
 
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/contact-page`, {
-          headers: { "x-api-key": API_KEY, "Accept": "application/json" }
+        const response = await axios.get(`${API_CONFIG.BASE_URL}/contact-page`, {
+          headers: API_CONFIG.HEADERS
         });
-        const result = await response.json();
-        if (result.success) {
-          setPageData(result.data);
+        if (response.data.success) {
+          setPageData(response.data.data);
         }
-          console.log("1. contactpage Response:", result);
       } catch (error) {
-        console.error("Error fetching page data:", error);
+        console.error("Error fetching contact page data:", error);
       }
     };
     fetchPageData();
   }, []);
-
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
-    country_code: "+91", // Default value
+    country_code: "+91",
     reason: "General Enquiry"
   });
 
-const API_BASE_URL = "https://cms.nisatravels.com/api";
-const API_KEY = "7802a1979d7472728fe22f93ccaf3755";
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Stop page reload
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
-    setStatusMsg({ type: "", text: "" });
     
     try {
-      const response = await fetch(`${API_BASE_URL}/contact`, {
-        method: "POST",
-        headers: {
-          "x-api-key": API_KEY,
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData), 
+      const response = await axios.post(`${API_CONFIG.BASE_URL}/contact`, formData, {
+        headers: API_CONFIG.HEADERS
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        setStatusMsg({ type: "success", text: "Thank you! Your message has been sent." });
-        // Reset form
-        setFormData({ name: "", email: "", phone: "", message: "", country_code: "+91", reason: "General Enquiry" });
+      if (response.data.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: response.data.message || "Thank you for contacting us! We will get back to you shortly.",
+          confirmButtonColor: "#002661",
+        });
+        setFormData({ 
+          name: "", 
+          email: "", 
+          phone: "", 
+          message: "", 
+          country_code: "+91", 
+          reason: "General Enquiry" 
+        });
       } else {
-        setStatusMsg({ type: "error", text: result.message || "Something went wrong. Please try again." });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.data.message || "Something went wrong. Please try again.",
+          confirmButtonColor: "#E74C3C",
+        });
       }
-    } catch (error) {
-      setStatusMsg({ type: "error", text: "Server error. Please check your connection." });
+    } catch (error: any) {
+      console.error("API Error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        text: error.response?.data?.message || "Server error. Please check your connection.",
+        confirmButtonColor: "#E74C3C",
+      });
     } finally {
       setLoading(false);
     }
   };
+
+  // Helper to get active branches based on tab
+  const activeBranches = pageData?.branches 
+    ? (tab === "India" ? pageData.branches.india : pageData.branches.international)
+    : (tab === "India" ? branchesIndia : []);
+
+  const activeContactInfo = pageData?.contact_info || contactBlocks;
 
   return (
     <>
@@ -157,70 +188,89 @@ const handleSubmit = async (e: React.FormEvent) => {
               <span className="text-primary-navyblue">message away</span>
             </h2>
             
-            {/* STATUS MESSAGE UI */}
-            {statusMsg.text && (
-              <div className={`mb-6 p-4 rounded-lg text-sm font-bold ${
-                statusMsg.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-              }`}>
-                {statusMsg.text}
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="grid gap-8 mt-4">
-              <div className=" w-[90%] grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-4">
+              <div className="w-[90%] grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-4">
                 <div className="flex flex-col gap-2">
-                  <label className="text-primary-navyblue">First Name*</label>
+                  <label className="text-primary-navyblue font-semibold">Full Name*</label>
                   <input
-                  name="name" // API key ke mutabiq
+                    name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 md:py-3 py-2"
-                    placeholder="First Name"
+                    className="placeholder:text-gray-400 border-2 border-primary-navyblue w-full px-3 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-all"
+                    placeholder="Enter your full name"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-primary-navyblue">Email Address*</label>
+                  <label className="text-primary-navyblue font-semibold">Email Address*</label>
                   <input
-                  name="email"
+                    name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
-                    placeholder="Email Address"
+                    className="placeholder:text-gray-400 border-2 border-primary-navyblue w-full px-3 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-all"
+                    placeholder="Enter your email"
                     required
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-primary-navyblue">Phone*</label>
-                  <input
-                  name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
-                    placeholder="Phone"
-                    required
+                <div className="flex flex-col gap-2 md:col-span-2">
+                  <label className="text-primary-navyblue font-semibold">Phone Number*</label>
+                  <PhoneInput
+                    country={"in"}
+                    value={formData.country_code + formData.phone}
+                    onChange={(value, data: any) => {
+                      const dialCode = data.dialCode;
+                      const phoneNumber = value.startsWith(dialCode) 
+                        ? value.slice(dialCode.length) 
+                        : value;
+                      setFormData({ 
+                        ...formData, 
+                        phone: phoneNumber, 
+                        country_code: `+${dialCode}` 
+                      });
+                    }}
+                    containerClass="!w-full"
+                    inputClass="!w-full !h-[50px] !border-2 !border-primary-navyblue !rounded-md !text-base focus:!ring-2 focus:!ring-primary-red"
+                    buttonClass="!border-2 !border-primary-navyblue !border-r-0 !rounded-l-md !bg-gray-50"
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label className="text-primary-navyblue">Message</label>
-                  <input
-                  name="message"
-                  value={formData.message}
+                <div className="flex flex-col gap-2 md:col-span-2">
+                  <label className="text-primary-navyblue font-semibold">Reason for Inquiry*</label>
+                  <select
+                    name="reason"
+                    value={formData.reason}
                     onChange={handleChange}
-                    className="placeholder:text-primary-navybluemd:border-2 border border-primary-navyblue w-full px-3 py-3"
-                    placeholder="Type Your Message"
+                    className="border-2 border-primary-navyblue w-full px-3 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-all text-base"
+                    required
+                  >
+                    <option value="General Enquiry">General Enquiry</option>
+                    <option value="Visa Services">Visa Services</option>
+                    <option value="Attestation Services">Attestation Services</option>
+                    <option value="Recruitment & Jobs">Recruitment & Jobs</option>
+                    <option value="Business Partnership">Business Partnership</option>
+                    <option value="Feedback/Complaint">Feedback/Complaint</option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-2 md:col-span-2">
+                  <label className="text-primary-navyblue font-semibold">Message*</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="placeholder:text-gray-400 border-2 border-primary-navyblue w-full px-3 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-red transition-all text-base"
+                    placeholder="How can we help you?"
                     required
                   />
                 </div>
               </div>
 
               <button
-              type="submit"
-                  disabled={loading}
-           className={`${loading ? 'bg-gray-400' : 'bg-primary-red'} w-[30%] text-primary-white font-bold px-5 py-2 mt-3`}
+                type="submit"
+                disabled={loading}
+                className={`${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-red hover:bg-primary-navyblue'} md:w-fit w-full px-12 text-white font-bold py-4 rounded-md transition-all duration-300 shadow-lg transform hover:-translate-y-1`}
               >
-               {loading ? "SENDING..." : "SUBMIT"}
+                {loading ? "SENDING..." : "SUBMIT MESSAGE"}
               </button>
             </form>
           </div>
@@ -232,25 +282,17 @@ const handleSubmit = async (e: React.FormEvent) => {
               <span className="text-primary-navyblue">get in touch!</span>
             </h2>
             <div className="grid md:grid-cols-2 grid-cols-1 md:gap-3 gap-2 text-sm">
-              {contactBlocks.map((item, idx) => (
+              {activeContactInfo.map((item: any, idx: number) => (
                 <div
                   key={idx}
                   className="flex md:gap-2 gap-3 items-center py-3 text-primary-navyblue"
                 >
                   <div className="md:w-14 w-11 md:h-14 h-11 p-2 flex items-center justify-center rounded-full border-primary-navyblue border-2">
-                    <span className="text-[22px]">{item.icon}</span>
+                    <span className="text-[22px]">
+                      {item.icon && typeof item.icon === 'string' ? getIcon(item.icon) : (item.icon || <LuMailIcon />)}
+                    </span>
                   </div>
 
-                  {/* <div className="flex flex-col md:gap-2 gap-1">
-                    <span className="font-bold md:text-[18px] text-[16px]">
-                      {item.label}
-                    </span>
-                    {item.value && (
-                      <span className="font-medium md:text-[16px] text-[14px] truncate">
-                        {item.value}
-                      </span>
-                    )}
-                  </div> */}
                   <div className="flex flex-col md:gap-2 gap-1">
                     <span className="font-bold md:text-[18px] text-[16px]">
                       {item.label}
@@ -281,10 +323,10 @@ const handleSubmit = async (e: React.FormEvent) => {
       <div className="bg-primary-lightblue">
         <div className=" font-manrope max-w-7xl mx-auto md:py-16 py-10 px-4 md:px-12 lg:px-8">
           <div className="max-w-lg mx-auto">
-            <h2 className="text-center lg:text-5xl md:text-4xl text-3xl text-primary-navybluefont-extrabold pb-2">
+            <h2 className="text-center lg:text-5xl md:text-4xl text-3xl text-primary-navyblue font-extrabold pb-2">
               Our Branches
             </h2>
-            <p className="font-inter text-center text-primary-navybluepb-4 opacity-[60%]">
+            <p className="font-inter text-center text-primary-navyblue pb-4 opacity-[60%]">
               Contact us today for expert advice, and unbeatable deals your
               career starts here!
             </p>
@@ -311,32 +353,41 @@ const handleSubmit = async (e: React.FormEvent) => {
               </button>
             </div>
           </div>
-          {tab === "India" && (
-            <div className="grid md:grid-cols-3 lg:gap-10 md:gap-4 gap-10 pt-3">
-              {branchesIndia.map((branch, idx) => (
-                <div key={idx} className="w-[80%]">
-                  <div className="w-10 h-1 bg-primary-navyblue" />
-                  <div className="font-bold text-primary-navybluetext-xl mb-1 mt-3">
-                    {branch.city}
-                  </div>
-                  <div className="text-primary-navybluefont-semibold opacity-[80%] text-sm mb-4">
-                    {branch.address}
-                  </div>
-                  <div className="flex gap-2">
-                    {branch.icons.map((icon, iIdx) => (
-                      <div
-                        key={iIdx}
-                        className="flex justify-center items-center w-8 h-8 text-primary-navybluemd:border-2 border border-primary-navyblue"
-                      >
-                        {icon}
-                      </div>
-                    ))}
-                  </div>
+          
+          <div className="grid md:grid-cols-3 lg:gap-10 md:gap-4 gap-10 pt-3">
+            {activeBranches.map((branch: any, idx: number) => (
+              <div key={idx} className="w-full">
+                <div className="w-10 h-1 bg-primary-navyblue" />
+                <div className="font-bold text-primary-navyblue text-xl mb-1 mt-3">
+                  {branch.name || branch.city}
                 </div>
-              ))}
-            </div>
+                <div className="text-primary-navyblue font-semibold opacity-[80%] text-sm mb-4">
+                  {branch.address}
+                </div>
+                <div className="flex gap-2">
+                    <a 
+                      href={branch.map_url || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex justify-center items-center w-8 h-8 text-primary-navyblue md:border-2 border border-primary-navyblue hover:bg-primary-navyblue hover:text-white transition-all"
+                    >
+                      <FaLocationDotIcon />
+                    </a>
+                    {branch.phone && (
+                      <a 
+                        href={`tel:${branch.phone}`}
+                        className="flex justify-center items-center w-8 h-8 text-primary-navyblue md:border-2 border border-primary-navyblue hover:bg-primary-navyblue hover:text-white transition-all"
+                      >
+                        <IoCallIcon />
+                      </a>
+                    )}
+                </div>
+              </div>
+            ))}
+          </div>
+          {activeBranches.length === 0 && (
+            <p className="text-center text-primary-gray py-10 italic">No branches found in this region.</p>
           )}
-          {/* Add similar grid for International if needed */}
         </div>
       </div>
     </>

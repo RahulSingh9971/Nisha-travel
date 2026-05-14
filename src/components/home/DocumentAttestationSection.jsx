@@ -97,7 +97,7 @@ export default function DocumentAttestationSection() {
             <div>
               <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight mb-4">
                 <span className="text-primary-navyblue block mb-2">Explore</span>
-                <span className="text-primary-red">specialised services</span>
+                <span className="text-primary-red">especialised services</span>
               </h2>
 
               <p className="font-medium text-primary-navyblue text-md leading-relaxed">

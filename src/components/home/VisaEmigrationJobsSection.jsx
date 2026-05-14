@@ -28,7 +28,6 @@ const ServiceCard = ({ image, title, description, isFirst }) => (
       size="icon"
       className="absolute top-32 flex justify-center items-center right-6 w-12 h-12 bg-primary-red hover:bg-red-700 rounded-full text-primary-white shadow-lg"
     >
-      {/* {"->"} */}
       <img src={ArrowRight} alt="Globe2" className="h-auto" />
     </button>
   </div>
@@ -124,7 +123,7 @@ export default function VisaEmigrationJobsSection() {
           <div className="ml-[18%] relative">
             <Swiper
               spaceBetween={30}
-              slidesPerView={1} // Mobile default
+              slidesPerView={1}
               breakpoints={{
                 640: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
@@ -134,7 +133,6 @@ export default function VisaEmigrationJobsSection() {
                 nextEl: ".custom-next",
                 prevEl: ".custom-prev",
               }}
-              // pagination={{ clickable: true }}
               modules={[Navigation, Pagination]}
               className=""
             >
@@ -150,8 +148,6 @@ export default function VisaEmigrationJobsSection() {
             </Swiper>
           </div>
 
-
-
           {/* Custom Arrows */}
           <div className="flex justify-end pt-8">
             <div className="flex gap-3">
@@ -163,17 +159,6 @@ export default function VisaEmigrationJobsSection() {
               </button>
             </div>
           </div>
-          {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 ml-[15%]">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                image={service.image}
-                title={service.title}
-                description={service.description}
-                isFirst={index === 0}
-              />
-            ))}
-          </div> */}
         </div>
       </div>
 

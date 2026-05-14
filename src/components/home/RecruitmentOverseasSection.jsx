@@ -43,7 +43,7 @@ const RecruitmentOverseasSection = () => {
   <div 
     key={index} 
     className="group relative h-[333px] rounded-[30px] shadow-md border border-[#0E313A4D] overflow-hidden bg-white cursor-pointer"
-    style={{ isolation: 'isolate' }} // Yeh line text visibility ke liye zaroori hai
+    style={{ isolation: 'isolate' }}
   >
     
     {/* 1. THE EXPANDING CIRCLE (Origin: Arrow Position) */}

@@ -1,6 +1,13 @@
 import React from 'react';
+// Force reload
 import illustration from '../../assets/images/visa_stamping_illustration.png';
 import TrustedGlobalVisa from '../../components/attestation/documentattestation/TrustedGlobalVisa';
+import WhatIsAttestation from '../../components/attestation/documentattestation/WhatIsAttestation';
+import HowToAttest from '../../components/attestation/documentattestation/HowToAttestSection';
+import AttestationProcess from '../../components/attestation/documentattestation/AttestationProcess';
+import NisaHelps from '../../components/attestation/documentattestation/NisaHelps';
+import AttestationFAQ from '../../components/attestation/documentattestation/AttestationFAQ';
+import TestimonialSection from "../../components/common/TestimonialSection";
 import ContactSection from '../../components/JobsPage/ContactSection';
 
 const AttestationDetails = () => {
@@ -22,16 +29,25 @@ const AttestationDetails = () => {
             </button>
           </div>
           <div className="md:w-1/2 flex justify-end md:justify-center">
-            <img 
-              src={illustration} 
-              alt="Attestation Illustration" 
+            <img
+              src={illustration}
+              alt="Attestation Illustration"
               className="w-full max-w-[500px]"
             />
           </div>
         </div>
       </section>
 
+      <WhatIsAttestation />
+      <HowToAttest />
+      <AttestationProcess />
+      <NisaHelps />
+      <AttestationFAQ />
       <TrustedGlobalVisa />
+
+      <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
+      <TestimonialSection />
+      <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
       <ContactSection />
     </main>
   );

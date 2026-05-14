@@ -9,7 +9,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative h-[300px] md:h-[480px] lg:h-[500px] xl:h-[calc(100vh-180px)]" style={{ backgroundImage: `url(${heroImg})`,backgroundSize: "cover",backgroundPosition: "center center" }}>
+        <section className="relative h-[300px] md:h-[480px] lg:h-[500px] xl:h-[calc(100vh-180px)]" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center center" }}>
 
             <div className="relative max-w-7xl lg:px-6 md:px-12 mx-auto px-4 h-full flex xl:pt-[62px] pt-[52px]">
                 <div className="xl:max-w-3xl max-w-2xl">

@@ -15,15 +15,13 @@ const useScrollCounter = (target, duration = 5000) => {
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          // Start or Restart animation
           animateCount();
         } else {
-          // Reset when scrolling away so it's ready to play again
           setCount(0);
           cancelAnimationFrame(animationFrameId);
         }
       },
-      { threshold: 0.2 } // Adjust this to trigger sooner or later
+      { threshold: 0.2 }
     );
 
     const animateCount = () => {
@@ -34,7 +32,6 @@ const useScrollCounter = (target, duration = 5000) => {
         const progress = timestamp - startTime;
         const percentage = Math.min(progress / duration, 1);
 
-        // Use Math.floor for integers
         setCount(Math.floor(percentage * target));
 
         if (percentage < 1) {
@@ -57,6 +54,7 @@ const useScrollCounter = (target, duration = 5000) => {
 
   return { count, ref };
 };
+
 const CircularProgress = ({ percentage }) => {
   const size = 130;
   const strokeWidth = 10;
@@ -66,8 +64,6 @@ const CircularProgress = ({ percentage }) => {
 
   return (
     <div className="relative flex items-center justify-center w-[140px] h-[140px]">
-
-      {/* Red/Grey Progress Circle */}
       <svg width={size} height={size} className="transform -rotate-90">
         <circle
           cx={size / 2}
@@ -90,12 +86,11 @@ const CircularProgress = ({ percentage }) => {
         />
       </svg>
 
-      {/* Blue Circle - Ise chhota karne ke liye w-1/2 aur h-1/2 use kiya hai */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="bg-[#06213F] rounded-full flex items-center justify-center shadow-lg"
           style={{
-            width: '45%',  // Ise jitna kam karenge (e.g. 50%), blue circle utna chhota hoga
+            width: '45%',
             height: '45%'
           }}
         >
