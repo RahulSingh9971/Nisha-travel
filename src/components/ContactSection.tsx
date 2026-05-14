@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import redStar from "../assets/images/redStar.png";
 import sectionSixHero from "../assets/images/section-six-hero.png";
 import PhoneInput from "react-phone-input-2";
@@ -19,6 +20,8 @@ type FormData = {
 
 
 const ContactSection: React.FC = () => {
+  const location = useLocation();
+  const isAttestationPage = location.pathname === "/attestation-details";
   const IoIosArrowDownIcon = IoIosArrowDown as React.ElementType;
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -47,10 +50,14 @@ const ContactSection: React.FC = () => {
   };
   return (
     <section className="bg-white font-manrope">
-      {/* Testimonials Section */}
-      <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
-      <TestimonialSection />
-      <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
+      {!isAttestationPage && (
+        <>
+          {/* Testimonials Section */}
+          <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
+          <TestimonialSection />
+          <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
+        </>
+      )}
       {/* Contact Form Section */}
       <div className="md:pt-20 md:pb-0 px-4 pb-10">
         <div className="max-w-7xl mx-auto px-4 lg:px-4">

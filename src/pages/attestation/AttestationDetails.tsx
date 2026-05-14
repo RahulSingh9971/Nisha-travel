@@ -42,12 +42,13 @@ const AttestationDetails = () => {
       <HowToAttest />
       <AttestationProcess />
       <NisaHelps />
-      <AttestationFAQ />
+
       <TrustedGlobalVisa />
 
       <div className="bg-primary-lightblue md:py-10 py-8 rounded-b-[85%]" />
       <TestimonialSection />
       <div className="bg-primary-lightblue md:py-14 py-10 rounded-t-[85%]" />
+      <AttestationFAQ />
       <ContactSection />
     </main>
   );
