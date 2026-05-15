@@ -61,7 +61,7 @@ const ContactSection: React.FC = () => {
         </>
       )}
       {/* Contact Form Section */}
-      <div className="md:pt-20 md:pb-0 px-4 pb-10">
+      <div className="bg-[#EAF0F6] md:pt-20 md:pb-0 px-4 pb-10">
         <div className="max-w-7xl mx-auto px-4 lg:px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Image */}

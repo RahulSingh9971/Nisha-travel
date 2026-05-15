@@ -72,10 +72,10 @@ const MarqueeRow: React.FC<MarqueeProps> = ({ items, direction = "left", duratio
         {doubledItems.map((item, idx) => (
           <div key={`${item.label}-${idx}`} className="flex gap-4 items-center min-w-max px-2">
             <div className="bg-primary-lightblue rounded-full flex items-center justify-center w-14 h-14 shadow-sm border border-gray-100">
-              <img 
-                src={item.icon} 
-                alt={item.label} 
-                className="h-7 w-7 object-contain" 
+              <img
+                src={item.icon}
+                alt={item.label}
+                className="h-7 w-7 object-contain"
               />
             </div>
             <span className="text-[16px] font-bold text-[#06213F] tracking-wide">
@@ -90,8 +90,8 @@ const MarqueeRow: React.FC<MarqueeProps> = ({ items, direction = "left", duratio
 
 export default function IndustriesWeCater() {
   return (
-    <section className="bg-white md:py-20 py-12 px-4 overflow-hidden">
-      <div className="container mx-auto">
+    <section className="bg-white md:py-20 py-12 overflow-hidden">
+      <div className="w-full mx-auto">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
           <span className="text-primary-red">Industries</span>{" "}
           <span className="text-[#223544]">We Cater</span>
@@ -100,7 +100,7 @@ export default function IndustriesWeCater() {
         <div className="flex flex-col">
           {/* Top Row - Moving Left */}
           <MarqueeRow items={industries} direction="left" duration={30} />
-          
+
           {/* Bottom Row - Moving Right */}
           <MarqueeRow items={construction} direction="right" duration={30} />
         </div>

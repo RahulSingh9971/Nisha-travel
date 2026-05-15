@@ -88,10 +88,12 @@ export default function Header() {
                   to: "/jobs"
                 },
                 {
-                  title: "Foreign Employers (FE)"
+                  title: "Foreign Employers (FE)",
+                  to: "/foreign-employers"
                 },
                 {
-                  title: "Emigrants"
+                  title: "Emigrants",
+                  to: "/emigrants"
                 }
               ]
             },
@@ -376,11 +378,13 @@ export default function Header() {
             },
             {
               id: "Foreign",
-              title: "Foreign Employers (FE)"
+              title: "Foreign Employers (FE)",
+              to: "/foreign-employers"
             },
             {
               id: "Emigrants",
-              title: "Emigrants"
+              title: "Emigrants",
+              to: "/emigrants"
             }
           ]
         }

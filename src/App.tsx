@@ -35,6 +35,9 @@ import ApplicationStatus from "./pages/ApplicationStatus";
 import BlogPage from "./pages/BlogPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
 import wakalaImage from "./assets/images/nta-wakala.jpg";
+import ForeignEmployers from "./pages/ForeignEmployers/ForeignEmployers";
+import Emigrants from "./pages/Emigrants/Emigrants";
+import TravelHolidays from "./pages/TravelHolidays/TravelHolidays";
 
 function App() {
   return (
@@ -78,6 +81,9 @@ function App() {
             <Route path="/application-status" element={<ApplicationStatus />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog-detail/:slug" element={<BlogDetailPage />} />
+            <Route path="/foreign-employers" element={<ForeignEmployers />} />
+            <Route path="/emigrants" element={<Emigrants />} />
+            <Route path="/travel-holidays" element={<TravelHolidays />} />
           </Routes>
         </main>
         <Footer />
