@@ -88,7 +88,7 @@ const StatCircle = ({ size, bgColor, textColor, value, label, valueSize, labelSi
 };
 
 // --- 3. MAIN SECTION ---
-export default function GlobalPartnerSection() {
+export default function GlobalPartnerSection({ data = null }) {
   return (
     <section className="font-manrope max-w-7xl mx-auto lg:px-6 md:px-12 px-4 md:py-16 py-10 overflow-hidden">
       {/* Floating Animation Keyframes */}
@@ -105,15 +105,33 @@ export default function GlobalPartnerSection() {
         {/* Left Column: Text Content */}
         <div className="md:pr-8 relative z-10">
           <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold leading-tight">
-            <span className="text-primary-red block mb-3">Trusted Global</span>
-            <span className="text-primary-navyblue">Visa Partner</span>
+            {data?.title ? (
+              <span className="text-primary-navyblue" dangerouslySetInnerHTML={{ __html: data.title }} />
+            ) : (
+              <>
+                <span className="text-primary-red block mb-3">Trusted Global</span>
+                <span className="text-primary-navyblue">Visa Partner</span>
+              </>
+            )}
           </h2>
           <p className="mt-6 text-gray-600 leading-[26px]">
-            With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide.
+            {data?.description || "With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide."}
           </p>
-          <button className="mt-28 bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
-            • KNOW MORE •
-          </button>
+            {data?.cta ? (
+              data.cta.link?.startsWith('http') ? (
+                <a href={data.cta.link} target="_blank" rel="noopener noreferrer" className="mt-28 inline-block bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
+                  • {data.cta.text} •
+                </a>
+              ) : (
+                <a href={data.cta.link} className="mt-28 inline-block bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
+                  • {data.cta.text} •
+                </a>
+              )
+            ) : (
+            <button className="mt-28 bg-primary-red hover:bg-red-700 text-primary-white font-semibold py-3 px-6 rounded-none text-sm tracking-wider transition-all hover:shadow-lg active:scale-95">
+              • KNOW MORE •
+            </button>
+          )}
         </div>
 
         {/* Right Column: Bubble Stats */}
@@ -124,51 +142,82 @@ export default function GlobalPartnerSection() {
           <div className="absolute top-1/2 left-0 w-8 h-8 bg-[#DD565C] rounded-full opacity-40"></div>
 
           {/* Main stats bubbles */}
-          <StatCircle
-            size={130}
-            bgColor="bg-primary-red"
-            textColor="text-primary-white"
-            value="50k+"
-            label="Customer Globally"
-            valueSize="text-3xl font-extrabold"
-            labelSize="text-xs"
-            position="top-0 left-10 md:left-20"
-          />
-          
-          <StatCircle
-            size={240}
-            bgColor="bg-[#93BBD533]"
-            textColor="text-[#06213F]"
-            value="1.5M+"
-            label="Documents Processed"
-            valueSize="text-5xl font-extrabold"
-            labelSize="text-base"
-            position="top-16 md:right-[140px] -translate-x-1/2 -translate-y-1/2"
-            shadow="shadow-xl border border-white/50"
-          />
-          
-          <StatCircle
-            size={120}
-            bgColor="bg-white"
-            textColor="text-[#06213F]"
-            value="7k+"
-            label="Successful Recruitment"
-            valueSize="text-2xl font-extrabold"
-            labelSize="text-xs"
-            position="top-10 right-4 md:right-6"
-            shadow="shadow-2xl"
-          />
-          
-          <StatCircle
-            size={140}
-            bgColor="bg-[#002661]"
-            textColor="text-primary-white"
-            value="33"
-            label="Years of Overseas Recruitment"
-            valueSize="text-4xl font-extrabold"
-            labelSize="text-xs"
-            position="bottom-4 right-10 md:right-20"
-          />
+          {data?.stats?.length > 0 ? (
+            data.stats.map((stat, index) => {
+              // Simple layout for dynamic items since we don't have absolute positions
+              const positions = [
+                "top-0 left-10 md:left-20",
+                "top-16 md:right-[140px]",
+                "top-10 right-4 md:right-6",
+                "bottom-4 right-10 md:right-20"
+              ];
+              const sizes = [130, 240, 120, 140];
+              const valueSizes = ["text-3xl font-extrabold", "text-5xl font-extrabold", "text-2xl font-extrabold", "text-4xl font-extrabold"];
+              
+              return (
+                <StatCircle
+                  key={index}
+                  size={sizes[index % sizes.length]}
+                  bgColor={stat.color ? `bg-[${stat.color}]` : "bg-primary-red"}
+                  textColor="text-[#06213F]"
+                  value={stat.value}
+                  label={stat.label}
+                  valueSize={valueSizes[index % valueSizes.length]}
+                  labelSize="text-xs"
+                  position={positions[index % positions.length]}
+                  shadow="shadow-xl border border-white/50"
+                />
+              )
+            })
+          ) : (
+            <>
+              <StatCircle
+                size={130}
+                bgColor="bg-primary-red"
+                textColor="text-primary-white"
+                value="50k+"
+                label="Customer Globally"
+                valueSize="text-3xl font-extrabold"
+                labelSize="text-xs"
+                position="top-0 left-10 md:left-20"
+              />
+              
+              <StatCircle
+                size={240}
+                bgColor="bg-[#93BBD533]"
+                textColor="text-[#06213F]"
+                value="1.5M+"
+                label="Documents Processed"
+                valueSize="text-5xl font-extrabold"
+                labelSize="text-base"
+                position="top-16 md:right-[140px] -translate-x-1/2 -translate-y-1/2"
+                shadow="shadow-xl border border-white/50"
+              />
+              
+              <StatCircle
+                size={120}
+                bgColor="bg-white"
+                textColor="text-[#06213F]"
+                value="7k+"
+                label="Successful Recruitment"
+                valueSize="text-2xl font-extrabold"
+                labelSize="text-xs"
+                position="top-10 right-4 md:right-6"
+                shadow="shadow-2xl"
+              />
+              
+              <StatCircle
+                size={140}
+                bgColor="bg-[#002661]"
+                textColor="text-primary-white"
+                value="33"
+                label="Years of Overseas Recruitment"
+                valueSize="text-4xl font-extrabold"
+                labelSize="text-xs"
+                position="bottom-4 right-10 md:right-20"
+              />
+            </>
+          )}
         </div>
       </div>
     </section>

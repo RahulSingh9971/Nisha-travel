@@ -6,11 +6,16 @@ import { MdOutlineMenu } from "react-icons/md";
 import Sidebar from "./Sidebar";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
+import { API_CONFIG } from "../../config/apiConfig";
+import axios from "axios";
 // const IoIosArrowForwardtIcon = IoIosArrowForward as React.ElementType;
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [dynamicVisaLinks, setDynamicVisaLinks] = useState([]);
+  const [dynamicAttestationLinks, setDynamicAttestationLinks] = useState([]);
+  const [dynamicDocumentLinks, setDynamicDocumentLinks] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +28,84 @@ export default function Header() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const fetchVisaLinks = async () => {
+      try {
+        const response = await axios.get(`${API_CONFIG.BASE_URL}/visa-stamping-navbar-links`, {
+          headers: API_CONFIG.HEADERS
+        });
+        const data = response.data;
+        if (data.success) {
+          const links = data.data.map((item) => {
+            const countryData = item.country;
+            const visaTypes = item.visa_types || [];
+            
+            const resultObj = {
+              title: `${countryData.name} Visa`,
+              to: item.urls.frontend_country_url,
+            };
+
+            if (visaTypes.length > 0) {
+              resultObj.col3 = visaTypes.map(vt => ({
+                title: vt.name,
+                to: vt.urls.frontend_type_url
+              }));
+            }
+            return resultObj;
+          });
+          setDynamicVisaLinks(links);
+        }
+      } catch (error) {
+        console.error("Error fetching visa links:", error);
+      }
+    };
+    fetchVisaLinks();
+  }, []);
+
+  useEffect(() => {
+    const fetchAttestationLinks = async () => {
+      try {
+        const response = await axios.get(`${API_CONFIG.BASE_URL}/attestation-navbar-links`, {
+          headers: API_CONFIG.HEADERS
+        });
+        const data = response.data;
+        if (data.success) {
+          const links = data.data.map((item) => ({
+            title: item.country_name 
+              ? (item.country_name.toLowerCase().includes('embassy') ? item.country_name : `${item.country_name} Embassy`) 
+              : item.title,
+            to: item.frontend_url || `/attestation-details/${item.slug}`
+          }));
+          setDynamicAttestationLinks(links);
+        }
+      } catch (error) {
+        console.error("Error fetching attestation links:", error);
+      }
+    };
+    fetchAttestationLinks();
+  }, []);
+
+  useEffect(() => {
+    const fetchDocumentLinks = async () => {
+      try {
+        const response = await axios.get(`${API_CONFIG.BASE_URL}/document-attestation-navbar-links`, {
+          headers: API_CONFIG.HEADERS
+        });
+        const data = response.data;
+        if (data.success) {
+          const links = data.data.map((item) => ({
+            title: item.name,
+            to: item.frontend_url || `/document-attestations/${item.slug}`
+          }));
+          setDynamicDocumentLinks(links);
+        }
+      } catch (error) {
+        console.error("Error fetching document links:", error);
+      }
+    };
+    fetchDocumentLinks();
   }, []);
 
 
@@ -101,7 +184,7 @@ export default function Header() {
               id: "VisaStamping",
               title: "Visa Stamping & Assistance",
               to: "/visa-services",
-              col2: [
+              col2: dynamicVisaLinks.length > 0 ? dynamicVisaLinks : [
                 {
                   title: "Saudi Visa Stamping",
                   to: "#",
@@ -170,49 +253,8 @@ export default function Header() {
               title: "Attestation ",
               to: "/attestationdocument",
               col2: [
-                {
-                  to: "/attestationdocument",
-                  title: "Document Attestation"
-                },
-                {
-                  to: "/attestation-details",
-                  title: "Kuwait Embassy"
-                },
-                {
-                  to: "/attestation-details",
-                  title: "Saudi Embassy"
-                },
-                {
-                  to: "/attestation-details",
-                  title: "Qatar Embassy"
-                },
-                {
-                  title: "UAE Embassy"
-                },
-                {
-                  title: "MEA & Apostille Attestation"
-                },
-                {
-                  title: "HRD & Home Attestation"
-                },
-                {
-                  title: "Chamber of Commerce Attestation"
-                },
-                {
-                  title: "Other Embassy Attestation"
-                },
-                {
-                  title: "Academic / Educational Attestation",
-                  to: "/academic-documents-attestation"
-                },
-                {
-                  title: "Commercial Documents Attestation",
-                  to: "/commercial-documents-attestation"
-                },
-                {
-                  title: "Personal / Private Attestation",
-                  to: "/personal-documents-attestation"
-                }
+                ...dynamicAttestationLinks,
+                ...dynamicDocumentLinks
               ]
             },
             {

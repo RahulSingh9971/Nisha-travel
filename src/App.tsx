@@ -24,6 +24,7 @@ import CompactAttestation from "./pages/attestation/CompactAttestation";
 import AcademicDocumentsPage from "./pages/attestation/AcademicDocumentsPage";
 import CommercialDocumentsPage from "./pages/attestation/CommercialDocumentsPage";
 import PersonalDocumentsPage from "./pages/attestation/PersonalDocumentsPage";
+import DocumentAttestationDetails from "./pages/attestation/DocumentAttestationDetails";
 import Jobs from "./pages/JobPages/Jobs";
 import JobPosting from "./components/JobsPage/jobdetailpage/JobPosting";
 import StudyAbroadPage from "./pages/Services/StudyAbroadPage";
@@ -66,11 +67,15 @@ function App() {
             <Route path="/attestationeducation" element={<EducationalAttestation />} />
             <Route path="/attestationprivate" element={<PrivateAttestation />} />
             <Route path="/attestationcommercial" element={<CompactAttestation />} />
-            <Route path="/academic-documents-attestation" element={<AcademicDocumentsPage />} />
-            <Route path="/commercial-documents-attestation" element={<CommercialDocumentsPage />} />
-            <Route path="/personal-documents-attestation" element={<PersonalDocumentsPage />} />
+            <Route path="/academic-documents-attestation" element={<DocumentAttestationDetails />} />
+            <Route path="/commercial-documents-attestation" element={<DocumentAttestationDetails />} />
+            <Route path="/personal-documents-attestation" element={<DocumentAttestationDetails />} />
+            <Route path="/document-attestations/:slug" element={<DocumentAttestationDetails />} />
+            <Route path="/document-attestation/:slug" element={<DocumentAttestationDetails />} />
             <Route path="/job_opening_details/:slug" element={<JobPosting />} />
             <Route path="/attestation-details" element={<AttestationDetails />} />
+            <Route path="/attestation-details/:slug" element={<AttestationDetails />} />
+            <Route path="/attestation/:slug" element={<AttestationDetails />} />
             <Route path="/JobPosting/:slug" element={<JobPosting />} />
             <Route path="/study-abroad-page" element={<StudyAbroadPage />} />
             <Route

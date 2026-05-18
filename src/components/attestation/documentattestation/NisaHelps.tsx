@@ -32,7 +32,35 @@ const bottomRowData = [
   }
 ];
 
-const NisaHelps = () => {
+const NisaHelps = ({ data }: { data?: any }) => {
+  if (data && data.features && data.features.length > 0) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-10 text-center">
+          <h2 
+            className="text-[32px] md:text-[42px] font-extrabold text-[#002661] leading-tight mb-16"
+            dangerouslySetInnerHTML={{ __html: data.title }}
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full justify-center">
+            {data.features?.map((feature: string, index: number) => (
+              <div key={index} className="flex flex-col items-center bg-gray-50 p-6 rounded-xl border border-gray-100">
+                <div className="mb-4 text-[#c20c15]">
+                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-[18px] font-semibold text-[#002661] leading-snug text-center">
+                  {feature}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-6 md:px-10 text-center">

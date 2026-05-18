@@ -88,16 +88,27 @@ const pinVariants = {
   }
 };
 
-const RecruitmentProcessRoad = () => {
+const RecruitmentProcessRoad = ({ data }: { data?: any }) => {
+  const displaySteps = steps.map((step, index) => {
+    if (data?.steps && data.steps[index]) {
+      return { ...step, title: data.steps[index].title };
+    }
+    return step;
+  });
+
   return (
     <section className="bg-[#edf3f7] py-16 font-manrope overflow-hidden relative">
 
       {/* Title Block (Padded Container) */}
       <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-8 relative z-10 mb-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">
-          <span className="text-[#c1272d] block">Our Recruitment</span>
-          <span className="text-[#0a1e3f]">Process</span>
-        </h2>
+        {data?.title ? (
+           <h2 className="text-3xl md:text-4xl font-extrabold leading-tight" dangerouslySetInnerHTML={{ __html: data.title }} />
+        ) : (
+          <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">
+            <span className="text-[#c1272d] block">Our Recruitment</span>
+            <span className="text-[#0a1e3f]">Process</span>
+          </h2>
+        )}
       </div>
 
       {/* Winding Road Wrapper (Un-padded, flush to screen edge) */}
@@ -106,7 +117,7 @@ const RecruitmentProcessRoad = () => {
 
           {/* Background road squiggle image */}
           <img
-            src={roadImg}
+            src={data?.image_url || roadImg}
             alt="Recruitment Roadmap"
             className="absolute inset-0 w-full h-full object-fill select-none"
           />
@@ -119,7 +130,7 @@ const RecruitmentProcessRoad = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="absolute inset-0"
           >
-            {steps.map((step) => (
+            {displaySteps.map((step) => (
               <motion.div
                 key={step.id}
                 variants={pinVariants}

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { API_CONFIG } from "../config/apiConfig";
+import axios from "axios";
+import Swal from "sweetalert2";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 import img2 from "../assets/images/img2.png";
 
@@ -50,13 +54,76 @@ const BlogDetailPage: React.FC = () => {
   const [blog, setBlog] = useState<BlogDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    country_code: "+91",
+    reason: typeof window !== "undefined" ? window.location.href : ""
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    setFormData(prev => ({ ...prev, reason: window.location.href }));
+  }, [slug]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    
+    try {
+      const response = await axios.post(`${API_CONFIG.BASE_URL}/contact`, formData, {
+        headers: API_CONFIG.HEADERS
+      });
+
+      if (response.data.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: response.data.message || "Thank you for contacting us! We will get back to you shortly.",
+          confirmButtonColor: "#002661",
+        });
+        setFormData({ 
+          name: "", 
+          email: "", 
+          phone: "", 
+          message: "", 
+          country_code: "+91", 
+          reason: window.location.href 
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: response.data.message || "Something went wrong. Please try again.",
+          confirmButtonColor: "#E74C3C",
+        });
+      }
+    } catch (error: any) {
+      console.error("API Error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        text: error.response?.data?.message || "Server error. Please check your connection.",
+        confirmButtonColor: "#E74C3C",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     const fetchBlogDetail = async () => {
       try {
         setLoading(true);
         const res = await fetch(`${API_CONFIG.BASE_URL}/blogs/${slug}`, { headers: API_CONFIG.HEADERS as any });
         const resData = await res.json();
-        
+
         if (resData.status === "success") {
           setBlog(resData.data);
           document.title = resData.data.meta?.title || resData.data.title;
@@ -122,7 +189,7 @@ const BlogDetailPage: React.FC = () => {
             </h2>
           )}
 
-          <div 
+          <div
             className="prose max-w-none text-gray-600 text-[15px] leading-relaxed space-y-6"
             dangerouslySetInnerHTML={{ __html: blog.description }}
           />
@@ -136,25 +203,45 @@ const BlogDetailPage: React.FC = () => {
               <h3 className="text-xl md:text-[22px] font-bold leading-tight">We're just a message away.</h3>
             </div>
 
-            <form className="p-6 space-y-4 font-poppins -mt-4" onSubmit={e => e.preventDefault()}>
+            <form className="p-6 space-y-4 font-poppins -mt-4" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-[13px] font-semibold text-[#0d213b] mb-1">First Name*</label>
-                <input type="text" placeholder="Enter Your Name" className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15]" />
+                <input name="name" value={formData.name} onChange={handleChange} required type="text" placeholder="Enter Your Name" className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15]" />
               </div>
               <div>
                 <label className="block text-[13px] font-semibold text-[#0d213b] mb-1">Email Address*</label>
-                <input type="email" placeholder="Enter Email Address" className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15]" />
+                <input name="email" value={formData.email} onChange={handleChange} required type="email" placeholder="Enter Email Address" className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15]" />
               </div>
               <div>
                 <label className="block text-[13px] font-semibold text-[#0d213b] mb-1">Phone Number*</label>
-                <input type="tel" placeholder="Enter Phone Number" className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15]" />
+                <PhoneInput
+                  country={"in"}
+                  value={formData.country_code + formData.phone}
+                  onChange={(value, data: any) => {
+                    const dialCode = data.dialCode;
+                    const phoneNumber = value.startsWith(dialCode) 
+                      ? value.slice(dialCode.length) 
+                      : value;
+                    setFormData({ 
+                      ...formData, 
+                      phone: phoneNumber, 
+                      country_code: `+${dialCode}` 
+                    });
+                  }}
+                  inputClass="!w-full !border-gray-200 !rounded-md !text-sm focus:!border-[#c20c15] !h-[42px]"
+                  buttonClass="!border-gray-200 !rounded-l-md !bg-gray-50"
+                  containerClass="!w-full"
+                />
               </div>
+              
+              <input name="reason" value={formData.reason} type="hidden" />
+
               <div>
-                <label className="block text-[13px] font-semibold text-[#0d213b] mb-1">Message</label>
-                <textarea placeholder="Type Your Message" rows={4} className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15] resize-none"></textarea>
+                <label className="block text-[13px] font-semibold text-[#0d213b] mb-1">Message*</label>
+                <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Type Your Message" rows={4} className="w-full border border-gray-200 rounded-md px-3 py-[10px] text-sm focus:outline-none focus:border-[#c20c15] resize-none"></textarea>
               </div>
-              <button className="bg-[#c20c15] text-white font-bold text-[12px] uppercase px-8 py-3 rounded-[4px] hover:bg-red-800 transition-colors">
-                SUBMIT
+              <button type="submit" disabled={submitting} className={`bg-[#c20c15] text-white font-bold text-[12px] uppercase px-8 py-3 rounded-[4px] hover:bg-red-800 transition-colors ${submitting ? 'opacity-70 cursor-not-allowed' : ''}`}>
+                {submitting ? "SUBMITTING..." : "SUBMIT"}
               </button>
             </form>
           </div>
@@ -193,7 +280,7 @@ const BlogDetailPage: React.FC = () => {
                   {article.short_description}
                 </p>
                 <div className="mt-auto">
-                   <Link to={`/blog-detail/${article.slug}`} className="text-[#c20c15] font-bold text-[14px] hover:underline mt-auto">Read More</Link>
+                  <Link to={`/blog-detail/${article.slug}`} className="text-[#c20c15] font-bold text-[14px] hover:underline mt-auto">Read More</Link>
                 </div>
               </div>
             ))}

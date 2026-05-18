@@ -1,6 +1,43 @@
 import React from 'react';
 
-const WhatIsAttestation = () => {
+const WhatIsAttestation = ({ data }: { data?: any }) => {
+  if (data) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16 text-center">
+          {/* Header */}
+          <h2 
+            className="text-[32px] md:text-[42px] font-extrabold text-[#002661] leading-tight mb-16"
+            dangerouslySetInnerHTML={{ __html: data.title }}
+          />
+
+          {/* Dynamic Grid */}
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 justify-center">
+            {data.items?.map((item: any, index: number) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="mb-6">
+                  <img 
+                    src={item.image_url} 
+                    alt={item.text} 
+                    className="w-[64px] h-[64px] object-contain"
+                  />
+                </div>
+                <h3 className="text-[20px] font-bold text-[#002661] mb-3">
+                  {item.text}
+                </h3>
+                {item.description && (
+                  <p className="text-gray-500 text-[15px] leading-relaxed max-w-[340px] mx-auto">
+                    {item.description}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16 text-center">

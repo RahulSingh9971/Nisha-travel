@@ -17,7 +17,8 @@ import icon14 from "../../assets/images/industry-icon14.svg";
 import icon15 from "../../assets/images/industry-icon15.svg";
 
 interface IndustryItem {
-  icon: string;
+  icon?: string;
+  image_url?: string;
   label: string;
 }
 
@@ -71,12 +72,22 @@ const MarqueeRow: React.FC<MarqueeProps> = ({ items, direction = "left", duratio
       >
         {doubledItems.map((item, idx) => (
           <div key={`${item.label}-${idx}`} className="flex gap-4 items-center min-w-max px-2">
-            <div className="bg-primary-lightblue rounded-full flex items-center justify-center w-14 h-14 shadow-sm border border-gray-100">
-              <img
-                src={item.icon}
-                alt={item.label}
-                className="h-7 w-7 object-contain"
-              />
+            <div className="bg-primary-lightblue rounded-full flex items-center justify-center w-14 h-14 shadow-sm border border-gray-100 overflow-hidden">
+              {item.image_url ? (
+                <img
+                  src={item.image_url}
+                  alt={item.label}
+                  className="h-7 w-7 object-contain"
+                />
+              ) : item.icon?.startsWith('fa-') ? (
+                <i className={`fa ${item.icon} text-2xl text-primary-navyblue`}></i>
+              ) : (
+                <img
+                  src={item.icon}
+                  alt={item.label}
+                  className="h-7 w-7 object-contain"
+                />
+              )}
             </div>
             <span className="text-[16px] font-bold text-[#06213F] tracking-wide">
               {item.label}
@@ -88,21 +99,31 @@ const MarqueeRow: React.FC<MarqueeProps> = ({ items, direction = "left", duratio
   );
 };
 
-export default function IndustriesWeCater() {
+export default function IndustriesWeCater({ data }: { data?: any }) {
+  const displayItems = data?.items?.length > 0 ? data.items : [...industries, ...construction];
+  const half = Math.ceil(displayItems.length / 2);
+  
+  const row1 = data?.items?.length > 0 ? displayItems.slice(0, half) : industries;
+  const row2 = data?.items?.length > 0 ? displayItems.slice(half) : construction;
+
   return (
     <section className="bg-white md:py-20 py-12 overflow-hidden">
       <div className="w-full mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
-          <span className="text-primary-red">Industries</span>{" "}
-          <span className="text-[#223544]">We Cater</span>
-        </h2>
+        {data?.title ? (
+           <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10" dangerouslySetInnerHTML={{ __html: data.title }} />
+        ) : (
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
+            <span className="text-primary-red">Industries</span>{" "}
+            <span className="text-[#223544]">We Cater</span>
+          </h2>
+        )}
 
         <div className="flex flex-col">
           {/* Top Row - Moving Left */}
-          <MarqueeRow items={industries} direction="left" duration={30} />
+          {row1.length > 0 && <MarqueeRow items={row1} direction="left" duration={30} />}
 
           {/* Bottom Row - Moving Right */}
-          <MarqueeRow items={construction} direction="right" duration={30} />
+          {row2.length > 0 && <MarqueeRow items={row2} direction="right" duration={30} />}
         </div>
       </div>
     </section>

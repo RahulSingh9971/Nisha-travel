@@ -37,7 +37,11 @@ const embassies = [
   },
 ];
 
-const TrustedByEmbassies = () => {
+const TrustedByEmbassies = ({ data }: { data?: any }) => {
+  const hasApiData = data?.items?.length > 0;
+  const meaBlock = hasApiData ? data.items[0] : null;
+  const displayEmbassies = hasApiData ? data.items.slice(1) : embassies;
+
   return (
     <section className="bg-[#EAF0F6] py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-8">
@@ -47,14 +51,18 @@ const TrustedByEmbassies = () => {
             <h2 className="text-[#c1272d] font-bold text-2xl mb-4">Trusted by</h2>
             <div className="bg-white rounded-xl p-8 shadow-sm flex-grow">
               <h3 className="font-bold text-xl leading-tight mb-4 text-black">
-                विदेश मंत्रालय<br />
-                MINISTRY OF<br />
-                EXTERNAL AFFAIRS
+                {data?.title ? (
+                  <span dangerouslySetInnerHTML={{ __html: data.title }} />
+                ) : (
+                  <>
+                    विदेश मंत्रालय<br />
+                    MINISTRY OF<br />
+                    EXTERNAL AFFAIRS
+                  </>
+                )}
               </h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                The MEA manages foreign relations and issues passports required for
-                travel. It also facilitates document attestation for visa applications
-                to foreign embassies.
+                {meaBlock?.description || data?.description || "The MEA manages foreign relations and issues passports required for travel. It also facilitates document attestation for visa applications to foreign embassies."}
               </p>
             </div>
           </div>
@@ -88,26 +96,31 @@ const TrustedByEmbassies = () => {
                 modules={[Autoplay]}
                 className="mySwiper"
               >
-                {embassies.map((embassy, index) => (
+                {displayEmbassies.map((embassy: any, index: number) => (
                   <SwiperSlide key={index} className="h-auto">
                     <div className="bg-white rounded-xl shadow-sm h-full flex flex-col items-center border border-gray-100 overflow-hidden">
                       <div className="w-full h-[120px] mb-4">
                         <img
-                          src={embassy.flag}
-                          alt={`${embassy.name} flag`}
+                          src={embassy.flag_image_url || embassy.image_url || embassy.flag}
+                          alt={`${embassy.title || embassy.name} flag`}
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <h4 className="text-[#0a1e3f] font-bold text-[15px] mb-4 text-center whitespace-nowrap px-4">
-                        {embassy.name}
+                        {embassy.title || embassy.name}
                       </h4>
-                      <div className="mt-auto flex items-center justify-center h-[70px] w-full pb-6">
-                        <img
-                          src={embassy.emblem}
-                          alt={`${embassy.name} emblem`}
-                          className="max-h-full max-w-[50px] object-contain"
-                        />
-                      </div>
+                      {(embassy.icon_image_url || embassy.emblem) && (
+                        <div className="mt-auto flex items-center justify-center h-[70px] w-full pb-6">
+                          <img
+                            src={embassy.icon_image_url || embassy.emblem}
+                            alt={`${embassy.title || embassy.name} emblem`}
+                            className="max-h-full max-w-[50px] object-contain"
+                          />
+                        </div>
+                      )}
+                      {embassy.description && (
+                         <p className="text-sm text-gray-500 text-center pb-6 px-2">{embassy.description}</p>
+                      )}
                     </div>
                   </SwiperSlide>
                 ))}

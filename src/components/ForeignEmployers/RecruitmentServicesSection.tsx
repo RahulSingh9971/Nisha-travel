@@ -6,8 +6,8 @@ import img4 from '../../assets/images/image 63.png';
 import img5 from '../../assets/images/image 63 (1).png';
 import img6 from '../../assets/images/image 63 (2).png';
 
-const RecruitmentServicesSection = () => {
-  const services = [
+const RecruitmentServicesSection = ({ data }: { data?: any }) => {
+  const displayServices = data?.cards?.length > 0 ? data.cards : [
     {
       id: 1,
       image: img1,
@@ -45,25 +45,31 @@ const RecruitmentServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-[#0a1e3f] text-3xl md:text-4xl font-extrabold">
-            About Our
-          </h2>
-          <h3 className="text-[#c1272d] text-3xl md:text-4xl font-extrabold mt-2">
-            Recruitment Services
-          </h3>
+          {data?.title ? (
+            <h2 className="text-[#0a1e3f] text-3xl md:text-4xl font-extrabold" dangerouslySetInnerHTML={{ __html: data.title }} />
+          ) : (
+            <>
+              <h2 className="text-[#0a1e3f] text-3xl md:text-4xl font-extrabold">
+                About Our
+              </h2>
+              <h3 className="text-[#c1272d] text-3xl md:text-4xl font-extrabold mt-2">
+                Recruitment Services
+              </h3>
+            </>
+          )}
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service) => (
+          {displayServices.map((service: any, index: number) => (
             <div 
-              key={service.id} 
+              key={service.id || index} 
               className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden flex flex-col transition-all hover:shadow-lg hover:-translate-y-1 duration-300"
             >
               {/* Card Image */}
               <div className="w-full aspect-[1.6/1] overflow-hidden p-4">
                 <img 
-                  src={service.image} 
+                  src={service.image_url || service.image} 
                   alt={service.title} 
                   className="w-full h-full object-cover rounded-xl shadow-sm"
                 />
@@ -73,6 +79,7 @@ const RecruitmentServicesSection = () => {
                 <h4 className="text-[#0a1e3f] font-bold text-base md:text-lg leading-tight">
                   {service.title}
                 </h4>
+                {service.description && <p className="text-sm text-gray-500 mt-2">{service.description}</p>}
               </div>
             </div>
           ))}

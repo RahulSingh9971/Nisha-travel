@@ -97,7 +97,7 @@ const BlogPage: React.FC = () => {
   return (
     <div className="font-poppins">
       {/* Hero Section */}
-      <section className="bg-[#f0f4f8] w-full pt-16 md:pt-20 lg:pt-24 min-h-[400px]">
+      <section className="bg-[#f0f4f8] w-full pt-16 md:pt-20 lg:pt-24 min-h-[400px] pb-8">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Text Content */}
           <div className="flex-1 max-w-2xl">
@@ -124,9 +124,9 @@ const BlogPage: React.FC = () => {
       </section>
 
       {/* Articles Section */}
-      <section className="bg-white w-full pt-16 md:pt-20 lg:pt-24">
+      <section className="bg-white w-full pt-16 md:pt-20 lg:pt-24 pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8">
-          
+
           {/* Main Article (Left) */}
           {mainArticle ? (
             <div className="flex flex-col">
@@ -159,7 +159,7 @@ const BlogPage: React.FC = () => {
               </div>
             </div>
           ) : (
-             <div className="flex flex-col justify-center text-gray-400">No main article available</div>
+            <div className="flex flex-col justify-center text-gray-400">No main article available</div>
           )}
 
           {/* Side Articles (Right) */}
@@ -202,48 +202,48 @@ const BlogPage: React.FC = () => {
 
       {/* Grid Articles Section */}
       {gridArticles.length > 0 && (
-      <section className="bg-white w-full py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-          {gridArticles.map((article) => (
-            <div key={article.id} className="flex flex-col h-full">
-              <div className="relative mb-5">
-                <img
-                  src={article.featured_image_url}
-                  alt={article.title}
-                  className="w-full h-[220px] rounded-[24px] object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542314831-c6a4d142104d?auto=format&fit=crop&q=80&w=1000';
-                  }}
-                />
-                <span className="absolute bottom-4 left-4 text-white text-[9px] md:text-[10px] font-bold px-3 py-[6px] rounded-full uppercase tracking-wider" style={{ backgroundColor: article.category?.color || '#c20c15' }}>
-                  {article.category?.name || "TRAVEL"}
-                </span>
+        <section className="bg-white w-full pt-12 md:pt-16 pb-20 md:pb-24">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {gridArticles.map((article) => (
+              <div key={article.id} className="flex flex-col h-full">
+                <div className="relative mb-5">
+                  <img
+                    src={article.featured_image_url}
+                    alt={article.title}
+                    className="w-full h-[220px] rounded-[24px] object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542314831-c6a4d142104d?auto=format&fit=crop&q=80&w=1000';
+                    }}
+                  />
+                  <span className="absolute bottom-4 left-4 text-white text-[9px] md:text-[10px] font-bold px-3 py-[6px] rounded-full uppercase tracking-wider" style={{ backgroundColor: article.category?.color || '#c20c15' }}>
+                    {article.category?.name || "TRAVEL"}
+                  </span>
+                </div>
+                <div className="text-[12px] text-gray-500 font-bold mb-3 uppercase tracking-wide">
+                  {article.reading_time} <span className="mx-1">•</span> {article.published_date}
+                </div>
+                <Link to={`/blog-detail/${article.slug}`}>
+                  <h4 className="text-[20px] md:text-[22px] font-bold text-[#0d213b] mb-3 leading-tight hover:text-[#c20c15] transition-colors">
+                    {article.title}
+                  </h4>
+                </Link>
+                <p className="text-gray-600 text-[14px] leading-relaxed mb-6 line-clamp-2">
+                  {article.short_description}
+                </p>
+                <div className="mt-auto">
+                  <Link to={`/blog-detail/${article.slug}`} className="text-[#c20c15] font-bold text-[14px] hover:underline">Read More</Link>
+                </div>
               </div>
-              <div className="text-[12px] text-gray-500 font-bold mb-3 uppercase tracking-wide">
-                {article.reading_time} <span className="mx-1">•</span> {article.published_date}
-              </div>
-              <Link to={`/blog-detail/${article.slug}`}>
-                <h4 className="text-[20px] md:text-[22px] font-bold text-[#0d213b] mb-3 leading-tight hover:text-[#c20c15] transition-colors">
-                  {article.title}
-                </h4>
-              </Link>
-              <p className="text-gray-600 text-[14px] leading-relaxed mb-6 line-clamp-2">
-                {article.short_description}
-              </p>
-              <div className="mt-auto">
-                <Link to={`/blog-detail/${article.slug}`} className="text-[#c20c15] font-bold text-[14px] hover:underline">Read More</Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       )}
 
       {/* Pagination component */}
       {meta && meta.last_page > 1 && (
         <section className="bg-white w-full pb-16">
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between border-t border-gray-100 pt-8 mt-4 pb-10">
-            <button 
+            <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
               className={`flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-md text-sm font-semibold transition-colors ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-[#0d213b] hover:bg-gray-50'}`}
@@ -257,8 +257,8 @@ const BlogPage: React.FC = () => {
                   key={page}
                   onClick={() => handlePageChange(page)}
                   className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium ${currentPage === page
-                      ? 'bg-[#c20c15] text-white'
-                      : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-[#c20c15] text-white'
+                    : 'text-gray-600 hover:bg-gray-50'
                     }`}
                 >
                   {page}
@@ -266,10 +266,10 @@ const BlogPage: React.FC = () => {
               ))}
             </div>
 
-            <button 
-               onClick={() => handlePageChange(currentPage + 1)}
-               disabled={currentPage === meta.last_page}
-               className={`flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-md text-sm font-semibold transition-colors ${currentPage === meta.last_page ? 'text-gray-400 cursor-not-allowed' : 'text-[#0d213b] hover:bg-gray-50'}`}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === meta.last_page}
+              className={`flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-md text-sm font-semibold transition-colors ${currentPage === meta.last_page ? 'text-gray-400 cursor-not-allowed' : 'text-[#0d213b] hover:bg-gray-50'}`}
             >
               Next <span className="text-lg leading-none mb-[2px]">→</span>
             </button>

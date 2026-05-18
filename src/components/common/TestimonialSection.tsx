@@ -86,14 +86,33 @@ const TestimonialCard: React.FC<Testimonial> = ({
   </div>
 );
 
-const TestimonialSection: React.FC = () => {
+const TestimonialSection: React.FC<{ data?: any }> = ({ data }) => {
+  const itemsToRender = data?.items && data.items.length > 0 
+    ? data.items.map((item: any) => ({
+        rating: item.rating ? item.rating.toFixed(1).toString() : "5.0",
+        title: item.title || "",
+        description: item.review || "",
+        name: item.name || "Anonymous",
+        location: item.location || "",
+        avatar: item.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name || "User")}&background=random`
+      }))
+    : testimonials;
+
   return (
     <div className="py-20 max-w-7xl mx-auto px-4 lg:px-8 font-manrope">
       <div className="text-center mb-12">
-        <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
-          <span className="text-[#06213F]">Real Words from Real </span>
-          <span className="text-primary-red text-[#c20c15]">People</span>
-        </h2>
+        {data?.title ? (
+          <h2 
+            className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4 text-[#06213F]"
+            dangerouslySetInnerHTML={{ __html: data.title }}
+          />
+        ) : (
+          <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold mb-4">
+            <span className="text-[#06213F]">Real Words from Real </span>
+            <span className="text-primary-red text-[#c20c15]">People</span>
+          </h2>
+        )}
+        
         <div className="flex items-center justify-center space-x-2">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
@@ -106,7 +125,7 @@ const TestimonialSection: React.FC = () => {
             ))}
             <span className="ml-2 font-bold text-gray-800">5.0</span>
             <span className="ml-1 font-medium text-gray-600">
-              (190+ Reviews)
+              ({data?.subtitle || "190+ Reviews"})
             </span>
           </div>
           <img src={google} alt="Google" className="h-6 ml-4" />
@@ -114,7 +133,7 @@ const TestimonialSection: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {testimonials.map((testimonial, index) => (
+        {itemsToRender.map((testimonial: any, index: number) => (
           <TestimonialCard key={index} {...testimonial} />
         ))}
       </div>

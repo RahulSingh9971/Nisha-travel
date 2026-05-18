@@ -144,87 +144,85 @@ const StatCircle: React.FC<StatCircleProps> = ({
   );
 };
 
-export default function TrustedGlobalVisa() {
-    return (
-        <section className="bg-primary-lightblue overflow-hidden font-manrope xl:pt-24 md:pt-16 pt-10">
-            <div className="max-w-7xl mx-auto  lg:px-8 md:px-12 px-4">
-                  <style>
-        {`
-          @keyframes float {
-            from { transform: translateY(0px); }
-            to { transform: translateY(15px); }
-          }
-        `}
-      </style>
-                <div className="grid md:grid-cols-2 lg:gap-20 gap-10 pb-10 items-center justify-between">
-                    {/* Right Column: Bubble Stats */}
-                    <div className="relative h-96 md:order-1 order-2">
-                        {/* Decorative dots */}
-                        <div className="absolute top-0 right-20 w-5 h-5 bg-primary-lightred rounded-full opacity-80"></div>
-                        <div className="absolute bottom-16 right-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
-                        <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-10 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
+export default function TrustedGlobalVisa({ data }: { data?: any }) {
+  const defaultStats = [
+    { size: 120, bgColor: "bg-primary-red", textColor: "text-primary-white", value: "50k+", label: "Customer Globally", valueSize: "text-3xl", labelSize: "text-xs", position: "top-0 lg:left-24", shadow: "shadow-lg" },
+    { size: 240, bgColor: "bg-white", textColor: "text-primary-navyblue", value: "1.5M+", label: "Documents Processed", valueSize: "text-5xl", labelSize: "text-base", position: "top-[15%] lg:left-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2", shadow: "shadow-xl" },
+    { size: 110, bgColor: "bg-white", textColor: "text-primary-navyblue", value: "7k+", label: "Successful Recruitment", valueSize: "text-2xl", labelSize: "text-xs", position: "top-8 right-0", shadow: "shadow-2xl" },
+    { size: 120, bgColor: "bg-primary-navyblue", textColor: "text-primary-white", value: "33", label: "Years of Overseas Recruitment", valueSize: "text-4xl", labelSize: "text-xs", position: "bottom-0 right-20", shadow: "shadow-lg" }
+  ];
 
-                        {/* Main stats bubbles */}
-                        <StatCircle
-                            size={120}
-                            bgColor="bg-primary-red"
-                            textColor="text-primary-white"
-                            value="50k+"
-                            label="Customer Globally"
-                            valueSize="text-3xl"
-                            labelSize="text-xs"
-                            position="top-0 lg:left-24"
-                        />
-                        <StatCircle
-                            size={240}
-                            bgColor="bg-white"
-                            textColor="text-primary-navyblue"
-                            value="1.5M+"
-                            label="Documents Processed"
-                            valueSize="text-5xl"
-                            labelSize="text-base"
-                            position="top-[15%] lg:left-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2"
-                            shadow="shadow-xl"
-                        />
-                        <StatCircle
-                            size={110}
-                            bgColor="bg-white"
-                            textColor="text-primary-navyblue"
-                            value="7k+"
-                            label="Successful Recruitment"
-                            valueSize="text-2xl"
-                            labelSize="text-xs"
-                            position="top-8 right-0"
-                            shadow="shadow-2xl"
-                        />
-                        <StatCircle
-                            size={120}
-                            bgColor="bg-primary-navyblue"
-                            textColor="text-primary-white"
-                            value="33"
-                            label="Years of Overseas Recruitment"
-                            valueSize="text-4xl"
-                            labelSize="text-xs"
-                            position="bottom-0 right-20"
-                        />
-                    </div>{" "}
-                    {/* Left Column: Text Content */}
-                    <div className="md:order-2 order-1">
-                        <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight">
-                            <span className="text-primary-red">Trusted Global </span>
-                            <br />
-                            <span className="text-primary-navyblue">Visa Partner</span>
-                        </h2>
-                        <p className="my-6 text-primary-gray text-[16px] leading-7 font-medium">
-                            With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide.
-                        </p>
-                        <button className="font-Poppins text-[16px] font-normal bg-primary-red text-primary-white px-8 py-2">
-                            Know More
-                        </button>
+  const statsToRender = data?.stats && data.stats.length > 0 ? data.stats.map((stat: any, index: number) => ({
+    ...defaultStats[index % defaultStats.length],
+    value: stat.value,
+    label: stat.label
+  })) : defaultStats;
 
-                    </div>
+  return (
+    <section className="bg-primary-lightblue overflow-hidden font-manrope xl:pt-24 md:pt-16 pt-10">
+        <div className="max-w-7xl mx-auto  lg:px-8 md:px-12 px-4">
+              <style>
+    {`
+      @keyframes float {
+        from { transform: translateY(0px); }
+        to { transform: translateY(15px); }
+      }
+    `}
+  </style>
+            <div className="grid md:grid-cols-2 lg:gap-20 gap-10 pb-10 items-center justify-between">
+                {/* Right Column: Bubble Stats */}
+                <div className="relative h-96 md:order-1 order-2">
+                    {/* Decorative dots */}
+                    <div className="absolute top-0 right-20 w-5 h-5 bg-primary-lightred rounded-full opacity-80"></div>
+                    <div className="absolute bottom-16 right-12 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
+                    <div className="absolute top-1/2 -translate-y-1/2 lg:left-8 md:-left-10 w-8 h-8 bg-primary-lightred rounded-full opacity-80"></div>
+
+                    {/* Main stats bubbles */}
+                    {statsToRender.map((stat: any, idx: number) => (
+                      <StatCircle
+                        key={idx}
+                        size={stat.size}
+                        bgColor={stat.bgColor}
+                        textColor={stat.textColor}
+                        value={stat.value}
+                        label={stat.label}
+                        valueSize={stat.valueSize}
+                        labelSize={stat.labelSize}
+                        position={stat.position}
+                        shadow={stat.shadow}
+                      />
+                    ))}
+                </div>{" "}
+                {/* Left Column: Text Content */}
+                <div className="md:order-2 order-1">
+                    {data?.title ? (
+                      <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight" dangerouslySetInnerHTML={{ __html: data.title }}>
+                      </h2>
+                    ) : (
+                      <h2 className="xl:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight">
+                          <span className="text-primary-red">Trusted Global </span>
+                          <br />
+                          <span className="text-primary-navyblue">Visa Partner</span>
+                      </h2>
+                    )}
+                    
+                    <p className="my-6 text-primary-gray text-[16px] leading-7 font-medium">
+                        {data?.description || "With over 1.5M documents processed, 50k+ global customers, and 7k+ successful overseas recruitments across 33 years, our track record reflects trust, efficiency, and proven expertise worldwide."}
+                    </p>
+                    
+                    {data?.cta ? (
+                      <a href={data.cta.link} className="inline-block font-Poppins text-[16px] font-normal bg-primary-red text-primary-white px-8 py-2">
+                          {data.cta.text}
+                      </a>
+                    ) : (
+                      <button className="font-Poppins text-[16px] font-normal bg-primary-red text-primary-white px-8 py-2">
+                          Know More
+                      </button>
+                    )}
+
                 </div>
             </div>
-        </section>
-    );
+        </div>
+    </section>
+  );
 }
